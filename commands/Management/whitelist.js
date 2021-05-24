@@ -19,15 +19,11 @@ module.exports = {
             const User = await msg.client.users.cache.get(args[0])
             await whitelist.whitelisted.push(User.id)
             const jsonString = await JSON.stringify(whitelist)
-            fs.writeFile('./../../whitelist.json', jsonString, err => {
-                if (err) {
-                    console.log('Error writing JSON Whitelist:', err)
-                }
-            })
+            await fs.writeFileSync('./../../whitelist.json', jsonString)
             let embed = new Discord.MessageEmbed();
-            await embed.setTitle("Success")
-            await embed.setColor("BLUE")
-            await embed.setDescription("Successfully whitelisted " + args[0])
+            embed.setTitle("Success")
+            embed.setColor("BLUE")
+            embed.setDescription("Successfully whitelisted " + args[0])
             return msg.channel.send(embed)
         } else {
             let embed = new Discord.MessageEmbed();
