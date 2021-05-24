@@ -52,7 +52,6 @@ const updater = new AutoGitUpdate(config);
 
 /**
  * * Filter Section
- * ? Unsure how to parse back the JSON
  */
 let HentaiWhitelist = []
 let MemeWhitelist = []
