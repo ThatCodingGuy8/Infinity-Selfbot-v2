@@ -1,13 +1,13 @@
 {
-  "name": "aesthetix",
-  "version": "1.0.44",
+  "name": "infinity",
+  "version": "1.0.45",
   "description": "The neatest of Selfbots",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "AesthetixPeace",
+  "author": "Branden",
   "license": "ISC",
   "dependencies": {
     "1337": "^1.0.1",
