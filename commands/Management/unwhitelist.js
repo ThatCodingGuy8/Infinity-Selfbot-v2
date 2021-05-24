@@ -17,6 +17,13 @@ module.exports = {
                 return msg.channel.send(embed)
             }
             const index = await whitelist.whitelisted.indexOf(args[0])
+            if (index == -1) {
+                let embed = new Discord.MessageEmbed();
+                embed.setTitle("Error")
+                embed.setColor("RED")
+                embed.setDescription("That user isnt whitelisted!")
+                return msg.channel.send(embed)
+            }
             await whitelist.whitelisted.splice(index)
             const jsonString = await JSON.stringify(whitelist)
             await fs.writeFileSync('whitelist.json', jsonString)
