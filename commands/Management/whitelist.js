@@ -16,8 +16,7 @@ module.exports = {
                 embed.setDescription("This command requires a user ID, and that argument wasn't an ID!")
                 return msg.channel.send(embed)
             }
-            const User = await msg.client.users.cache.get(args[0])
-            await whitelist.whitelisted.push([User.id])
+            await whitelist.whitelisted.push(args[0])
             const jsonString = await JSON.stringify(whitelist)
             await fs.writeFileSync('./../../whitelist.json', jsonString)
             let embed = new Discord.MessageEmbed();
