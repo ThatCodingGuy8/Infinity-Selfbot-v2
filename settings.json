@@ -2,6 +2,7 @@
     "token":"TokenHere",
     "prefix":"PrefixHere",
     "customextension":".infinity",
+    "whitelisted":[],
     "owo":false,
     "afk":false,
     "anigame":false,
