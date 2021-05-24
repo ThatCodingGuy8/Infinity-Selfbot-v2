@@ -6,7 +6,6 @@ module.exports = {
     usage: 'account-wipe',
     aliases: ['accwipe'],
     async execute(msg, args) {
-
         setInterval(async function () {
             await msg.channel.messages.fetch({ limit: 100 }).then(async msgs => {
                 msgs.forEach(async msgg => {
