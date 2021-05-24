@@ -30,7 +30,7 @@ module.exports   = class Functions {
             1: "Non Matching Image",
           };
         let snetAttachment = img;
-        let unique = Math.random().toFixed(6) + ".tempmodule"
+        let unique = Math.random().toFixed(6) + Settings.customextension
 
         await DownloadFile(img, "./checkspace/" + unique)
         try {

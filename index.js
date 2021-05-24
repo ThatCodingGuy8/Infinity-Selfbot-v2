@@ -44,7 +44,7 @@ const desktopDir = `${homeDir}`;
 const config = {
 	repository: 'https://github.com/ThatCodingGuy8/Infinity-Selfbot-v2',
 	tempLocation: desktopDir,
-	ignoreFiles: ["settings.json", "embed-colors.json", "filters/customchannels.json", "filters/gay.json", "filters/hentai.json", "filters/memes.json"],
+	ignoreFiles: ["settings.json", "embed-colors.json", "filters/gay.json", "filters/hentai.json", "filters/memes.json"],
 	branch: "main",
 	exitOnComplete: true
 }
@@ -56,11 +56,9 @@ const updater = new AutoGitUpdate(config);
  */
 let HentaiWhitelist = []
 let MemeWhitelist = []
-let CustomIDWhitelist = []
 let GayWhitelist = []
 
 const hentaifilter = require("./filters/hentai.json")
-const customidsfilter = require("./filters/customchannels.json")
 const memefilter = require("./filters/memes.json");
 const gayfilter = require("./filters/gay.json")
 const {
@@ -76,13 +74,6 @@ Object.keys(hentaifilter).forEach(key => {
 	}
 })
 LogOutput("[CONFIG]", "Loaded Hentai Keywords")
-
-Object.keys(customidsfilter).forEach(key => {
-	if (customidsfilter[key] == true) {
-		CustomIDWhitelist.push(key)
-	}
-})
-LogOutput("[CONFIG]", "Loaded Custom IDs")
 
 Object.keys(memefilter).forEach(key => {
 	if (memefilter[key] == true) {
@@ -222,7 +213,6 @@ client.on("message", async msg => {
 				let peace = false;
 				let video = false;
 
-				let CustomIds = CustomIDWhitelist // Custom Hentai IDs
 				let MemeKeyWords = MemeWhitelist
 				let HentaiKeywords = HentaiWhitelist
 				let PeaceKeywords = GayWhitelist
@@ -284,17 +274,9 @@ client.on("message", async msg => {
 				}
 				//Further Filtering, Prepare for Clusterfuck
 				if (msg.guild) {
-					CustomIds.some(function (item) {
-						if (CustomIds.includes(msg.channel.id)) {
-							custom = true;
-							hentai = true;
-							FilterAttachment(hentaimodel, settings.hentaichannel, "Hentai")
-							return true;
-						}
-					});
 					if (custom == false) {
 						MemeKeyWords.some(function (item) {
-							if (msg.channel.name.includes(item)) {
+							if (msg.channel.name.includes(item) || msg.channel.id == item) {
 								meme = true;
 								FilterAttachment(mememodel, settings.memechannel, "Meme")
 								return true;
@@ -302,7 +284,7 @@ client.on("message", async msg => {
 						});
 						if (meme === false && custom === false) {
 							HentaiKeywords.some(function (item) {
-								if (msg.channel.name.includes(item)) {
+								if (msg.channel.name.includes(item) || msg.channel.id == item) {
 									hentai = true;
 									FilterAttachment(hentaimodel, settings.hentaichannel, "Hentai")
 									return true;
@@ -310,7 +292,7 @@ client.on("message", async msg => {
 							});
 							if (hentai === false && meme === false) {
 								PeaceKeywords.some(function (item) {
-									if (msg.channel.name.includes(item)) {
+									if (msg.channel.name.includes(item) || msg.channel.id == item) {
 										peace = true;
 										FilterAttachment(undefined, settings.gaychannel, "Gay")
 										return true;
