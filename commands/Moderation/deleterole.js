@@ -15,14 +15,14 @@ module.exports = {
         if (role.id == role2.id) { 
             msg.channel.send(new MessageEmbed().setDescription("Please Put 2 Different Roles!"))
         } else {
-            Members = role.members.filter(m => m.roles.cache.has(role.id) && m.roles.cache.has(role2.id) )
+            Members = role.members.filter(m => m.roles.cache.has(role2.id) )
             Members.forEach(m => {
                 m.roles.remove(role2.id) 
             });
             if (Members.size<= 0) { 
                 msg.channel.send(new MessageEmbed().setDescription("It Seems there is no member with that role!"))
             } else {
-                msg.channel.send(new MessageEmbed().setDescription(`${role2.toString()} has been removed from members with   ${role.toString()}`))
+                msg.channel.send(new MessageEmbed().setDescription(`${role} has been removed from members with   ${role}`))
             }
         }
     }
