@@ -26,7 +26,7 @@ module.exports = {
 
                 if (index.post_hint !== 'image') {
                     var text = index.selftext
-                    const textembed = new Discord.msgEmbed()
+                    const textembed = new Discord.MessageEmbed()
                         .setTitle("A random post from " + subRedditName)
                         .setColor("RANDOM")
                         .setDescription(`[${title}](${link})\n\n${text}`)
@@ -36,7 +36,7 @@ module.exports = {
                 }
 
                 var image = index.preview.images[0].source.url.replace('&amp;', '&')
-                const imageembed = new Discord.msgEmbed()
+                const imageembed = new Discord.MessageEmbed()
                     .setTitle("A random post from " + subRedditName)
                     .setImage(image)
                     .setColor("RANDOM")
