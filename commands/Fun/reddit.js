@@ -31,7 +31,7 @@ module.exports = {
                     var text = index.selftext
                     const textembed = new Discord.MessageEmbed()
                         .setTitle("A random post from " + subRedditName)
-                        .setColor(config.EColor)
+                        .setColor("RANDOM")
                         .setDescription(`[${title}](${link})\n\n${text}`)
                         .setURL(`https://reddit.com/${subRedditName}`)
 
@@ -42,7 +42,7 @@ module.exports = {
                 const imageembed = new Discord.MessageEmbed()
                     .setTitle("A random post from " + subRedditName)
                     .setImage(image)
-                    .setColor(config.EColor)
+                    .setColor("RANDOM")
                     .setDescription(`[${title}](${link})\n\n${text}`)
                     .setURL(`https://reddit.com/${subRedditName}`)
                 msg.channel.send(imageembed)
