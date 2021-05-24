@@ -45,7 +45,7 @@ const desktopDir = `${homeDir}`;
 const config = {
 	repository: 'https://github.com/ThatCodingGuy8/Infinity-Selfbot-v2',
 	tempLocation: desktopDir,
-	ignoreFiles: ["settings.json", "embed-colors.json", "filters/gay.json", "filters/hentai.json", "filters/memes.json", "whitelist.json", "voiceChatBans.json"],
+	ignoreFiles: ["settings.json", "embed-colors.json", "filters/gay.json", "filters/hentai.json", "filters/memes.json", "whitelist.json"],
 	branch: "main",
 	exitOnComplete: true
 }
@@ -407,8 +407,8 @@ client.on("message", async msg => {
 	}
 })
 client.on("voiceStateUpdate",  (oldMember,NewMember) => {
-	if(NewMember.channel && !NewMember.channel.guild.me.hasPermission("MOVE_MEMBERS","MUTE_MEMBERS")) return;
-	if (NewMember.channel  &&  vc.IDS.find(a => a.UserID == NewMember.member.id) & vc.IDS.find(a => a.UserID == NewMember.member.id).UserID    && NewMember.channel.guild.id == vc.IDS.find(g => g.guild) & NewMember.channel.guild.id == vc.IDS.find(g => g.guild).guild){
+	if(!NewMember.channel || NewMember.channel && !NewMember.channel.guild.me.hasPermission("MOVE_MEMBERS","MUTE_MEMBERS")) return;
+	if  (NewMember.channel  &&  vc.IDS.find(a => a.UserID == NewMember.member.id) && vc.IDS.find(a => a.UserID == NewMember.member.id).UserID    &&  vc.IDS.find(g => g.guild) &&NewMember.channel && NewMember.channel.guild.id == vc.IDS.find(g => g.guild).guild){
 		NewMember.kick()
 	}
 })
