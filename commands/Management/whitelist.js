@@ -17,8 +17,7 @@ module.exports = {
                 return msg.channel.send(embed)
             }
             const User = await msg.client.users.cache.get(args[0])
-            let length = await whitelist.whitelisted.push(User.id)
-            console.log(length)
+            await whitelist.whitelisted.push([User.id])
             const jsonString = await JSON.stringify(whitelist)
             await fs.writeFileSync('./../../whitelist.json', jsonString)
             let embed = new Discord.MessageEmbed();
