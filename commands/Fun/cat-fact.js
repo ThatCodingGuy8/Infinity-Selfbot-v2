@@ -15,7 +15,7 @@ module.exports = {
         let answer = facts[Math.floor(facts.length * Math.random())]
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setDescription(`**${answer}**`)
             .setTimestamp()
         msg.channel.send(embed)

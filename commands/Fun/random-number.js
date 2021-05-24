@@ -16,7 +16,7 @@ module.exports = {
         let random = Math.floor(Math.random() * num2) + num1;
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setDescription(`**${random}**`)
             .setTimestamp()
         msg.channel.send(embed)

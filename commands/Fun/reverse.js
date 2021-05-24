@@ -27,7 +27,7 @@ module.exports = {
         if (!input2) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**You must input text to reverse**`).setTimestamp())
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setDescription(`**${input2}**`)
             .setTimestamp()
         msg.channel.send(embed)

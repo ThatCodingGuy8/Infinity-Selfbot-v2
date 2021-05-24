@@ -11,7 +11,7 @@ module.exports = {
         let member = msg.guild.members.cache.random()
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setDescription(`**Randomly Chose Member: ${member}**`)
             .setTimestamp()
         msg.channel.send(embed)

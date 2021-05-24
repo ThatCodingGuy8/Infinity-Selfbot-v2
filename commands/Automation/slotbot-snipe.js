@@ -22,7 +22,7 @@ module.exports = {
             if (args[0].toUpperCase() == 'OFF') {
                 settings.slotbot = false
                 let embed = new MessageEmbed()
-                    .setColor(settings.embedcolour)
+                    .setColor(settings.embedcolor)
                     .setDescription(`**Slotbot Snipe: Disabled**`)
                     .setTimestamp()
 
@@ -32,7 +32,7 @@ module.exports = {
             if (args[0].toUpperCase() == 'ON') {
                 settings.slotbot = true
                 let embed = new MessageEmbed()
-                    .setColor(settings.embedcolour)
+                    .setColor(settings.embedcolor)
                     .setDescription(`**Slotbot Snipe: Enabled**`)
                     .setTimestamp()
 

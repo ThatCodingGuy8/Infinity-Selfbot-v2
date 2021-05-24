@@ -14,7 +14,7 @@ module.exports = {
             .setTitle('Aesthetix SelfBot:tm:')
             .setImage(`https://aesthetics-peace.s-ul.eu/lLpYLEJB6S4g2IX8`)
             .setDescription(`**Aesthetix SelfBot is a clean, smooth selfbot. You should try it: https://discord.gg/gSy7ygfrQj**`)
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setFooter(`This is a good sell-out`)
             .setTimestamp()
 

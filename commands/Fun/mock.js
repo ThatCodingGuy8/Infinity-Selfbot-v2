@@ -13,7 +13,7 @@ module.exports = {
         if (!input) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide some text to convert**`).setTimestamp())
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setDescription(`**${mock(input)}**`)
             .setTimestamp()
         msg.channel.send(embed)

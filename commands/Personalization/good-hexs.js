@@ -10,7 +10,7 @@ module.exports = {
 
         let embed = new MessageEmbed()
             .setTitle(`Decent Hex Codes`)
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .addField(`#0099ff`, `[A Nice Professional Blue](https://www.color-hex.com/color/0099ff)`, true)
             .addField(`#f3f3f3`, `[A Nice Professional White](https://www.htmlcsscolor.com/hex/F3F3F3)`, true)
             .addField(`#918bff`, `[A Nice Light Mauve](https://www.colorhexa.com/918bff)`, true)

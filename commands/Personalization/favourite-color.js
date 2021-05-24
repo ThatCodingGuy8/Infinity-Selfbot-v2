@@ -2,9 +2,9 @@ const { MessageEmbed } = require('discord.js-selfbot');
 const { readFileSync } = require('fs');
 
 module.exports = {
-    name: 'favourite-colour',
-    description: 'Selects an embed colour from favourites, and shows the colour',
-    usage: 'favourite-colour <Number>',
+    name: 'favourite-color',
+    description: 'Selects an embed color from favourites, and shows the color',
+    usage: 'favourite-color <Number>',
     aliases: ['favc'],
     async execute(msg, args) {
 

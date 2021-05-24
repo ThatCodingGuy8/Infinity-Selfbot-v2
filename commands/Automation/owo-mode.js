@@ -22,7 +22,7 @@ module.exports = {
             if (args[0].toUpperCase() == 'OFF') {
                 settings.owo = false
                 let embed = new MessageEmbed()
-                    .setColor(settings.embedcolour)
+                    .setColor(settings.embedcolor)
                     .setDescription(`**OwO Mode: Disabled**`)
                     .setTimestamp()
 
@@ -32,7 +32,7 @@ module.exports = {
             if (args[0].toUpperCase() == 'ON') {
                 settings.owo = true
                 let embed = new MessageEmbed()
-                    .setColor(settings.embedcolour)
+                    .setColor(settings.embedcolor)
                     .setDescription(`**OwO Mode: Enabled**`)
                     .setTimestamp()
 

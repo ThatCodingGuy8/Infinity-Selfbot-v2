@@ -41,7 +41,7 @@ module.exports = {
         let answer = responses[Math.floor(responses.length * Math.random())]
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setTitle(`${input}?`)
             .addField(`8Ball's Response:`, answer)
             .setTimestamp()

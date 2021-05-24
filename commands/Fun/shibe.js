@@ -13,7 +13,7 @@ module.exports = {
             msg.channel.send(
                 new MessageEmbed()
                     .setImage(json[Math.floor(Math.random() * Object.keys(json).length)])
-                    .setColor(settings.embedcolour)
+                    .setColor(settings.embedcolor)
                     .setFooter('🐾 Woof')
                     .setTimestamp()
             )

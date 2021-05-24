@@ -12,7 +12,7 @@ module.exports = {
         if (!sniped) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**There are no messages to snipe**`).setTimestamp())
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setAuthor(`Deleted by ${sniped.author.tag}`, sniped.author.displayAvatarURL())
             .setThumbnail(sniped.author.displayAvatarURL)
             .setDescription(sniped.content || sniped.attachments[0].proxyUrl)

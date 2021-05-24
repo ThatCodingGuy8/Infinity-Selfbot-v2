@@ -39,7 +39,7 @@ module.exports = {
             let embed = new MessageEmbed()
 
                 .setTitle(`${msg.client.user.tag}'s PC Information`)
-                .setColor(settings.embedcolour)
+                .setColor(settings.embedcolor)
                 .setThumbnail(msg.author.displayAvatarURL())
                 .setDescription(`__**Operating System Information**__
                 > OS Platform: ${os.platform()}
@@ -54,7 +54,7 @@ module.exports = {
                 
                 __**GPU Information**__
                 > GPU Model: ${data[0].Name}
-                > Colour Ability (Coverage): ${data[0].CurrentNumberOfColors}
+                > color Ability (Coverage): ${data[0].CurrentNumberOfColors}
                 > Current Resolution: ${data[0].CurrentHorizontalResolution}x${data[0].CurrentVerticalResolution}
                 
                 __**RAM Information**__

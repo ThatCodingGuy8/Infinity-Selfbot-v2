@@ -2,7 +2,7 @@ const { MessageEmbed } = require('discord.js-selfbot');
 
 module.exports = {
     name: 'random-hex',
-    description: 'Displays a random hex code and its colour',
+    description: 'Displays a random hex code and its color',
     usage: 'random-hex',
     aliases: ['reh'],
     async execute(msg, args) {
@@ -16,7 +16,7 @@ module.exports = {
         let embed = new MessageEmbed()
             .setColor(randomhex)
             .setDescription(`**Random Hex Code: **` + '`' + `${randomhex}` + '`')
-            .setFooter(`Embed Colour = Random Hex Code Colour`)
+            .setFooter(`Embed color = Random Hex Code color`)
         msg.channel.send(embed)
     }
 }

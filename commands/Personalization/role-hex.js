@@ -3,7 +3,7 @@ const { getRoleMention } = require('../../utils/Mentions.js');
 
 module.exports = {
     name: 'role-hex',
-    description: 'Takes a roles hex colour and shows you it',
+    description: 'Takes a roles hex color and shows you it',
     usage: 'role-hex <Role>',
     aliases: ['rh'],
     async execute(msg, args) {

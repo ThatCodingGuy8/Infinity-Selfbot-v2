@@ -12,7 +12,7 @@ module.exports = {
         const image = await RandomPicture()
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setImage(`${image.url}`)
             .setFooter(`These images are completely random`)
             .setTimestamp()

@@ -22,7 +22,7 @@ module.exports = {
             if (args[0].toUpperCase() == 'OFF') {
                 settings.anigame = false
                 let embed = new MessageEmbed()
-                    .setColor(settings.embedcolour)
+                    .setColor(settings.embedcolor)
                     .setDescription(`**Anigame Snipe: Disabled**`)
                     .setTimestamp()
 
@@ -32,7 +32,7 @@ module.exports = {
             if (args[0].toUpperCase() == 'ON') {
                 settings.anigame = true
                 let embed = new MessageEmbed()
-                    .setColor(settings.embedcolour)
+                    .setColor(settings.embedcolor)
                     .setDescription(`**Anigame Snipe: Enabled**`)
                     .setTimestamp()
 

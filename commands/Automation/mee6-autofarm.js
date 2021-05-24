@@ -19,7 +19,7 @@ module.exports = {
 
         if (args[0].toUpperCase() == 'ON')
             if (!interval) {
-                msg.channel.send(new MessageEmbed().setColor(settings.embedcolour).setDescription(`**MEE6 Autofarm turned on**`).setTimestamp())
+                msg.channel.send(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**MEE6 Autofarm turned on**`).setTimestamp())
                 interval = setInterval(function () { msg.channel.send(mesg[Math.floor(Math.random() * mesg.length)]).then(mesg => { mesg.delete({ timeout: randomTime(2000, 3000) }) }) }, randomTime(61000, 62000))
                 return;
             }
@@ -27,7 +27,7 @@ module.exports = {
         if (args[0].toUpperCase() == 'OFF') {
             clearInterval(interval)
             interval = null
-            msg.channel.send(new MessageEmbed().setColor(settings.embedcolour).setDescription(`**MEE6 Autofarm turned off**`).setTimestamp())
+            msg.channel.send(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**MEE6 Autofarm turned off**`).setTimestamp())
         }
     }
 }

@@ -20,7 +20,7 @@ module.exports = {
             settings.afk = input
 
             let embed = new MessageEmbed()
-                .setColor(settings.embedcolour)
+                .setColor(settings.embedcolor)
                 .setDescription(`**AFK Mode [Automatic]: ${input}**`)
                 .setTimestamp()
             msg.channel.send(embed)
@@ -33,7 +33,7 @@ module.exports = {
             settings.afk = input
 
             let embed = new MessageEmbed()
-                .setColor(settings.embedcolour)
+                .setColor(settings.embedcolor)
                 .setDescription(`**AFK Mode: ${input}**`)
                 .setTimestamp()
 
@@ -46,7 +46,7 @@ module.exports = {
                 settings.afk = false
 
                 let embed = new MessageEmbed()
-                    .setColor(settings.embedcolour)
+                    .setColor(settings.embedcolor)
                     .setDescription(`**AFK Mode: Disabled**`)
                     .setTimestamp()
 

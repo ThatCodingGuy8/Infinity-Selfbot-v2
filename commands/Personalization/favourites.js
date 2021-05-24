@@ -4,7 +4,7 @@ const settings = require("./../../settings.json");
 
 module.exports = {
     name: 'favourites',
-    description: 'Your embed colour storage',
+    description: 'Your embed color storage',
     usage: 'favourites',
     aliases: ['favs'],
     async execute(msg, args) {
@@ -15,8 +15,8 @@ module.exports = {
         const ans = tags.join(', ')
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
-            .setTitle(`**Favourite Embed Colour List**`)
+            .setColor(settings.embedcolor)
+            .setTitle(`**Favourite Embed color List**`)
             .setDescription('`' + `${ans}` + '`')
             .setTimestamp()
         msg.channel.send(embed)

@@ -14,7 +14,7 @@ module.exports = {
         var { body } = await superagent.get(`https://nekos.life/api/v2/img/meow`)
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setDescription(`**Here's a cat to brighten your day**`)
             .setImage(body.url)
             .setTimestamp()

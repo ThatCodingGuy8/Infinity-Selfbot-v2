@@ -17,7 +17,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setDescription(`**${channels}**`)
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setTimestamp()
             .setFooter(`There are ${msg.guild.channels.cache.size} channels in total`)
 

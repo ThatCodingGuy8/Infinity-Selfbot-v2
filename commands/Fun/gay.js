@@ -18,7 +18,7 @@ module.exports = {
         let member = await getMemberMention(msg, args) || msg.author
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setThumbnail(`https://www.comprarbanderas.es/images/banderas/400/377-orgullo-gay_400px.jpg`)
             .setDescription(`**${member} is ${gay(0, 100)}% gay**`)
             .setTimestamp()

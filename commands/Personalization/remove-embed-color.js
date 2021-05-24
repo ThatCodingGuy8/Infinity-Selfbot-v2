@@ -2,9 +2,9 @@ const { MessageEmbed } = require('discord.js-selfbot');
 const { readFileSync, existsSync, writeFileSync, lstatSync } = require('fs');
 
 module.exports = {
-    name: 'remove-embed-colour',
-    description: 'Removes an embed colour from your storage',
-    usage: 'remove-embed-colour <Input>',
+    name: 'remove-embed-color',
+    description: 'Removes an embed color from your storage',
+    usage: 'remove-embed-color <Input>',
     aliases: ['rec'],
     async execute(msg, args) {
 
@@ -13,7 +13,7 @@ module.exports = {
         if (!input) {
             msg.channel.send(
                 new MessageEmbed()
-                    .setDescription('**You must input a colour to remove**')
+                    .setDescription('**You must input a color to remove**')
                     .setColor('RED')
                     .setTimestamp()
             )
@@ -43,7 +43,7 @@ module.exports = {
         msg.channel.send(
             new MessageEmbed()
                 .setColor(input)
-                .setDescription('`' + `${input}` + '`' + ` **has been removed from favourite EColours**`)
+                .setDescription('`' + `${input}` + '`' + ` **has been removed from favourite Ecolors**`)
                 .setTimestamp()
         )
     }

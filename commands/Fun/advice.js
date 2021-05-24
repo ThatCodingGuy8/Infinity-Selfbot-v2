@@ -12,7 +12,7 @@ module.exports = {
     async execute(msg, args) {
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setDescription(`**${Quote.getRandomQuote()}**`)
             .setFooter(`Never forget the legends in your life`)
             .setTimestamp()

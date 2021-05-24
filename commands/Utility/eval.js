@@ -10,7 +10,7 @@ module.exports = {
 
         let t1 = Date.now()
         const embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setTitle('Evaluating...')
             .setDescription(`**This could take a second...**`)
         const msge = await msg.channel.send(embed);

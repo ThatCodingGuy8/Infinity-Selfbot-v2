@@ -17,7 +17,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setDescription(`**${roles.join(', ').length > 2048 ? roles.length : String(roles.join(', '))}**`)
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setTimestamp()
             .setFooter(`There are ${msg.guild.roles.cache.size - 1} roles in total`)
 

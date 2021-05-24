@@ -12,7 +12,7 @@ module.exports = {
 	async execute(msg, args) {
 		const embed = new MessageEmbed()
 		embed.setTitle('Help Menu')
-		embed.setColor(settings.embedcolour)
+		embed.setColor(settings.embedcolor)
 		embed.setTimestamp()
 
 		for (let i = 0; i < Object.keys(msg.client.commands).length; i++) {

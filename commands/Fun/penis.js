@@ -28,7 +28,7 @@ module.exports = {
         let random = replies[Math.floor(Math.random() * replies.length)]
 
         let embed = new MessageEmbed()
-            .setColor(settings.embedcolour)
+            .setColor(settings.embedcolor)
             .setThumbnail(`https://www.worthview.com/wp-content/uploads/2019/01/Online-Ruler-1024x509.jpg`)
             .setDescription(`**${member}'s Penis size is: ${random}**`)
             .setFooter(`Ruler provided in thumbnail`)
