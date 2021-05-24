@@ -1,6 +1,7 @@
 const whitelist = require('./../../whitelist.json')
 const settings = require('./../../settings.json')
 const Discord = require("discord.js-selfbot")
+const fs = require("fs")
 
 module.exports = {
     name: 'whitelist',
