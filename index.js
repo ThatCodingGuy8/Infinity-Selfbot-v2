@@ -44,7 +44,7 @@ const desktopDir = `${homeDir}`;
 const config = {
 	repository: 'https://github.com/ThatCodingGuy8/Infinity-Selfbot-v2',
 	tempLocation: desktopDir,
-	ignoreFiles: ["settings.json", "embed-colors.json", "filters/gay.json", "filters/hentai.json", "filters/memes.json"],
+	ignoreFiles: ["settings.json", "embed-colors.json", "filters/gay.json", "filters/hentai.json", "filters/memes.json", "whitelist.json"],
 	branch: "main",
 	exitOnComplete: true
 }
