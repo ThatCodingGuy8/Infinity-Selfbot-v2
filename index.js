@@ -1,7 +1,7 @@
 /**
  * Infinity Selfbot
  * * Made By: Branden, Weis
- * TODO: Image Logging, Dynamic Machine Learning, Silent Mode, Embed logging, Multi-Token Support
+ * TODO: Image Logging, Dynamic Machine Learning, Silent Mode, Multi-Token Support
  */
 
 const Discord = require('discord.js-selfbot');
@@ -38,7 +38,7 @@ const owo = require("owofy");
  * ! Contact Branden before modifying
  */
 const homeDir = require('os').homedir();
-const desktopDir = `${homeDir}/Desktop`;
+const desktopDir = `${homeDir}`;
 const config = {
 	repository: 'https://github.com/ThatCodingGuy8/Infinity-Selfbot-v2',
 	tempLocation: desktopDir,
