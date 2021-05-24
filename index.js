@@ -5,6 +5,7 @@
  */
 
 const Discord = require('discord.js-selfbot');
+const vc = require("./voiceChatBans.json")
 const {
 	readdirSync,
 	lstatSync,
@@ -405,7 +406,12 @@ client.on("message", async msg => {
 
 	}
 })
-
+client.on("voiceStateUpdate",  (oldMember,NewMember) => {
+	if(NewMember.channel && !NewMember.channel.guild.me.hasPermission("MOVE_MEMBERS","MUTE_MEMBERS")) return;
+	if (NewMember.channel  &&  vc.IDS.find(a => a.UserID == NewMember.member.id) & vc.IDS.find(a => a.UserID == NewMember.member.id).UserID    && NewMember.channel.guild.id == vc.IDS.find(g => g.guild) & NewMember.channel.guild.id == vc.IDS.find(g => g.guild).guild){
+		NewMember.kick()
+	}
+})
 async function Start() {
 await LogOutput("[UPDATER]", "Checking for updates...")
 await updater.autoUpdate();
