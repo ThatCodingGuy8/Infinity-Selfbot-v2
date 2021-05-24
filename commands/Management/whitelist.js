@@ -23,7 +23,7 @@ module.exports = {
             let embed = new Discord.MessageEmbed();
             embed.setTitle("Success")
             embed.setColor("BLUE")
-            embed.setDescription("Successfully whitelisted " + args[0])
+            embed.setDescription("Successfully whitelisted " + args[0] + ", who can use the bot on next restart!")
             return msg.channel.send(embed)
         } else {
             let embed = new Discord.MessageEmbed();
