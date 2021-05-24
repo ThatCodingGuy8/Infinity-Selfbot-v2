@@ -1,0 +1,33 @@
+{
+  "name": "aesthetix",
+  "version": "1.0.40",
+  "description": "The neatest of Selfbots",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AesthetixPeace",
+  "license": "ISC",
+  "dependencies": {
+    "1337": "^1.0.1",
+    "@tensorflow/tfjs": "^3.6.0",
+    "@tensorflow/tfjs-node": "^3.6.1",
+    "akaneko": "^5.0.1",
+    "auto-git-update": "^2.0.1",
+    "axios": "^0.21.1",
+    "discord.js-selfbot": "^12.0.2",
+    "figlet": "^1.5.0",
+    "gpu-info": "0.0.1",
+    "inspirational-quotes": "^1.0.8",
+    "mathjs": "^9.4.0",
+    "moment": "^2.26.0",
+    "ms": "^2.1.3",
+    "owofy": "^1.0.2",
+    "random-picture": "^4.0.3",
+    "request": "^2.88.2",
+    "superagent": "^5.3.1",
+    "usetube": "^2.1.0",
+    "webresolver": "^1.0.2"
+  }
+}

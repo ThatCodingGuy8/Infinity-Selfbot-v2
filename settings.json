@@ -1,0 +1,18 @@
+{
+    "token":"TokenHere",
+    "prefix":"PrefixHere",
+    "owo":false,
+    "afk":false,
+    "anigame":false,
+    "slotbot":false,
+    "silentmode":false,
+    "logimages":false,
+    "downloadimages":false,
+    "loggingguild":"Guild ID Here",
+    "memechannel":"Channel ID Here If LogImages Is True",
+    "hentaichannel":"Channel ID Here If LogImages Is True",
+    "nsfwvideoschannel":"Channel ID Here If LogImages Is True",
+    "gaychannel":"Channel ID Here If LogImages Is True",
+    "nsfwimageschannel":"Channel ID Here If LogImages Is True",
+    "imageschannel":"Channel ID Here If LogImages Is True"
+}

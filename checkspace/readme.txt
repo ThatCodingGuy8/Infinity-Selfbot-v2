@@ -1,0 +1,1 @@
+This is a "buffer" where the Machine Learning checks and processes images. Its similar to a cache system, and should remove files automatically. If need be, delete any leftover files if any persist.
