@@ -1,6 +1,6 @@
 /**
- * Aesthetix Selfbot
- * * Made By: Peace, Branden, Weis
+ * Infinity Selfbot
+ * * Made By: Branden, Weis
  * TODO: Image Logging, Dynamic Machine Learning, Silent Mode, Embed logging, Multi-Token Support
  */
 
@@ -40,7 +40,7 @@ const owo = require("owofy");
 const homeDir = require('os').homedir();
 const desktopDir = `${homeDir}/Desktop`;
 const config = {
-	repository: 'https://github.com/ThatCodingGuy8/Infinity-Selfbot',
+	repository: 'https://github.com/ThatCodingGuy8/Infinity-Selfbot-v2',
 	tempLocation: desktopDir,
 	ignoreFiles: ["settings.json", "embed-colors.json", "filters/customchannels.json", "filters/gay.json", "filters/hentai.json", "filters/memes.json"],
 	branch: "main",
