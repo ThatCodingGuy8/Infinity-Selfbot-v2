@@ -41,7 +41,7 @@ module.exports = async (msg) => {
 			}
 		}
 	} else {
-		if (msg.author.id != msg.client.user.id) return null;
+		if (msg.author.id != msg.client.user.id && whitelist.whitelisted.includes(msg.author.id) == false) return null;
 		if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 		const args = msg.content.substring(prefix.length).split(/ +/)
 		const cmd = args.shift().toLowerCase()
