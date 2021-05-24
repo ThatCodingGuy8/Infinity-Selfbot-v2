@@ -1,6 +1,7 @@
 {
     "token":"TokenHere",
     "prefix":"PrefixHere",
+    "customextension":".infinity",
     "owo":false,
     "afk":false,
     "anigame":false,
