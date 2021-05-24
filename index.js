@@ -218,6 +218,7 @@ client.on("message", async msg => {
 				let PeaceKeywords = GayWhitelist
 
 				async function FilterAttachment(modeltocheck, channeltosend, predictname) {
+					if (msg.author.bot) { return }
 					if (attEx == "webm" || attEx == "mp4" || attEx == "mov" || attEx == "gif") {
 						let EmbedToSend = await MakeVideoEmbed(snetAttachment, attachment, coolmessage, msg)
 						if (silent == true) {
