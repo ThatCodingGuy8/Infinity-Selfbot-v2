@@ -19,7 +19,7 @@ module.exports = {
             result.on('end', () => {
                 var response = JSON.parse(body)
                 if (!response.data.children.length) return msg.channel.send("Subreddit has no posts!");
-                var index = response.data.children[Math.floor(Math.random() * (response.data.children.length - 1) + require('util').random(0, 1))].data
+                var index = response.data.children[Math.floor(Math.random() * (response.data.children.length - 1) + random(0, 1))].data
                 if (index.over_18 && !msg.channel.nsfw) return msg.channel.send("Results are Over 18! make sure to search NSFW subreddits on NSFW channels!")
 
                 var title = index.title
@@ -51,4 +51,8 @@ module.exports = {
             })
         })
     }
+}
+
+function random(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
