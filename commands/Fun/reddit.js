@@ -1,7 +1,7 @@
 const { Message, MessageEmbed } = require('discord.js-selfbot');
 const settings = require("./../../settings.json");
 const https = require('https');
-const Axios = require
+// const Axios = require
 module.exports = {
     name: 'reddit',
     description: 'Fetches a subreddit and returns a random post',
