@@ -19,11 +19,7 @@ module.exports = {
             const index = await whitelist.whitelisted.indexOf(args[0])
             await whitelist.whitelisted.splice(index)
             const jsonString = await JSON.stringify(whitelist)
-            await fs.writeFile('./../../whitelist.json', jsonString, err => {
-                if (err) {
-                    console.log('Error writing JSON Whitelist:', err)
-                }
-            })
+            await fs.writeFileSync('whitelist.json', jsonString)
             let embed = new Discord.MessageEmbed();
             await embed.setTitle("Success")
             await embed.setColor("BLUE")
