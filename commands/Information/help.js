@@ -11,7 +11,7 @@ module.exports = {
 	 */
 	async execute(msg, args) {
 		const embed = new MessageEmbed()
-		embed.setTitle('Infinity || Help Menu')
+		embed.setTitle('Infinity | Help Menu')
 		embed.setColor(settings.embedcolor)
 		embed.setTimestamp()
 
