@@ -4,7 +4,7 @@
  * TODO: Image Logging, Dynamic Machine Learning, Silent Mode, Multi-Token Support
  */
 
-const Discord = require('discord.js-selfbot-new');
+const Discord = require('discord.js-self');
 const vc = require("./voiceChatBans.json")
 const {
 	readdirSync,

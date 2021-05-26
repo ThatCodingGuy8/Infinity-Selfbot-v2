@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js-selfbot-new");
+const { MessageEmbed } = require("discord.js-self");
 const settings = require("./../../settings.json");
 const os = require("os");
 const moment = require("moment");

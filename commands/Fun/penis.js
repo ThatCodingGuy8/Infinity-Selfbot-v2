@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js-selfbot-new');
+const { MessageEmbed } = require('discord.js-self');
 const { getMemberMention } = require('../../utils/Mentions');
 const settings = require("./../../settings.json");
 

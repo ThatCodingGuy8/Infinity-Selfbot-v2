@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js-selfbot-new');
+const { MessageEmbed } = require('discord.js-self');
 const { readFileSync, existsSync, writeFileSync, lstatSync } = require('fs');
 
 module.exports = {
