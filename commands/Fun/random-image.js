@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js-selfbot');
+const { MessageEmbed } = require('discord.js-selfbot-updated);
 const { RandomPicture } = require('random-picture')
 const settings = require("./../../settings.json");
 

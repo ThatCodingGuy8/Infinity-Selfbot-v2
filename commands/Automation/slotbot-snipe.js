@@ -39,7 +39,7 @@ module.exports = {
                 msg.channel.send(embed)
             }
 
-            writeFileSync("settings.json", JSON.stringify(settings))
+            writeFileSync("settings.json", JSON.stringify(settings, null, 1))
         }
     }
 }

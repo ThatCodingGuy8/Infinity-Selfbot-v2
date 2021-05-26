@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js-selfbot');
+const { MessageEmbed } = require('discord.js-selfbot-updated');
 const { writeFileSync } = require("fs");
 const settings = require("../../settings.json");
 
@@ -17,7 +17,7 @@ module.exports = {
         let input = args.join(" ") || "#918bff"
 
         settings.embedcolor = input
-        writeFileSync("settings.json", JSON.stringify(settings))
+        writeFileSync("settings.json", JSON.stringify(settings, null, 1))
 
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)

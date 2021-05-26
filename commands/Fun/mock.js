@@ -1,5 +1,5 @@
 const { mock } = require('./../../utils/Functions.js');
-const { MessageEmbed } = require('discord.js-selfbot');
+const { MessageEmbed } = require('discord.js-selfbot-updated);
 const settings = require("./../../settings.json");
 
 module.exports = {

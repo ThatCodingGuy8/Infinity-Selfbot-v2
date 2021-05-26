@@ -1,4 +1,4 @@
-const { Message, MessageEmbed } = require('discord.js-selfbot');
+const { Message, MessageEmbed } = require('discord.js-selfbot-updated);
 
 module.exports = {
     name: 'RRole',

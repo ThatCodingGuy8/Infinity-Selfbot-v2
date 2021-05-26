@@ -25,7 +25,7 @@ module.exports = {
                 .setTimestamp()
             msg.channel.send(embed)
 
-            writeFileSync("settings.json", JSON.stringify(settings))
+            writeFileSync("settings.json", JSON.stringify(settings, null, 1))
 
         }
 
@@ -39,7 +39,7 @@ module.exports = {
 
             msg.channel.send(embed)
 
-            writeFileSync("settings.json", JSON.stringify(settings))
+            writeFileSync("settings.json", JSON.stringify(settings, null, 1))
 
             if (input.toUpperCase() == 'OFF') {
 
@@ -52,10 +52,10 @@ module.exports = {
 
                 msg.channel.send(embed)
 
-                writeFileSync("settings.json", JSON.stringify(settings))
+                writeFileSync("settings.json", JSON.stringify(settings, null, 1))
             }
 
-            writeFileSync("settings.json", JSON.stringify(settings))
+            writeFileSync("settings.json", JSON.stringify(settings, null, 1))
         }
     }
 }
