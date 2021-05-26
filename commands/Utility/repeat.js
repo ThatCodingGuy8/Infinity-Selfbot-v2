@@ -1,6 +1,6 @@
 let interval;
 
-const { Message, MessageEmbed } = require('discord.js-selfbot-updated');
+const { Message, MessageEmbed } = require('discord.js-self');
 const ms = require('ms');
 const figlet = require('figlet');
 const settings = require("./../../settings.json");

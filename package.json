@@ -1,6 +1,6 @@
 {
   "name": "infinity",
-  "version": "1.0.67",
+  "version": "1.0.68",
   "description": "The best of Selfbots",
   "main": "index.js",
   "scripts": {
@@ -16,8 +16,8 @@
     "akaneko": "^5.0.1",
     "auto-git-update": "^2.0.1",
     "axios": "^0.21.1",
+    "discord.js-self": "^12.0.4",
     "discord.js-selfbot": "^12.0.2",
-    "discord.js-selfbot-updated": "^1.0.0",
     "figlet": "^1.5.0",
     "gpu-info": "0.0.1",
     "inspirational-quotes": "^1.0.8",

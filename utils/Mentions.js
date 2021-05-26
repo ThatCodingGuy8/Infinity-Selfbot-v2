@@ -1,4 +1,4 @@
-const { Message } = require('discord.js-selfbot-updated');
+const { Message } = require('discord.js-self');
 
 /**
  * @param {Message} Message
