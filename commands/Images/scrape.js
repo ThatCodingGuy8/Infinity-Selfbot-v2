@@ -1,6 +1,6 @@
 const fs      = require("fs");
 const { DownloadFile } = require("../../utils/FileSystem.js")
-const { MessageEmbed } = require("discord.js-self")
+const { MessageEmbed } = require("discord.js-selfbot-new")
 const {
 	randomTime,
 	predict,

@@ -1,4 +1,4 @@
-const { Message, MessageEmbed } = require('discord.js-self');
+const { Message, MessageEmbed } = require('discord.js-selfbot-new');
 const usetube = require('usetube')
 const settings = require("./../../settings.json");
 

@@ -1,4 +1,4 @@
-const { Message, MessageEmbed } = require('discord.js-self');
+const { Message, MessageEmbed } = require('discord.js-selfbot-new');
 const akaneko = require('akaneko');
 
 
