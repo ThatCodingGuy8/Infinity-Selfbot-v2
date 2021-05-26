@@ -1,7 +1,7 @@
 const request = require("axios");
 const fs      = require("fs");
-const Discord = require("discord.js-selfbot")
-const { MessageEmbed } = require("discord.js-selfbot")
+const Discord = require("discord.js-selfbot-updated")
+const { MessageEmbed } = require("discord.js-selfbot-updated")
 const {
 	randomTime,
 	predict,

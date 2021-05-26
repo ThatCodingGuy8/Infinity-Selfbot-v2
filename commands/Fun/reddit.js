@@ -1,6 +1,6 @@
 const { msg, msgEmbed } = require('discord.js-selfbot-updated');
 const settings = require("./../../settings.json");
-const Discord = require("discord.js-selfbot")
+const Discord = require("discord.js-selfbot-updated")
 const axios = require('axios')
 module.exports = {
     name: 'reddit',

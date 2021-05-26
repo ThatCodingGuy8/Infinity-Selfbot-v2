@@ -1,6 +1,6 @@
 const WebResolver = require('webresolver');
 let resolver = new WebResolver("BHJ2C-SFJTU-6NAW6-Y0TXO");
-const { MessageEmbed } = require("discord.js-selfbot");
+const { MessageEmbed } = require("discord.js-selfbot-updated");
 
 module.exports = {
     name: 'dns',

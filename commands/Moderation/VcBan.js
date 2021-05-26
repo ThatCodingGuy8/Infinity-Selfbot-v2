@@ -1,4 +1,4 @@
-const { Message, MessageEmbed } = require("discord.js-selfbot")
+const { Message, MessageEmbed } = require("discord.js-selfbot-updated")
 const vc = require("./../../voiceChatBans.json")
 const { writeFileSync } = require("fs")
 const ms = require("ms")

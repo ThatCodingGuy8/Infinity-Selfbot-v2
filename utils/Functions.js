@@ -2,7 +2,7 @@ const tf               = require("@tensorflow/tfjs-node");  // * Tensorflow with
 const tfweb            = require("@tensorflow/tfjs");       // * Regular Tensorflow API
 const fs               = require('fs');
 const { DownloadFile } = require("./FileSystem.js")
-const Discord          = require("discord.js-selfbot")
+const Discord          = require("discord.js-selfbot-updated")
 const Settings = require("../settings.json")
 module.exports   = class Functions {
     static sleep(delay) {

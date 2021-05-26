@@ -1,6 +1,6 @@
 let interval;
 
-const { MessageEmbed } = require("discord.js-selfbot");
+const { MessageEmbed } = require("discord.js-selfbot-updated");
 const { randomTime } = require("../../utils/Functions");
 const settings = require("./../../settings.json")
 
