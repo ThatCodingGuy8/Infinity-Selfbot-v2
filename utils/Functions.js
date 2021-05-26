@@ -134,7 +134,10 @@ module.exports   = class Functions {
       const webhooks = await channel.fetchWebhooks();
       const webhook = webhooks.first();
 
-      await webhook.send(content, {
+      await webhook.send({
+        embeds: [{
+            content
+        }],
         files: [{
           attachment: snetAttachment
         }]
