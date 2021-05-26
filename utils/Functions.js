@@ -139,11 +139,7 @@ module.exports   = class Functions {
             content
         ]
       });
-      await webhook.send({
-        files: [{
-          attachment: snetAttachment
-        }]
-      });
+      await webhook.send(snetAttachment)
     }
     static async SendToChannelFromClient(content, channelid, msg, snetAttachment) {
       let channel = await msg.client.channels.cache.get(channelid)
