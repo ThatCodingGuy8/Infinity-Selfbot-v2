@@ -137,7 +137,9 @@ module.exports   = class Functions {
       await webhook.send({
         embeds: [
             content
-          ],
+        ]
+      });
+      await webhook.send({
         files: [{
           attachment: snetAttachment
         }]
