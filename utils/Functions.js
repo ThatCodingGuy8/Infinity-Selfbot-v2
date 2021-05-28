@@ -47,26 +47,6 @@ module.exports   = class Functions {
         embed.setTimestamp();
       return embed;
     }
-    static MakeMachineLearningImageEmbed(link, attachment, messageheader, msg, prediction) {
-      console.log("[+] New Image Logged")
-      let embed = new Discord.MessageEmbed()
-        embed.setColor("BLUE");
-        embed.setTitle(
-            `Image Recieved | ${msg.guild.name || msg.channel.name}`
-        );
-        embed.setThumbnail(msg.author.displayAvatarURL);
-        embed.setDescription(messageheader);
-        embed.setImage(link);
-        embed.addField("**Sent by:**", msg.author);
-        embed.addField("**Size:**", attachment.width + "x" + attachment.height);
-        embed.addField("**Original Message:**", `[Click Here](${msg.url})`);
-        embed.addField("**Download:**", `[Click Here](${link})`);
-        embed.addField("**Machine Learning Score:**", prediction);
-        embed.addField("**In Channel:**", msg.channel.toString());
-        embed.setFooter(`Author: ${msg.author.id} | Message ID: ${msg.id}`);
-        embed.setTimestamp();
-      return embed;
-    }
     static MakeVideoEmbed(link, attachment, messageheader, msg) {
         console.log("[+] New Video Logged")
       let embed = new Discord.MessageEmbed();

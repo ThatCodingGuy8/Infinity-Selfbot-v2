@@ -1,7 +1,6 @@
 const Settings = require("../settings.json")
 const {
 	randomTime,
-	predict,
 	LogOutput,
 	asyncForEach,
 	MakeImageEmbed,

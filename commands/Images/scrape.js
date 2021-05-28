@@ -4,7 +4,6 @@ const { MessageEmbed } = require("discord.js-self")
 const Functions = require("./../../utils/Functions.js")
 const {
 	randomTime,
-	predict,
 	LogOutput,
 	asyncForEach,
 	MakeImageEmbed,
