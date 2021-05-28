@@ -105,6 +105,9 @@ module.exports = class Functions {
         return await SendToChannelFromClient(content, channelid, msg)
       }
       let channel = await msg.client.channels.cache.get(channelid)
+      if (channel == undefined) {
+        return console.log("Couldn't find destination channel on client")
+      }
       let guildmember = await channel.guild.members.cache.get(msg.client.user.id)
       if (guildmember.hasPermission("MANAGE_WEBHOOKS")) {
         const webhooks = await channel.fetchWebhooks();
