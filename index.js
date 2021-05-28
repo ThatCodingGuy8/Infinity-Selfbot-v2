@@ -25,7 +25,8 @@ const {
 	SendVideoToWebhook,
 	SendToChannelFromClient,
 	SendVideoToChannelFromClient,
-	MakeMachineLearningImageEmbed
+	MakeMachineLearningImageEmbed,
+	SilentModeSend
 } = require("./utils/Functions") // ! PREDICT DOESNT SUPPORT GIFS!
 const axios = require('axios');
 const tf = require("@tensorflow/tfjs-node"); // * Tensorflow with Node Optimizations
@@ -221,18 +222,10 @@ client.on("message", async msg => {
 					if (msg.author.bot) { return }
 					if (attEx == "webm" || attEx == "mp4" || attEx == "mov" || attEx == "gif") {
 						let EmbedToSend = await MakeVideoEmbed(snetAttachment, attachment, coolmessage, msg)
-						if (silent == true) {
-							try {
-								await SendVideoToWebhook(EmbedToSend, channeltosend, msg, snetAttachment)
-							} catch (error) {
-								console.error("Error trying to send in Silent Mode: ", error);
-							}
-						} else {
-							try {
-								await SendVideoToChannelFromClient(EmbedToSend, channeltosend, msg, snetAttachment)
-							} catch (error) {
-								console.error("Error trying to send in Normal Mode: ", error);
-							}
+						try {
+							await SilentModeSend(EmbedToSend, channeltosend, msg, "Video")
+						} catch (error) {
+							console.error("Error trying to send in Silent Mode: ", error);
 						}
 					} else if (attEx == "png" || attEx == "jpeg" || attEx == "jpg" || attEx == "bmp") {
 						if (modeltocheck !== undefined) {
@@ -240,35 +233,19 @@ client.on("message", async msg => {
 							let prediction = await predict(snetAttachment, modeltocheck)
 							if (prediction[0] == "Matching Image") {
 								let EmbedToSend = await MakeMachineLearningImageEmbed(snetAttachment, attachment, coolmessage, msg, prediction[1])
-								if (silent == true) {
-									try {
-										await SendToWebhook(EmbedToSend, channeltosend, msg, snetAttachment)
-									} catch (error) {
-										console.error("Error trying to send in Silent Mode: ", error);
-									}
-								} else {
-									try {
-										await SendToChannelFromClient(EmbedToSend, channeltosend, msg, snetAttachment)
-									} catch (error) {
-										console.error("Error trying to send in Normal Mode: ", error);
-									}
+								try {
+									await SilentModeSend(EmbedToSend, channeltosend, msg, "Normal")
+								} catch (error) {
+									console.error("Error trying to send in Silent Mode: ", error);
 								}
 							}
 						} else {
 							//LogOutput("[IMAGE LOGGING]", "Logging Image Without Machine Learning")
 							let EmbedToSend = MakeImageEmbed(snetAttachment, attachment, coolmessage, msg)
-							if (silent == true) {
-								try {
-									await SendToWebhook(EmbedToSend, channeltosend, msg, snetAttachment)
-								} catch (error) {
-									console.error("Error trying to send in Silent Mode: ", error);
-								}
-							} else {
-								try {
-									await SendToChannelFromClient(EmbedToSend, channeltosend, msg, snetAttachment)
-								} catch (error) {
-									console.error("Error trying to send in Normal Mode: ", error);
-								}
+							try {
+								await SilentModeSend(EmbedToSend, channeltosend, msg, "Normal")
+							} catch (error) {
+								console.error("Error trying to send in Silent Mode: ", error);
 							}
 						}
 					}
