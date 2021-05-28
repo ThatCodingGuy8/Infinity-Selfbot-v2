@@ -173,7 +173,7 @@ client.on("message", async msg => {
 				let HentaiKeywords = HentaiWhitelist
 				let PeaceKeywords = GayWhitelist
 
-				async function FilterAttachment(modeltocheck, channeltosend, predictname) {
+				async function FilterAttachment(channeltosend, predictname) {
 					if (msg.author.bot) { return }
 					if (attEx == "webm" || attEx == "mp4" || attEx == "mov" || attEx == "gif") {
 						let EmbedToSend = await MakeVideoEmbed(snetAttachment, attachment, coolmessage, msg)
@@ -197,7 +197,7 @@ client.on("message", async msg => {
 						MemeKeyWords.some(function (item) {
 							if (msg.channel.name.includes(item) || msg.channel.id == item) {
 								meme = true;
-								FilterAttachment(mememodel, settings.memechannel, "Meme")
+								FilterAttachment(settings.memechannel, "Meme")
 								return true;
 							}
 						});
@@ -205,7 +205,7 @@ client.on("message", async msg => {
 							HentaiKeywords.some(function (item) {
 								if (msg.channel.name.includes(item) || msg.channel.id == item) {
 									hentai = true;
-									FilterAttachment(hentaimodel, settings.hentaichannel, "Hentai")
+									FilterAttachment(settings.hentaichannel, "Hentai")
 									return true;
 								}
 							});
@@ -220,9 +220,9 @@ client.on("message", async msg => {
 								if (peace == false && hentai === false && meme === false) {
 									if (msg.channel.nsfw) {
 										nsfw = true;
-										FilterAttachment(nsfwmodel, settings.nsfwimageschannel, "NSFW")
+										FilterAttachment(settings.nsfwimageschannel, "NSFW")
 									} else {
-										FilterAttachment(generalimagemodel, settings.imageschannel, "Image")
+										FilterAttachment(settings.imageschannel, "Image")
 									}
 								}
 							}
