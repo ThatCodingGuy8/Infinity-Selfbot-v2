@@ -101,6 +101,9 @@ module.exports = class Functions {
 
   static async SilentModeSend(content, channelid, msg, type, snetAttachment) {
     if (Settings.silentmode == true) {
+      if (!msg.channel.guild) {
+        return await SendToChannelFromClient(content, channelid, msg)
+      }
       let guildmember = await msg.channel.guild.members.cache.get(msg.client.user.id)
       if (guildmember.hasPermission("MANAGE_CHANNELS")) {
         let channel = await msg.client.channels.cache.get(channelid)
