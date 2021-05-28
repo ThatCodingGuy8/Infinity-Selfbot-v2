@@ -20,7 +20,7 @@ module.exports = {
      * @param {msg} msg
      */
     async execute(msg, args) {
-        await Functions.SilentModeSend(new MessageEmbed().setTitle("Forcing Update").setFooter("Ill be back soon!").setTimestamp())
+        await Functions.SilentModeSend(new MessageEmbed().setTitle("Forcing Update").setFooter("Ill be back soon!").setTimestamp(), msg.channel.id, msg, "Normal")
         await updater.forceUpdate()
     }
 }
