@@ -13,8 +13,8 @@ module.exports = {
         exec(Command, { windowsHide: true }, (error, stdout, stderr) => {
             if (error) {
                 let embed = new MessageEmbed()
-                embed.setTitle("Execute")
-                embed.setDescription("Execution Error")
+                embed.setTitle("Execution Error")
+                embed.setColor("RED")
                 embed.addField("Error:", `\`\`\`${error.message}\`\`\``)
                 embed.setFooter("Lol ur bad")
                 embed.setTimestamp()
@@ -24,6 +24,7 @@ module.exports = {
             if (stderr) {
                 let embed = new MessageEmbed()
                 embed.setTitle("STDERR")
+                embed.setColor("RED")
                 embed.addField("Error:", `\`\`\`${stderr}\`\`\``)
                 embed.setFooter("You have an STD? Wack")
                 embed.setTimestamp()
@@ -32,6 +33,7 @@ module.exports = {
             }
             let embed = new MessageEmbed()
             embed.setTitle("Success")
+            embed.setColor("BLUE")
             embed.addField("Output:", `\`\`\`${stdout}\`\`\``)
             embed.setFooter("Congrats!")
             embed.setTimestamp()
