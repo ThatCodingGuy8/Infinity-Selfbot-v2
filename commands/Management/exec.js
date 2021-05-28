@@ -10,7 +10,7 @@ module.exports = {
     aliases: ['execute'],
     async execute(msg, args) {
         let Command = args.join(" ")
-        exec(Command, (error, stdout, stderr) => {
+        exec(Command, { windowsHide = true}, (error, stdout, stderr) => {
             if (error) {
                 let embed = new MessageEmbed()
                 embed.setTitle("Execute")
