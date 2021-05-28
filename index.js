@@ -16,7 +16,6 @@ const settings = require("./settings.json");
 const client = new Discord.Client()
 const {
 	randomTime,
-	predict,
 	LogOutput,
 	asyncForEach,
 	MakeImageEmbed,
@@ -183,7 +182,7 @@ client.on("message", async msg => {
 							console.error("Error trying to send in Silent Mode: ", error);
 						}
 					} else if (attEx == "png" || attEx == "jpeg" || attEx == "jpg" || attEx == "bmp") {
-						let EmbedToSend = await MakeMachineLearningImageEmbed(snetAttachment, attachment, coolmessage, msg, prediction[1])
+						let EmbedToSend = await MakeImageEmbed(snetAttachment, attachment, coolmessage, msg)
 						try {
 							await SilentModeSend(EmbedToSend, channeltosend, msg, "Normal")
 						} catch (error) {
