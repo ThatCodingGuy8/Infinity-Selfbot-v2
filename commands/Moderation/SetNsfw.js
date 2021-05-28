@@ -1,4 +1,3 @@
-const { ResizeNearestNeighborGrad } = require('@tensorflow/tfjs-core');
 const { Message, MessageEmbed } = require('discord.js-self');
 const ms = require('ms');
 const Functions = require("./../../utils/Functions.js")

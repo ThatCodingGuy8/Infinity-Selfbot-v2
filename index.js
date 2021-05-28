@@ -29,8 +29,6 @@ const {
 	SilentModeSend
 } = require("./utils/Functions") // ! PREDICT DOESNT SUPPORT GIFS!
 const axios = require('axios');
-const tf = require("@tensorflow/tfjs-node"); // * Tensorflow with Node Optimizations
-const tfweb = require("@tensorflow/tfjs"); // * Regular Tensorflow API
 const path = require('path');
 const AutoGitUpdate = require('auto-git-update');
 const MathMod = require('mathjs');
@@ -65,9 +63,6 @@ const gayfilter = require("./filters/gay.json")
 const {
 	dir
 } = require('console');
-const {
-	Log
-} = require('@tensorflow/tfjs');
 
 Object.keys(hentaifilter).forEach(key => {
 	if (hentaifilter[key] == true) {
@@ -89,46 +84,6 @@ Object.keys(gayfilter).forEach(key => {
 	}
 })
 LogOutput("[CONFIG]", "Loaded Gay Keywords")
-
-/**
- * * Machine Learning Segment
- * ! DO NOT TOUCH!
- */
-let hentaimodel = undefined, mememodel = undefined, generalimagemodel = undefined, nsfwmodel = undefined;
-async function InstantiateModels() {
-	if (fs.existsSync("./model/")) {
-		let Dirs = await fs.readdirSync("./model")
-		Dirs.forEach(async directory => {
-			if (fs.existsSync("./model/" + directory + "/model.json")) {
-				if (directory == "Hentai") {
-					const handler = tf.io.fileSystem("./model/" + directory + "/model.json");
-					hentaimodel = await tfweb.loadLayersModel(handler);
-					LogOutput("[MACHINE LEARNING]", "TensorFlow.js Hentai Model Loaded!")
-				} else if (directory == "Memes") {
-					const handler = tf.io.fileSystem("./model/" + directory + "/model.json");
-					mememodel = await tfweb.loadLayersModel(handler);
-					LogOutput("[MACHINE LEARNING]", "TensorFlow.js Memes Model Loaded!")
-				} else if (directory == "NSFW") {
-					const handler = tf.io.fileSystem("./model/" + directory + "/model.json");
-					nsfwmodel = await tfweb.loadLayersModel(handler);
-					LogOutput("[MACHINE LEARNING]", "TensorFlow.js NSFW Model Loaded!")
-				} else if (directory == "GeneralImages") {
-					const handler = tf.io.fileSystem("./model/" + directory + "/model.json");
-					generalimagemodel = await tfweb.loadLayersModel(handler);
-					LogOutput("[MACHINE LEARNING]", "TensorFlow.js Multipurpose-Image-Model Loaded!")
-				}
-			}
-		})
-	} else {
-		console.log("Models Folder Is Gone, Rebuilding For Next Restart...")
-		fs.mkdirSync("./model")
-		fs.mkdirSync("./model/Hentai")
-		fs.mkdirSync("./model/Memes")
-		fs.mkdirSync("./model/NSFW")
-		fs.mkdirSync("./model/GeneralImages")
-	}
-}
-InstantiateModels();
 
 const cmdsDir = readdirSync('commands')
 const eventsDir = readdirSync('events')
@@ -228,25 +183,11 @@ client.on("message", async msg => {
 							console.error("Error trying to send in Silent Mode: ", error);
 						}
 					} else if (attEx == "png" || attEx == "jpeg" || attEx == "jpg" || attEx == "bmp") {
-						if (modeltocheck !== undefined) {
-							//LogOutput("[IMAGE LOGGING]", "Logging Image With Machine Learning")
-							let prediction = await predict(snetAttachment, modeltocheck)
-							if (prediction[0] == "Matching Image") {
-								let EmbedToSend = await MakeMachineLearningImageEmbed(snetAttachment, attachment, coolmessage, msg, prediction[1])
-								try {
-									await SilentModeSend(EmbedToSend, channeltosend, msg, "Normal")
-								} catch (error) {
-									console.error("Error trying to send in Silent Mode: ", error);
-								}
-							}
-						} else {
-							//LogOutput("[IMAGE LOGGING]", "Logging Image Without Machine Learning")
-							let EmbedToSend = MakeImageEmbed(snetAttachment, attachment, coolmessage, msg)
-							try {
-								await SilentModeSend(EmbedToSend, channeltosend, msg, "Normal")
-							} catch (error) {
-								console.error("Error trying to send in Silent Mode: ", error);
-							}
+						let EmbedToSend = await MakeMachineLearningImageEmbed(snetAttachment, attachment, coolmessage, msg, prediction[1])
+						try {
+							await SilentModeSend(EmbedToSend, channeltosend, msg, "Normal")
+						} catch (error) {
+							console.error("Error trying to send in Silent Mode: ", error);
 						}
 					}
 				}

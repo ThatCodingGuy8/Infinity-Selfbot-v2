@@ -1,5 +1,3 @@
-const tf               = require("@tensorflow/tfjs-node");  // * Tensorflow with Node Optimizations
-const tfweb            = require("@tensorflow/tfjs");       // * Regular Tensorflow API
 const fs               = require('fs');
 const { DownloadFile } = require("./FileSystem.js")
 const Discord          = require("discord.js-self")
@@ -25,42 +23,6 @@ module.exports   = class Functions {
     static LogOutput(title, text) {
       console.log(title + ": " + text)
     }
-    static async predict(img, model) {
-          let target_classes = {
-            0: "Matching Image",
-            1: "Non Matching Image",
-          };
-        let snetAttachment = img;
-        let unique = Math.random().toFixed(6) + Settings.customextension
-
-        await DownloadFile(img, "./checkspace/" + unique)
-        try {
-            const imageBuffer = await fs.readFileSync("./checkspace/" + unique);
-            const tfimage     = await tf.node
-              .decodeImage(imageBuffer, 3)
-              .resizeNearestNeighbor([224, 224])
-              .expandDims()
-              .reverse(-1); // RGB -> BGR
-            const predictions = await model.predict(tfimage).data();
-            setTimeout(function () {
-              fs.unlinkSync("./checkspace/" + unique);
-            }, 1000);
-            let top5 = Array.from(predictions)
-              .map(function (p, i) {
-                return {
-                  probability: p,
-                  className: target_classes[i], // Name Reference from Table
-                };
-              })
-              .sort(function (a, b) {
-                return b.probability - a.probability;
-              })
-              .slice(0, 2);
-            return [top5[0].className, top5[0].probability.toFixed(6)]
-        } catch (err) {
-            console.log("Machine Learning: " + err)
-        }
-      }
     static async asyncForEach(array, callback) {
       for (let index = 0; index < array.length; index++) {
         await callback(array[index], index, array);
