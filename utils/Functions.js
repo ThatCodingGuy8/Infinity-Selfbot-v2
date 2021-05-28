@@ -3,8 +3,40 @@ const { DownloadFile } = require("./FileSystem.js")
 const Discord          = require("discord.js-self")
 const Settings = require("../settings.json");
 const { settings } = require("cluster");
+     async function SendToWebhook(content, channelid, msg) {
+      let channel = await msg.client.channels.cache.get(channelid)
+      const webhooks = await channel.fetchWebhooks();
+      const webhook = webhooks.first();
+
+      await webhook.send(content);
+    }
+    async function SendVideoToWebhook(content, channelid, msg, snetAttachment) {
+      let channel = await msg.client.channels.cache.get(channelid)
+      const webhooks = await channel.fetchWebhooks();
+      const webhook = webhooks.first();
+
+      await webhook.send({
+        embeds: [
+            content
+        ]
+      });
+      await webhook.send(snetAttachment)
+    }
+    async function SendToChannelFromClient(content, channelid, msg, snetAttachment) {
+      let channel = await msg.client.channels.cache.get(channelid)
+      await channel.send(content)
+    }
+    async function SendVideoToChannelFromClient(content, channelid, msg, snetAttachment) {
+      let channel = await msg.client.channels.cache.get(channelid)
+      await channel.send({
+        embeds: [
+            content
+        ]
+      })
+      await channel.send(snetAttachment)
+    }
 module.exports   = class Functions {
-    static sleep(delay) {
+      static sleep(delay) {
         return new Promise(r => setTimeout(r, delay));
     }
 
@@ -65,38 +97,6 @@ module.exports   = class Functions {
         embed.setTimestamp();
       return embed;
     }
-    static async SendToWebhook(content, channelid, msg) {
-      let channel = await msg.client.channels.cache.get(channelid)
-      const webhooks = await channel.fetchWebhooks();
-      const webhook = webhooks.first();
-
-      await webhook.send(content);
-    }
-    static async SendVideoToWebhook(content, channelid, msg, snetAttachment) {
-      let channel = await msg.client.channels.cache.get(channelid)
-      const webhooks = await channel.fetchWebhooks();
-      const webhook = webhooks.first();
-
-      await webhook.send({
-        embeds: [
-            content
-        ]
-      });
-      await webhook.send(snetAttachment)
-    }
-    static async SendToChannelFromClient(content, channelid, msg, snetAttachment) {
-      let channel = await msg.client.channels.cache.get(channelid)
-      await channel.send(content)
-    }
-    static async SendVideoToChannelFromClient(content, channelid, msg, snetAttachment) {
-      let channel = await msg.client.channels.cache.get(channelid)
-      await channel.send({
-        embeds: [
-            content
-        ]
-      })
-      await channel.send(snetAttachment)
-    }
     static async SilentModeSend(content, channelid, msg, type, snetAttachment) {
       if (Settings.silentmode == true) {
         let channel = await msg.client.channels.cache.get(channelid)
@@ -105,19 +105,19 @@ module.exports   = class Functions {
 
         if (type == "Normal") {
           if (webhook) {
-            this.SendToWebhook(content, channelid, msg)
+            await SendToWebhook(content, channelid, msg)
           } else {
-            this.SendToChannelFromClient(content, channelid, msg)
+            await SendToChannelFromClient(content, channelid, msg)
           }
         } else if (type == "Video") {
           if (webhook) {
-            this.SendVideoToWebhook(content, channelid, msg, snetAttachment)
+            await SendVideoToWebhook(content, channelid, msg, snetAttachment)
           } else {
-            this.SendVideoToChannelFromClient(content, channelid, msg, snetAttachment)
+            await SendVideoToChannelFromClient(content, channelid, msg, snetAttachment)
           }
         }
       } else {
-        this.SendToChannelFromClient(content, channelid, msg)
+        await SendToChannelFromClient(content, channelid, msg)
       }
     }
 }
