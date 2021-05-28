@@ -1,6 +1,6 @@
 {
   "name": "infinity",
-  "version": "1.0.79",
+  "version": "1.0.81",
   "description": "The best of Selfbots",
   "main": "index.js",
   "scripts": {
