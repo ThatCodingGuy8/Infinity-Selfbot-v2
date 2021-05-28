@@ -18,6 +18,7 @@ module.exports = {
             .setColor(settings.embedcolor)
             .setDescription(`**Here's a cat to brighten your day**`)
             .setImage(body.url)
+            .setFooter("Cats are adorable")
             .setTimestamp()
         Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }

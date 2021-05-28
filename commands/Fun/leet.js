@@ -17,6 +17,7 @@ module.exports = {
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)
             .setDescription(`**${leet(input)}**`)
+            .setFooter("L33t")
             .setTimestamp()
         msg.channel.send(embed)
     }

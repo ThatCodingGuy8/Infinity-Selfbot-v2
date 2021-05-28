@@ -15,6 +15,8 @@ module.exports = {
                 embed.setTitle("Error")
                 embed.setColor("RED")
                 embed.setDescription("This command requires a user ID, and that argument wasn't an ID!")
+                embed.setFooter("Do not report this to the devs")
+                embed.setTimestamp()
                 return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
             }
             const index = await whitelist.whitelisted.indexOf(args[0])
@@ -23,6 +25,8 @@ module.exports = {
                 embed.setTitle("Error")
                 embed.setColor("RED")
                 embed.setDescription("That user isnt whitelisted!")
+                embed.setFooter("Do not report this to the devs")
+                embed.setTimestamp()
                 return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
             } else {
                 await whitelist.whitelisted.splice(index)
@@ -32,6 +36,8 @@ module.exports = {
                 await embed.setTitle("Success")
                 await embed.setColor("BLUE")
                 await embed.setDescription("Successfully unwhitelisted " + args[0])
+                await embed.setFooter("This means access to all commands!")
+                await embed.setTimestamp()
                 return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
             }
         } else {
@@ -39,6 +45,8 @@ module.exports = {
             embed.setTitle("Error")
             embed.setColor("RED")
             embed.setDescription("This command requires a user ID!")
+            embed.setFooter("Do not report this to the devs")
+            embed.setTimestamp()
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }
     }

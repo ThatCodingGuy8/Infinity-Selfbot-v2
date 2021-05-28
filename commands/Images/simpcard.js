@@ -13,6 +13,8 @@ module.exports = {
             .setTitle(`Simp`)
             .setColor("RANDOM")
             .setImage(`https://api.no-api-key.com/api/v2/simpcard?image=${user.user.avatarURL({ format: 'png', size: 512 }).replace(/.gif/g, '.jpeg')}`)
+            .setFooter("Average Redditor")
+            .setTimestamp()
             return SilentModeSend(embed, message.channel.id, message, "Normal")
     }
 }

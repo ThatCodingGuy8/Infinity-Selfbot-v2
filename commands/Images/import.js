@@ -9,10 +9,6 @@ const {
 	asyncForEach,
 	MakeImageEmbed,
 	MakeVideoEmbed,
-	SendToWebhook,
-	SendVideoToWebhook,
-	SendToChannelFromClient,
-	SendVideoToChannelFromClient,
   SilentModeSend
 } = require("../../utils/Functions") // ! PREDICT DOESNT SUPPORT GIFS!
 /**

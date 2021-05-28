@@ -12,28 +12,35 @@ module.exports = {
 
         let member = await getMemberMention(msg, args)
 
-        if (!member) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must mention someone to measure their penis**`).setTimestamp(), msg.channel.id, msg, "Normal")
+        if (!member) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must mention someone to measure their penis (kinda gay ngl)**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         let replies = [
+            "8D",
             "8=D",
             "8==D",
             "8===D",
             "8====D",
             "8=====D",
             "8======D",
+            "8=======D",
             "8========D",
             "8=========D",
             "8==========D",
+            "8===========D",
+            "8============D",
+            "8=============D",
+            "8==============D",
+            "8===============D",
+            "8================D",
         ]
 
         let random = replies[Math.floor(Math.random() * replies.length)]
 
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)
-            .setThumbnail(`https://www.worthview.com/wp-content/uploads/2019/01/Online-Ruler-1024x509.jpg`)
             .setDescription(`**${member}'s Penis size is: ${random}**`)
-            .setFooter(`Ruler provided in thumbnail`)
+            .setFooter(`You should start an OnlyFans`)
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

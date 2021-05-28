@@ -18,6 +18,7 @@ module.exports = {
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)
             .setDescription(`**${answer}**`)
+            .setFooter("Floofy")
             .setTimestamp()
         Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }

@@ -19,6 +19,7 @@ module.exports = {
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)
             .setDescription(`**${random}**`)
+            .setFooter("Thats a nice number")
             .setTimestamp()
         Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }

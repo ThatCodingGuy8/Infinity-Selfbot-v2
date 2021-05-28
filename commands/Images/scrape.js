@@ -8,10 +8,6 @@ const {
 	asyncForEach,
 	MakeImageEmbed,
 	MakeVideoEmbed,
-	SendToWebhook,
-	SendVideoToWebhook,
-	SendToChannelFromClient,
-	SendVideoToChannelFromClient
 } = require("../../utils/Functions") // ! PREDICT DOESNT SUPPORT GIFS!
 /**
  * * Downloads images from the specified channel

@@ -13,6 +13,8 @@ module.exports = {
             .setTitle(`${message.author.username} has stepped on ${user.user.username}`)
             .setColor("RANDOM")
             .setImage(`https://api.no-api-key.com/api/v2/crap?stepped=${user.user.avatarURL({ format: 'png', size: 512 }).replace(/.gif/g, '.jpeg')}`)
+            .setFooter("Ewwwwww")
+            .setTimestamp()
             return SilentModeSend(embed, message.channel.id, message, "Normal")
     }
 }

@@ -22,6 +22,7 @@ module.exports = {
             .setColor(settings.embedcolor)
             .setThumbnail(`https://www.comprarbanderas.es/images/banderas/400/377-orgullo-gay_400px.jpg`)
             .setDescription(`**${member} is ${gay(0, 100)}% gay**`)
+            .setFooter("Kinda gay ngl")
             .setTimestamp()
         Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 

@@ -13,6 +13,8 @@ module.exports = {
             .setTitle(`${user.user.username}'s Grave!`)
             .setColor("RANDOM")
             .setImage(`https://api.no-api-key.com/api/v2/rip?image=${user.user.avatarURL({ format: 'png', size: 512 }).replace(/.gif/g, '.jpeg')}`)
+            .setFooter("Rest in pepperoni")
+            .setTimestamp()
             return SilentModeSend(embed, message.channel.id, message, "Normal")
     }
 }

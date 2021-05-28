@@ -64,6 +64,7 @@ module.exports = {
                 > Used RAM: ${formatBytes(os.totalmem() - os.freemem())}
                 > Used RAM Diagram:
                 > ${LoadingBar.generate(os.totalmem() - os.freemem(), os.totalmem())}`)
+                .setFooter("Nice PC noob")
                 .setTimestamp()
 
             Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")

@@ -15,6 +15,8 @@ module.exports = {
 		embed.setTitle('Infinity | Help Menu')
 		embed.setColor(settings.embedcolor)
 		embed.setTimestamp()
+		embed.setFooter("Made by Weis, Branden, Rapid, and Synergy")
+        embed.setTimestamp()
 
 		for (let i = 0; i < Object.keys(msg.client.commands).length; i++) {
 			const key = Object.keys(msg.client.commands)[i]

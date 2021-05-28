@@ -15,6 +15,6 @@ module.exports = {
         
  nsfw = await akaneko.nsfw
  
-   Functions.SilentModeSend(new MessageEmbed().setDescription("Here you go Master!").setImage(await nsfw.ass()), msg.channel.id, msg, "Normal")
+   Functions.SilentModeSend(new MessageEmbed().setDescription("Here you go Master!").setImage(await nsfw.ass()).setFooter("Sexy").setTimestamp(), msg.channel.id, msg, "Normal")
 
     }}

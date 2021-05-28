@@ -13,6 +13,8 @@ module.exports = {
             .setTitle(`Someone is throwing out the trash`)
             .setColor("RANDOM")
             .setImage(`https://api.no-api-key.com/api/v2/trash?image=${user.user.avatarURL({ format: 'png', size: 512 }).replace(/.gif/g, '.jpeg')}`)
+            .setFooter("Remember to recycle!")
+            .setTimestamp()
             return SilentModeSend(embed, message.channel.id, message, "Normal")
     }
 }

@@ -15,7 +15,7 @@ module.exports = {
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)
             .setDescription(`**${Quote.getRandomQuote()}**`)
-            .setFooter(`Never forget the legends in your life`)
+            .setFooter(`You can do this!`)
             .setTimestamp()
         Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }

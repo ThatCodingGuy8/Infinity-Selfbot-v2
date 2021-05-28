@@ -16,6 +16,7 @@ module.exports = {
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)
             .setDescription(`**${mock(input)}**`)
+            .setFooter("Thats not nice >:(")
             .setTimestamp()
         msg.channel.send(embed)
     }

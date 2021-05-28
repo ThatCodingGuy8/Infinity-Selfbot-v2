@@ -21,6 +21,7 @@ module.exports = {
                 let embed = new MessageEmbed()
                     .setColor("RED")
                     .setDescription(`**An error occured while executing the command**`)
+                    .setFooter("You should report this to the devs")
                     .setTimestamp()
 
                 Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")

@@ -13,6 +13,8 @@ module.exports = {
             .setTitle(`${message.author.username} has punched ${user.user.username}!`)
             .setColor("RANDOM")
             .setImage(`https://api.no-api-key.com/api/v2/punch?punch=${message.author.avatarURL({ format: 'png', size: 512 }).replace(/.gif/g, '.png')}&punched=${user.user.avatarURL({ format: 'png', size: 512 }).replace(/.gif/g, '.png')}`)
+            .setFooter("Brutal!")
+            .setTimestamp()
         return SilentModeSend(embed, message.channel.id, message, "Normal")
     }
 }

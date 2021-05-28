@@ -13,6 +13,8 @@ module.exports = {
             .setTitle(`Smrt!`)
             .setColor("RANDOM")
             .setImage(`https://api.no-api-key.com/api/v2/smrt?image=${user.user.avatarURL({ format: 'png', size: 512 }).replace(/.gif/g, '.jpeg')}`)
+            .setFooter("My wife left me")
+            .setTimestamp()
             return SilentModeSend(embed, message.channel.id, message, "Normal")
     }
 }

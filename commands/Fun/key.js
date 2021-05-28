@@ -11,6 +11,7 @@ module.exports = {
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)
             .setDescription(`**${[...new Array(65).keys()].map(key => String.fromCharCode(Math.floor(Math.random() * 15) + 65)).map(key => String(key)[`to${new Array('Lower', 'Upper')[Math.floor(Math.random() * 2)]}Case`]()).join('')}**`)
+            .setFooter("Not like you encrypt things anyway...")
             .setTimestamp()
         Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }

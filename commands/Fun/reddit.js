@@ -32,6 +32,7 @@ module.exports = {
                         .setTitle("A random post from " + subRedditName)
                         .setColor("RANDOM")
                         .setDescription(`[${title}](${link})\n\n${text}`)
+                        .setFooter("EWWWW A REDDITOR")
                         .setURL(`https://reddit.com/${subRedditName}`)
 
                     return Functions.SilentModeSend(textembed, msg.channel.id, msg, "Normal");
@@ -43,6 +44,7 @@ module.exports = {
                     .setImage(image)
                     .setColor("RANDOM")
                     .setDescription(`[${title}](${link})\n\n${text}`)
+                    .setFooter("EWWWW A REDDITOR")
                     .setURL(`https://reddit.com/${subRedditName}`)
                 Functions.SilentModeSend(imageembed, msg.channel.id, msg, "Normal")
             })

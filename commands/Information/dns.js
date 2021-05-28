@@ -12,7 +12,9 @@ module.exports = {
         let url = args[0];
         let embed = new MessageEmbed()
             .setTitle("DNS Records for: " + url)
-            .setColor(14699596);
+            .setColor(14699596)
+            .setFooter("Nice IPs skid")
+            .setTimestamp();
         resolver.dns(url).then(res => {
 
             var records = res.data.records;

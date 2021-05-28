@@ -17,6 +17,7 @@ module.exports = {
             .setAuthor(`Deleted by ${sniped.author.tag}`, sniped.author.displayAvatarURL())
             .setThumbnail(sniped.author.displayAvatarURL)
             .setDescription(sniped.content || sniped.attachments[0].proxyUrl)
+            .setFooter("D-Don't look at me, baka...")
             .setTimestamp()
 
         Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")

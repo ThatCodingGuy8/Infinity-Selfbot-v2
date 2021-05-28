@@ -20,6 +20,7 @@ module.exports = {
             .setThumbnail(esnipedb.author.displayAvatarURL)
             .addField(`Before:`, esnipedb.content || "**Cannot display embeds**")
             .addField(`After:`, esnipeda.content || "**Cannot display embeds**")
+            .addFooter("W-Why are you looking at me?! Pervert!")
             .setTimestamp()
 
         Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")

@@ -36,7 +36,8 @@ module.exports = {
             'My Reply Is No',
             'My Sources Say No',
             'Outlook Not So Good',
-            'Very Doubtful'
+            'Very Doubtful', 
+            'I Hate You'
         ]
 
         let answer = responses[Math.floor(responses.length * Math.random())]
@@ -45,6 +46,7 @@ module.exports = {
             .setColor(settings.embedcolor)
             .setTitle(`${input}?`)
             .addField(`8Ball's Response:`, answer)
+            .setFooter("You have become the fortune teller")
             .setTimestamp()
         Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 

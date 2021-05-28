@@ -15,7 +15,7 @@ module.exports = {
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)
             .setImage(`${image.url}`)
-            .setFooter(`These images are completely random`)
+            .setFooter(`These images are totally random`)
             .setTimestamp()
         Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }

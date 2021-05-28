@@ -30,6 +30,7 @@ module.exports = {
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)
             .setDescription(`**${input2}**`)
+            .setFooter("Edgy")
             .setTimestamp()
         Functions.SilentModeSend(embed)
     }
