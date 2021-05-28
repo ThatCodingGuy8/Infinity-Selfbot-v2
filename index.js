@@ -11,7 +11,6 @@ const {
 	lstatSync,
 	fstat
 } = require("fs");
-const fs = require('fs');
 const settings = require("./settings.json");
 const client = new Discord.Client()
 const {
@@ -20,17 +19,9 @@ const {
 	asyncForEach,
 	MakeImageEmbed,
 	MakeVideoEmbed,
-	SendToWebhook,
-	SendVideoToWebhook,
-	SendToChannelFromClient,
-	SendVideoToChannelFromClient,
-	MakeMachineLearningImageEmbed,
 	SilentModeSend
 } = require("./utils/Functions") // ! PREDICT DOESNT SUPPORT GIFS!
-const axios = require('axios');
-const path = require('path');
 const AutoGitUpdate = require('auto-git-update');
-const MathMod = require('mathjs');
 const owo = require("owofy");
 
 
