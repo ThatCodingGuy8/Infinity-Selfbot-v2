@@ -177,7 +177,7 @@ client.on("message", async msg => {
 					if (attEx == "webm" || attEx == "mp4" || attEx == "mov" || attEx == "gif") {
 						let EmbedToSend = await MakeVideoEmbed(snetAttachment, attachment, coolmessage, msg)
 						try {
-							await SilentModeSend(EmbedToSend, channeltosend, msg, "Video")
+							await SilentModeSend(EmbedToSend, channeltosend, msg, "Video", snetAttachment)
 						} catch (error) {
 							console.error("Error trying to send in Silent Mode: ", error);
 						}
