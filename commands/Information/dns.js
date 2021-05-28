@@ -1,6 +1,7 @@
 const WebResolver = require('webresolver');
 let resolver = new WebResolver("BHJ2C-SFJTU-6NAW6-Y0TXO");
 const { MessageEmbed } = require("discord.js-self");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'dns',
@@ -22,7 +23,7 @@ module.exports = {
                 }
             }
 
-            msg.channel.send({embed});
+            Functions.SilentModeSend({embed}, msg.channel.id, msg, "Normal");
         });
 
     }

@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js-self");
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'edit-snipe',
@@ -11,7 +12,7 @@ module.exports = {
         const esnipedb = msg.client.editMsgBefore.get(`${msg.channel.id}`);
         const esnipeda = msg.client.editMsgAfter.get(`${msg.channel.id}`);
 
-        if (!esnipedb) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**There are no messages to edit-snipe**`).setTimestamp())
+        if (!esnipedb) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**There are no messages to edit-snipe**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)
@@ -21,7 +22,7 @@ module.exports = {
             .addField(`After:`, esnipeda.content || "**Cannot display embeds**")
             .setTimestamp()
 
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }

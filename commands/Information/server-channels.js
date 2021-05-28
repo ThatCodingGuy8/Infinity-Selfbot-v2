@@ -1,5 +1,6 @@
 const { Message, MessageEmbed } = require('discord.js-self');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'server-channels',
@@ -13,7 +14,7 @@ module.exports = {
 
         let channels = msg.guild.channels.cache.map(ch => ch.toString()).join(", ")
 
-        if (channels.length > 2000) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**This server has too many channels to list\n${msg.guild.channels.cache.size} Channels**`).setTimestamp())
+        if (channels.length > 2000) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**This server has too many channels to list\n${msg.guild.channels.cache.size} Channels**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         const embed = new MessageEmbed()
             .setDescription(`**${channels}**`)
@@ -21,6 +22,6 @@ module.exports = {
             .setTimestamp()
             .setFooter(`There are ${msg.guild.channels.cache.size} channels in total`)
 
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

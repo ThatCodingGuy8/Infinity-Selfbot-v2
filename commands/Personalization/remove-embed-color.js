@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js-self');
 const { readFileSync, existsSync, writeFileSync, lstatSync } = require('fs');
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'remove-embed-color',
@@ -11,12 +12,12 @@ module.exports = {
         let input = args.join(" ")
 
         if (!input) {
-            msg.channel.send(
+            Functions.SilentModeSend(
                 new MessageEmbed()
                     .setDescription('**You must input a color to remove**')
                     .setColor('RED')
                     .setTimestamp()
-            )
+            , msg.channel.id, msg, "Normal")
             return;
         }
 
@@ -27,12 +28,12 @@ module.exports = {
         var object = JSON.parse(readFileSync('embed-colors.json', { encoding: 'utf8' }))
 
         if (Object.keys(object).indexOf(input) == -1) {
-            msg.channel.send(
+            Functions.SilentModeSend(
                 new MessageEmbed()
                     .setDescription('**Input was not found in database**')
                     .setColor('RED')
                     .setTimestamp()
-            )
+            , msg.channel.id, msg, "Normal")
             return;
         }
 
@@ -40,11 +41,11 @@ module.exports = {
 
         writeFileSync('embed-colors.json', JSON.stringify(object, null, 2), { encoding: 'utf8' })
 
-        msg.channel.send(
+        Functions.SilentModeSend(
             new MessageEmbed()
                 .setColor(input)
                 .setDescription('`' + `${input}` + '`' + ` **has been removed from favourite Ecolors**`)
                 .setTimestamp()
-        )
+        , msg.channel.id, msg, "Normal")
     }
 }

@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js-self");
 const settings = require("./../../settings.json")
 const { writeFileSync } = require("fs");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'afk-mode',
@@ -23,7 +24,7 @@ module.exports = {
                 .setColor(settings.embedcolor)
                 .setDescription(`**AFK Mode [Automatic]: ${input}**`)
                 .setTimestamp()
-            msg.channel.send(embed)
+            Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
             writeFileSync("settings.json", JSON.stringify(settings, null, 1))
 
@@ -37,7 +38,7 @@ module.exports = {
                 .setDescription(`**AFK Mode: ${input}**`)
                 .setTimestamp()
 
-            msg.channel.send(embed)
+            Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
             writeFileSync("settings.json", JSON.stringify(settings, null, 1))
 
@@ -50,7 +51,7 @@ module.exports = {
                     .setDescription(`**AFK Mode: Disabled**`)
                     .setTimestamp()
 
-                msg.channel.send(embed)
+                Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
                 writeFileSync("settings.json", JSON.stringify(settings, null, 1))
             }

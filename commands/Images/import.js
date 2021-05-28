@@ -2,6 +2,7 @@ const request = require("axios");
 const fs      = require("fs");
 const Discord = require("discord.js-self")
 const { MessageEmbed } = require("discord.js-self")
+const Functions = require("./../../utils/Functions.js")
 const {
 	randomTime,
 	predict,
@@ -12,7 +13,8 @@ const {
 	SendToWebhook,
 	SendVideoToWebhook,
 	SendToChannelFromClient,
-	SendVideoToChannelFromClient
+	SendVideoToChannelFromClient,
+  SilentModeSend
 } = require("../../utils/Functions") // ! PREDICT DOESNT SUPPORT GIFS!
 /**
  * * Imports images to a specified channel
@@ -97,7 +99,7 @@ module.exports = {
                                         let msg = message
                                         let aver;
                                         let EmbedToSend = await MakeImageEmbed(snetAttachment, attachment, "Imported", msg)
-                                        await SendToWebhook(EmbedToSend, args[3], msg, snetAttachment)
+                                        await Functions.SilentModeSend(EmbedToSend, args[3], msg, "Normal")
                                         await imagecount++
                                     }
                                 }
@@ -115,7 +117,7 @@ module.exports = {
             await Embed.setTitle("Finished Importing")
             await Embed.addField("**Total Images:**", imagecount)
             await Embed.setColor("BLUE")
-            await msg.channel.send(Embed)
+            await Functions.SilentModeSend(Embed, msg.channel.id, msg, "Normal")
         })
     }
 }

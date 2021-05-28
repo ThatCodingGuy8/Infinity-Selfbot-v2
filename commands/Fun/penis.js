@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js-self');
 const { getMemberMention } = require('../../utils/Mentions');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'penis',
@@ -11,7 +12,7 @@ module.exports = {
 
         let member = await getMemberMention(msg, args)
 
-        if (!member) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**You must mention someone to measure their penis**`).setTimestamp())
+        if (!member) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must mention someone to measure their penis**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         let replies = [
             "8=D",

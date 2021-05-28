@@ -1,6 +1,7 @@
 const { Message, MessageEmbed } = require('discord.js-self');
 const settings = require('./../../settings.json')
 const prefix = settings.prefix
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
 	name: 'help',
@@ -25,12 +26,12 @@ module.exports = {
 				embed.addField('Description', msg.client.commands[key][args[0]].description)
 				embed.addField('Usage', `${prefix}${msg.client.commands[key][args[0]].usage}`)
 				embed.addField('Command Aliases', alias)
-				msg.channel.send(embed)
+				Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 				return;
 			}
 			embed.addField(key, Object.keys(msg.client.commands[key]).join(', '))
 		}
 
-		msg.channel.send(embed)
+		Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 	}
 }

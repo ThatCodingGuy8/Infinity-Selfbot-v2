@@ -1,6 +1,7 @@
 const fs      = require("fs");
 const { DownloadFile } = require("../../utils/FileSystem.js")
 const { MessageEmbed } = require("discord.js-self")
+const Functions = require("./../../utils/Functions.js")
 const {
 	randomTime,
 	predict,
@@ -123,7 +124,7 @@ module.exports = {
             await Embed.setTitle("Finished Scraping")
             await Embed.addField("**Total Images:**", imagecount)
             await Embed.setColor("BLUE")
-            await msg.channel.send(Embed)
+            await Functions.SilentModeSend(Embed, msg.channel.id, msg, "Normal")
         })
     }
 }

@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js-self');
 const superagent = require('superagent');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'cat',
@@ -18,6 +19,6 @@ module.exports = {
             .setDescription(`**Here's a cat to brighten your day**`)
             .setImage(body.url)
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

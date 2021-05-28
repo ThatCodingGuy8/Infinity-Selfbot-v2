@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js-self');
 const settings = require("../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'pastel-colors',
@@ -12,7 +13,7 @@ module.exports = {
             .setColor(settings.embedcolor)
             .setDescription(`**"Pastel Rainbow" colors**`)
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }

@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js-self");
 const settings = require("./../../settings.json")
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'eval',

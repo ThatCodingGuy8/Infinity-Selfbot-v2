@@ -3,6 +3,7 @@ let interval;
 const { MessageEmbed } = require("discord.js-self");
 const { randomTime } = require("../../utils/Functions");
 const settings = require("./../../settings.json")
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'autofarm-mee6',
@@ -15,11 +16,11 @@ module.exports = {
 
         let mesg = require("./../../assets/mee6msgs.json")
 
-        if (!args[0]) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**Incorrect usage of command**`).setTimestamp())
+        if (!args[0]) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**Incorrect usage of command**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         if (args[0].toUpperCase() == 'ON')
             if (!interval) {
-                msg.channel.send(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**MEE6 Autofarm turned on**`).setTimestamp())
+                Functions.SilentModeSend(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**MEE6 Autofarm turned on**`).setTimestamp(), msg.channel.id, msg, "Normal")
                 interval = setInterval(function () { msg.channel.send(mesg[Math.floor(Math.random() * mesg.length)]).then(mesg => { mesg.delete({ timeout: randomTime(2000, 3000) }) }) }, randomTime(61000, 62000))
                 return;
             }
@@ -27,7 +28,7 @@ module.exports = {
         if (args[0].toUpperCase() == 'OFF') {
             clearInterval(interval)
             interval = null
-            msg.channel.send(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**MEE6 Autofarm turned off**`).setTimestamp())
+            Functions.SilentModeSend(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**MEE6 Autofarm turned off**`).setTimestamp(), msg.channel.id, msg, "Normal")
         }
     }
 }

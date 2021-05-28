@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js-self');
 const { writeFileSync } = require("fs");
 const settings = require("../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'set-embed-color',
@@ -24,7 +25,7 @@ module.exports = {
             .setDescription(`**Changed embed color to: ${input}**`)
             .setTimestamp()
 
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }

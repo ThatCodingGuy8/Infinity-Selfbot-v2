@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js-self');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'random-member',
@@ -14,6 +15,6 @@ module.exports = {
             .setColor(settings.embedcolor)
             .setDescription(`**Randomly Chose Member: ${member}**`)
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

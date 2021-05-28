@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js-self');
 const facts = require('./../../assets/cat-facts.json');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'cat-fact',
@@ -18,6 +19,6 @@ module.exports = {
             .setColor(settings.embedcolor)
             .setDescription(`**${answer}**`)
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

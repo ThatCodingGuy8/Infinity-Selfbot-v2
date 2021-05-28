@@ -2,6 +2,8 @@ const { Message, MessageEmbed } = require("discord.js-self")
 const vc = require("./../../voiceChatBans.json")
 const { writeFileSync } = require("fs")
 const ms = require("ms")
+const Functions = require("./../../utils/Functions.js")
+
 module.exports = {
     name: 'vcunban',
     description: 'unBan user from entering voice chat',
@@ -17,10 +19,10 @@ module.exports = {
 i = vc.IDS.indexOf(vc.IDS.find(u => u.UserID == mention.id))
 
 vc.IDS.splice(i,1)
-                msg.channel.send(new MessageEmbed().setDescription(`${mention} has been  Unbanned`))
+                Functions.SilentModeSend(new MessageEmbed().setDescription(`${mention} has been  Unbanned`), msg.channel.id, msg, "Normal")
             }
             else {
-                msg.channel.send(new MessageEmbed().setDescription(`${mention} is not Banned from Voice-Chats!`))
+                Functions.SilentModeSend(new MessageEmbed().setDescription(`${mention} is not Banned from Voice-Chats!`), msg.channel.id, msg, "Normal")
             }
         }
 

@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js-self');
 const { getRoleMention } = require('../../utils/Mentions.js');
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'role-hex',
@@ -11,12 +12,12 @@ module.exports = {
         let input = args.join(" ")
 
         if (!input) {
-            msg.channel.send(
+            Functions.SilentModeSend(
                 new MessageEmbed()
                     .setDescription('**You must input a role to scan**')
                     .setColor('RED')
                     .setTimestamp()
-            )
+            , msg.channel.id, msg, "Normal")
             return;
         }
 
@@ -24,11 +25,11 @@ module.exports = {
 
         let RoleHex = role.hexColor
 
-        msg.channel.send(
+        Functions.SilentModeSend(
             new MessageEmbed()
                 .setColor(RoleHex)
                 .setDescription('`' + `${RoleHex}` + '`' + ` **Is ${role.toString()}'s Role HexCode**`)
                 .setTimestamp()
-        )
+        , msg.channel.id, msg, "Normal")
     }
 }

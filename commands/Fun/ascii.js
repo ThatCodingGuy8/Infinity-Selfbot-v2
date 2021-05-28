@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js-self');
 const figlet = require('figlet');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'ascii',
@@ -13,7 +14,7 @@ module.exports = {
 
         let message = args.join(" ")
 
-        if (!message) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide text to convert**`).setTimestamp())
+        if (!message) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide text to convert**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         figlet(message, (err, ascii) => {
             if (err) {
@@ -22,10 +23,10 @@ module.exports = {
                     .setDescription(`**An error occured while executing the command**`)
                     .setTimestamp()
 
-                msg.channel.send(embed)
+                Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
                 return;
             }
-            msg.channel.send("```" + ascii + "```")
+            Functions.SilentModeSend("```" + ascii + "```", msg.channel.id, msg, "Normal")
         })
     }
 }

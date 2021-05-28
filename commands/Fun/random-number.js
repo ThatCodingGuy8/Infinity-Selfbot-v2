@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js-self');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'random-number',
@@ -11,7 +12,7 @@ module.exports = {
         let num1 = parseInt(args[0])
         let num2 = parseInt(args[1])
 
-        if (isNaN(args[0]) || isNaN(args[1])) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide a minimum and max value**`).setTimestamp())
+        if (isNaN(args[0]) || isNaN(args[1])) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide a minimum and max value**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         let random = Math.floor(Math.random() * num2) + num1;
 
@@ -19,6 +20,6 @@ module.exports = {
             .setColor(settings.embedcolor)
             .setDescription(`**${random}**`)
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js-self');
 const { RandomPicture } = require('random-picture')
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'random-image',
@@ -16,6 +17,6 @@ module.exports = {
             .setImage(`${image.url}`)
             .setFooter(`These images are completely random`)
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

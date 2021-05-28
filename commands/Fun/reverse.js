@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js-self');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'reverse',
@@ -24,12 +25,12 @@ module.exports = {
 
         let input2 = reverse(args.join(" "))
 
-        if (!input2) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**You must input text to reverse**`).setTimestamp())
+        if (!input2) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must input text to reverse**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)
             .setDescription(`**${input2}**`)
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed)
     }
 }

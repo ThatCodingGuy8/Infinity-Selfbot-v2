@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js-self');
 const { sleep } = require('./../../utils/Functions.js')
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'edit-message',
@@ -14,7 +15,7 @@ module.exports = {
 
         let input = args.join(" ").trim().split("")
 
-        if (!input) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide some text to edit**`).setTimestamp())
+        if (!input) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide some text to edit**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         let mes = await msg.channel.send(input[0])
         let str = input[0]

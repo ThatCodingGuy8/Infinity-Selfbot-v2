@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js-self');
 const { getMemberMention } = require('./../../utils/Mentions.js')
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'gay',
@@ -22,7 +23,7 @@ module.exports = {
             .setThumbnail(`https://www.comprarbanderas.es/images/banderas/400/377-orgullo-gay_400px.jpg`)
             .setDescription(`**${member} is ${gay(0, 100)}% gay**`)
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }

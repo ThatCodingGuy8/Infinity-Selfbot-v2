@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js-self');
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'embed-color',
@@ -10,15 +11,15 @@ module.exports = {
         let input = args.join(" ")
 
         if (!input) {
-            msg.channel.send(
+            Functions.SilentModeSend(
                 new MessageEmbed()
                     .setDescription('**You must input a color to test**')
                     .setColor('RED')
                     .setTimestamp()
-            )
+            , msg.channel.id, msg, "Normal")
             return;
         }
 
-        msg.channel.send(new MessageEmbed().setColor(input).setDescription(`**This is an example for how the color** ` + '`' + `${input}` + '`' + ` **would look like**`).setTimestamp())
+        Functions.SilentModeSend(new MessageEmbed().setColor(input).setDescription(`**This is an example for how the color** ` + '`' + `${input}` + '`' + ` **would look like**`).setTimestamp(), msg.channel.id, msg, "Normal")
     }
 }

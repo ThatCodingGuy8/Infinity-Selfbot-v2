@@ -2,6 +2,7 @@ const whitelist = require('./../../whitelist.json')
 const settings = require('./../../settings.json')
 const Discord = require("discord.js-self")
 const fs = require("fs")
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'whitelist',
@@ -14,7 +15,7 @@ module.exports = {
                 embed.setTitle("Error")
                 embed.setColor("RED")
                 embed.setDescription("This command requires a user ID, and that argument wasn't an ID!")
-                return msg.channel.send(embed)
+                return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
             }
             var length = await whitelist.whitelisted.push(args[0]);
             fs.writeFileSync('whitelist.json', JSON.stringify(whitelist))
@@ -22,13 +23,13 @@ module.exports = {
             embed.setTitle("Success")
             embed.setColor("BLUE")
             embed.setDescription("Successfully whitelisted " + args[0] + ", who can use the bot on next restart!")
-            return msg.channel.send(embed)
+            return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         } else {
             let embed = new Discord.MessageEmbed();
             embed.setTitle("Error")
             embed.setColor("RED")
             embed.setDescription("This command requires a user ID!")
-            return msg.channel.send(embed)
+            return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }
     }
 }

@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js-self');
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'random-hex',
@@ -17,6 +18,6 @@ module.exports = {
             .setColor(randomhex)
             .setDescription(`**Random Hex Code: **` + '`' + `${randomhex}` + '`')
             .setFooter(`Embed color = Random Hex Code color`)
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

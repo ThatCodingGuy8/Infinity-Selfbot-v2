@@ -1,6 +1,7 @@
 const { ResizeNearestNeighborGrad } = require('@tensorflow/tfjs-core');
 const { Message, MessageEmbed } = require('discord.js-self');
 const ms = require('ms');
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'setnsfw',
@@ -11,7 +12,7 @@ module.exports = {
      */
     async execute(msg, args) {
         if (msg.channel.type == "text" && args[0]) {
-            if (!msg.member.hasPermission("MANAGE_CHANNELS")) return msg.channel.send("You do not have permission to do that");
+            if (!msg.member.hasPermission("MANAGE_CHANNELS")) return Functions.SilentModeSend("You do not have permission to do that", msg.channel.id, msg, "Normal");
             if ( args[0].toLowerCase() == "true" || args[0].toLowerCase() == "false")
             {
                 msg.channel.setNSFW(args[0].toLowerCase())

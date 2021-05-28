@@ -4,6 +4,7 @@ const os = require("os");
 const moment = require("moment");
 const gpuInfo = require('gpu-info');
 const { format } = require("path");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'pc-info',
@@ -65,7 +66,7 @@ module.exports = {
                 > ${LoadingBar.generate(os.totalmem() - os.freemem(), os.totalmem())}`)
                 .setTimestamp()
 
-            msg.channel.send(embed)
+            Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         });
     }
 }

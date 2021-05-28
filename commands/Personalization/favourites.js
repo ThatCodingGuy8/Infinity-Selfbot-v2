@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js-self');
 const { readFileSync } = require('fs');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'favourites',
@@ -19,7 +20,7 @@ module.exports = {
             .setTitle(`**Favourite Embed color List**`)
             .setDescription('`' + `${ans}` + '`')
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }

@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js-self');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'good-hexs',
@@ -22,6 +23,6 @@ module.exports = {
             .addField(`#631c63`, `[A Dark Purple](https://www.colorhexa.com/631c63)`, true)
             .setFooter(`Hope it was useful!`)
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

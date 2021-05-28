@@ -1,4 +1,5 @@
 const { Message, MessageEmbed } = require('discord.js-self');
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'RRole',
@@ -13,16 +14,16 @@ module.exports = {
         if(!msg.member.hasPermission("MANAGE_ROLES")) return;
 
         if (role.id == role2.id) { 
-            msg.channel.send(new MessageEmbed().setDescription("Please Put 2 Different Roles!"))
+            Functions.SilentModeSend(new MessageEmbed().setDescription("Please Put 2 Different Roles!"), msg.channel.id, msg, "Normal")
         } else {
             Members = role.members.filter(m => m.roles.cache.has(role2.id) )
             Members.forEach(m => {
                 m.roles.remove(role2.id) 
             });
             if (Members.size<= 0) { 
-                msg.channel.send(new MessageEmbed().setDescription("It Seems there is no member with that role!"))
+                Functions.SilentModeSend(new MessageEmbed().setDescription("It Seems there is no member with that role!"), msg.channel.id, msg, "Normal")
             } else {
-                msg.channel.send(new MessageEmbed().setDescription(`${role} has been removed from members with   ${role}`))
+                Functions.SilentModeSend(new MessageEmbed().setDescription(`${role} has been removed from members with   ${role}`), msg.channel.id, msg, "Normal")
             }
         }
     }

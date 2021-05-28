@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js-self");
 const settings = require("./../../settings.json")
 const { writeFileSync } = require("fs");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'anigame-snipe',
@@ -15,7 +16,7 @@ module.exports = {
             }
 
         if (!args[0]) {
-            msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**Incorrect usage of command**`).setTimestamp())
+            Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**Incorrect usage of command**`).setTimestamp(), msg.channel.id, msg, "Normal")
         }
 
         if (args[0]) {
@@ -26,7 +27,7 @@ module.exports = {
                     .setDescription(`**Anigame Snipe: Disabled**`)
                     .setTimestamp()
 
-                msg.channel.send(embed)
+                Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
             }
 
             if (args[0].toUpperCase() == 'ON') {
@@ -36,7 +37,7 @@ module.exports = {
                     .setDescription(`**Anigame Snipe: Enabled**`)
                     .setTimestamp()
 
-                msg.channel.send(embed)
+                Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
             }
 
             writeFileSync("settings.json", JSON.stringify(settings, null, 1))

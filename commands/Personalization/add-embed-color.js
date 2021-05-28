@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js-self');
 const { readFileSync, existsSync, writeFileSync } = require('fs');
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'add-embed-color',
@@ -10,7 +11,7 @@ module.exports = {
 
         let input = args.join(" ")
 
-        if (!input) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide a color to store**`).setTimestamp())
+        if (!input) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide a color to store**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         if (!existsSync('embed-colors.json')) {
             writeFileSync('embed-colors.json', '{}')
@@ -32,11 +33,11 @@ module.exports = {
 
         writeFileSync('embed-colors.json', JSON.stringify(object, null, 2), { encoding: 'utf8' })
 
-        msg.channel.send(
+        Functions.SilentModeSend(
             new MessageEmbed()
                 .setColor(input)
                 .setDescription('`' + `${input}` + '`' + ` **has been added to favourite Ecolors**`)
                 .setTimestamp()
-        )
+        , msg.channel.id, msg, "Normal")
     }
 }

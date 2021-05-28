@@ -1,6 +1,7 @@
 const { mock } = require('./../../utils/Functions.js');
 const { MessageEmbed } = require('discord.js-self');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'mock',
@@ -10,7 +11,7 @@ module.exports = {
 
         let input = args.join(" ")
 
-        if (!input) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide some text to convert**`).setTimestamp())
+        if (!input) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide some text to convert**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)

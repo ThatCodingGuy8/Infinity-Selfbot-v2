@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js-self');
 const Quote = require('inspirational-quotes');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: 'advice',
@@ -16,6 +17,6 @@ module.exports = {
             .setDescription(`**${Quote.getRandomQuote()}**`)
             .setFooter(`Never forget the legends in your life`)
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

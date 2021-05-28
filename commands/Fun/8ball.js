@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js-self');
 const settings = require("./../../settings.json");
+const Functions = require("./../../utils/Functions.js")
 
 module.exports = {
     name: '8ball',
@@ -13,7 +14,7 @@ module.exports = {
 
         let input = args.join(" ")
 
-        if (!input) return msg.channel.send(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide a question**`).setTimestamp())
+        if (!input) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide a question**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         const responses = [
             'It Is Certain',
@@ -45,7 +46,7 @@ module.exports = {
             .setTitle(`${input}?`)
             .addField(`8Ball's Response:`, answer)
             .setTimestamp()
-        msg.channel.send(embed)
+        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }
