@@ -101,22 +101,27 @@ module.exports = class Functions {
 
   static async SilentModeSend(content, channelid, msg, type, snetAttachment) {
     if (Settings.silentmode == true) {
-      let channel = await msg.client.channels.cache.get(channelid)
-      const webhooks = await channel.fetchWebhooks();
-      const webhook = webhooks.first();
+      let guildmember = await msg.guild.users.cache.get(msg.client.user.id)
+      if (guildmember.hasPermission("MANAGE_CHANNELS")) {
+        let channel = await msg.client.channels.cache.get(channelid)
+        const webhooks = await channel.fetchWebhooks();
+        const webhook = webhooks.first();
 
-      if (type == "Normal") {
-        if (webhook) {
-          await SendToWebhook(content, channelid, msg)
-        } else {
-          await SendToChannelFromClient(content, channelid, msg)
+        if (type == "Normal") {
+          if (webhook) {
+            await SendToWebhook(content, channelid, msg)
+          } else {
+            await SendToChannelFromClient(content, channelid, msg)
+          }
+        } else if (type == "Video") {
+          if (webhook) {
+            await SendVideoToWebhook(content, channelid, msg, snetAttachment)
+          } else {
+            await SendVideoToChannelFromClient(content, channelid, msg, snetAttachment)
+          }
         }
-      } else if (type == "Video") {
-        if (webhook) {
-          await SendVideoToWebhook(content, channelid, msg, snetAttachment)
-        } else {
-          await SendVideoToChannelFromClient(content, channelid, msg, snetAttachment)
-        }
+      } else {
+        await SendToChannelFromClient(content, channelid, msg)
       }
     } else {
       await SendToChannelFromClient(content, channelid, msg)
