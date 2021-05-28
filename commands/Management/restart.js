@@ -2,7 +2,7 @@ const { Message, MessageEmbed } = require("discord.js-self")
 const Functions = require("../../utils/Functions.js")
 module.exports = {
     name: 'restart',
-    description: 'Shutdowns the bot, pretty simple',
+    description: 'Restarts the bot, pretty simple',
     usage: 'restart',
     /**
      * @param {msg} msg
