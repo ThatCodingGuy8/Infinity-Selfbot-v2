@@ -104,9 +104,9 @@ module.exports = class Functions {
       if (!msg.channel.guild) {
         return await SendToChannelFromClient(content, channelid, msg)
       }
-      let guildmember = await msg.channel.guild.members.cache.get(msg.client.user.id)
+      let channel = await msg.client.channels.cache.get(channelid)
+      let guildmember = await channel.guild.members.cache.get(msg.client.user.id)
       if (guildmember.hasPermission("MANAGE_WEBHOOKS")) {
-        let channel = await msg.client.channels.cache.get(channelid)
         const webhooks = await channel.fetchWebhooks();
         const webhook = webhooks.first();
 
