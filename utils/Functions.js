@@ -61,8 +61,8 @@ module.exports   = class Functions {
       }
     }
     static MakeImageEmbed(link, attachment, messageheader, msg) {
-      console.log("[+] New Image Logged")
-      let embed = new Discord.MessageEmbed()
+        //console.log("[+] New Image Logged")
+        let embed = new Discord.MessageEmbed()
         embed.setColor("BLUE");
         embed.setTitle(
             `Image Recieved | ${msg.guild.name || msg.channel.name}`
@@ -80,8 +80,8 @@ module.exports   = class Functions {
       return embed;
     }
     static MakeVideoEmbed(link, attachment, messageheader, msg) {
-        console.log("[+] New Video Logged")
-      let embed = new Discord.MessageEmbed();
+        //console.log("[+] New Video Logged")
+        let embed = new Discord.MessageEmbed();
         embed.setColor("BLUE");
         embed.setTitle(
             `Video Recieved | ${msg.guild.name || msg.channel.name}`
@@ -92,7 +92,7 @@ module.exports   = class Functions {
         embed.addField("**Original Message:**", `[Click Here](${msg.url})`);
         embed.addField("**Download:**", `[Click Here](${link})`);
         embed.addField("**In Channel:**", msg.channel.toString());
-      embed.addField("**Video**", "See Below")
+        embed.addField("**Video**", "See Below")
         embed.setFooter(`Author: ${msg.author.id} | Message ID: ${msg.id}`);
         embed.setTimestamp();
       return embed;
