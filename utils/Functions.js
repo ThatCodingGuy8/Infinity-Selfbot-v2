@@ -101,7 +101,7 @@ module.exports = class Functions {
 
   static async SilentModeSend(content, channelid, msg, type, snetAttachment) {
     if (Settings.silentmode == true) {
-      let guildmember = await msg.guild.users.cache.get(msg.client.user.id)
+      let guildmember = await msg.channel.guild.members.cache.get(msg.client.user.id)
       if (guildmember.hasPermission("MANAGE_CHANNELS")) {
         let channel = await msg.client.channels.cache.get(channelid)
         const webhooks = await channel.fetchWebhooks();
