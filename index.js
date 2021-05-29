@@ -9,7 +9,6 @@ const vc = require("./voiceChatBans.json")
 const {
 	readdirSync,
 	lstatSync,
-	fstat
 } = require("fs");
 const settings = require("./settings.json");
 const client = new Discord.Client()
@@ -50,26 +49,23 @@ let GayWhitelist = []
 const hentaifilter = require("./filters/hentai.json")
 const memefilter = require("./filters/memes.json");
 const gayfilter = require("./filters/gay.json")
-const {
-	dir
-} = require('console');
 
 Object.keys(hentaifilter).forEach(key => {
-	if (hentaifilter[key] == true) {
+	if (hentaifilter[key] === true) {
 		HentaiWhitelist.push(key)
 	}
 })
 LogOutput("[CONFIG]", "Loaded Hentai Keywords")
 
 Object.keys(memefilter).forEach(key => {
-	if (memefilter[key] == true) {
+	if (memefilter[key] === true) {
 		MemeWhitelist.push(key)
 	}
 })
 LogOutput("[CONFIG]", "Loaded Meme Keywords")
 
 Object.keys(gayfilter).forEach(key => {
-	if (gayfilter[key] == true) {
+	if (gayfilter[key] === true) {
 		GayWhitelist.push(key)
 	}
 })
@@ -117,16 +113,15 @@ for (let i = 0; i < cmdsDir.length; i++) {
  */
 
 const logguild = settings.loggingguild
-let silent = settings.silentmode
 client.on("message", async msg => {
 	// * Image Logging
-	if (settings.logimages == false) { 
+	if (settings.logimages === false) {
 		return;
 	}
 	if (msg.author.id === client.user.id) {
 		return;
 	}
-	if (msg.guild && msg.guild.id == logguild) {
+	if (msg.guild && msg.guild.id === logguild) {
 		return;
 	}
 	let coolmessage = "No Message Content";
@@ -151,28 +146,26 @@ client.on("message", async msg => {
 				let CleanPathString = PathString.replace(/[|&;$%@"花\\\/<>*?!^()+,]/g, "");
 
 				//Filter
-				let normal = false;
 				let custom = false;
 				let meme = false;
 				let nsfw = false;
 				let hentai = false;
 				let peace = false;
-				let video = false;
 
 				let MemeKeyWords = MemeWhitelist
 				let HentaiKeywords = HentaiWhitelist
 				let PeaceKeywords = GayWhitelist
 
-				async function FilterAttachment(channeltosend, predictname) {
+				async function FilterAttachment(channeltosend) {
 					if (msg.author.bot) { return }
-					if (attEx == "webm" || attEx == "mp4" || attEx == "mov" || attEx == "gif") {
+					if (attEx === "webm" || attEx === "mp4" || attEx === "mov" || attEx === "gif") {
 						let EmbedToSend = await MakeVideoEmbed(snetAttachment, attachment, coolmessage, msg)
 						try {
 							await SilentModeSend(EmbedToSend, channeltosend, msg, "Video", snetAttachment)
 						} catch (error) {
 							console.error("Error trying to send in Silent Mode: ", error);
 						}
-					} else if (attEx == "png" || attEx == "jpeg" || attEx == "jpg" || attEx == "bmp") {
+					} else if (attEx === "png" || attEx === "jpeg" || attEx === "jpg" || attEx === "bmp") {
 						let EmbedToSend = await MakeImageEmbed(snetAttachment, attachment, coolmessage, msg)
 						try {
 							await SilentModeSend(EmbedToSend, channeltosend, msg, "Normal")
@@ -181,11 +174,11 @@ client.on("message", async msg => {
 						}
 					}
 				}
-				//Further Filtering, Prepare for Clusterfuck
+				//Further Filtering, Prepare for Clusters
 				if (msg.guild) {
-					if (custom == false) {
+					if (custom === false) {
 						MemeKeyWords.some(function (item) {
-							if (msg.channel.name.includes(item) || msg.channel.id == item) {
+							if (msg.channel.name.includes(item) || msg.channel.id === item) {
 								meme = true;
 								FilterAttachment(settings.memechannel, "Meme")
 								return true;
@@ -193,7 +186,7 @@ client.on("message", async msg => {
 						});
 						if (meme === false && custom === false) {
 							HentaiKeywords.some(function (item) {
-								if (msg.channel.name.includes(item) || msg.channel.id == item) {
+								if (msg.channel.name.includes(item) || msg.channel.id === item) {
 									hentai = true;
 									FilterAttachment(settings.hentaichannel, "Hentai")
 									return true;
@@ -201,18 +194,17 @@ client.on("message", async msg => {
 							});
 							if (hentai === false && meme === false) {
 								PeaceKeywords.some(function (item) {
-									if (msg.channel.name.includes(item) || msg.channel.id == item) {
+									if (msg.channel.name.includes(item) || msg.channel.id === item) {
 										peace = true;
 										FilterAttachment(undefined, settings.gaychannel, "Gay")
 										return true;
 									}
 								});
-								if (peace == false && hentai === false && meme === false) {
+								if (peace === false && hentai === false && meme === false) {
 									if (msg.channel.nsfw) {
-										nsfw = true;
-										FilterAttachment(settings.nsfwimageschannel, "NSFW")
+										await FilterAttachment(settings.nsfwimageschannel, "NSFW")
 									} else {
-										FilterAttachment(settings.imageschannel, "Image")
+										await FilterAttachment(settings.imageschannel, "Image")
 									}
 								}
 							}
@@ -269,12 +261,12 @@ client.on("message", async msg => {
 client.on("message", async msg => {
 	try {
 		if (settings.owo === true) {
-			let m = await msg.channel.messages.fetch({
+			await msg.channel.messages.fetch({
 					limit: 1
 				})
 				.then(async messages => {
 					messages.forEach(async m => {
-						if (m.author.id == msg.client.user.id) {
+						if (m.author.id === msg.client.user.id) {
 							m.edit(owo(m.content))
 						}
 					});
@@ -317,7 +309,7 @@ client.on("message", async msg => {
 })
 client.on("voiceStateUpdate",  (oldMember,NewMember) => {
 	if(!NewMember.channel || NewMember.channel && !NewMember.channel.guild.me.hasPermission("MOVE_MEMBERS","MUTE_MEMBERS")) return;
-	if  (NewMember.channel  &&  vc.IDS.find(a => a.UserID == NewMember.member.id) && vc.IDS.find(a => a.UserID == NewMember.member.id).UserID    &&  vc.IDS.find(g => g.guild) &&NewMember.channel && NewMember.channel.guild.id == vc.IDS.find(g => g.guild).guild){
+	if  (NewMember.channel  &&  vc.IDS.find(a => a.UserID === NewMember.member.id) && vc.IDS.find(a => a.UserID === NewMember.member.id).UserID    &&  vc.IDS.find(g => g.guild) &&NewMember.channel && NewMember.channel.guild.id === vc.IDS.find(g => g.guild).guild){
 		NewMember.kick()
 	}
 })
