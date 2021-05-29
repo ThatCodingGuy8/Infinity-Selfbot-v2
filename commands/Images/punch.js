@@ -6,13 +6,15 @@ module.exports = {
     usage: "punch <User>",
     async execute(message, args) {
         if (!args[0]) return message.channel.send("Specify a user!!");
-        const user = getMember(message, args[0]);
+        var user = message.mentions.users.first() || getMember(message, args[0]);
         if (!user) return message.channel.send("User not found!");
+        // fuck you synergy im gonna make a dumb code for your ass
+        if (user == getMember(message, args[0])) user = user.user;
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(`${message.author.username} has punched ${user.user.username}!`)
+            .setTitle(`${message.author.username} has punched ${user.username}!`)
             .setColor("RANDOM")
-            .setImage(`https://api.no-api-key.com/api/v2/punch?punch=${message.author.avatarURL({ format: 'png', size: 512 }).replace(/.gif/g, '.png')}&punched=${user.user.avatarURL({ format: 'png', size: 512 }).replace(/.gif/g, '.png')}`)
+            .setImage(`https://api.no-api-key.com/api/v2/punch?punch=${message.author.avatarURL({ format: 'jpg', size: 512 }).replace(/.gif/g, '.jpg')}&punched=${user.avatarURL({ format: 'jpg', size: 512 }).replace(/.gif/g, '.jpg')}`)
             .setFooter("Brutal!")
             .setTimestamp()
         return SilentModeSend(embed, message.channel.id, message, "Normal")
