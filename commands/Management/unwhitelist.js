@@ -27,6 +27,15 @@ module.exports = {
             }
             const index = await whitelist.whitelisted.indexOf(final)
             const user = await msg.client.users.cache.get(final)
+            if (user === undefined) {
+                let embed = new Discord.MessageEmbed();
+                embed.setTitle("Error")
+                embed.setColor("RED")
+                embed.setDescription("That user doesn't exist or isn't cached!")
+                embed.setFooter("Do not report this to the devs")
+                embed.setTimestamp()
+                return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+            }
             if (index == -1) {
                 let embed = new Discord.MessageEmbed();
                 embed.setTitle("Error")
