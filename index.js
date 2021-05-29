@@ -267,7 +267,7 @@ client.on("message", async msg => {
 				.then(async messages => {
 					messages.forEach(async m => {
 						if (m.author.id === msg.client.user.id) {
-							m.edit(owo(m.content))
+							await m.edit(owo(m.content))
 						}
 					});
 				})
