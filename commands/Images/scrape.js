@@ -43,7 +43,7 @@ module.exports = {
                 }
                 const messages = await channel.messages.fetch(options)
                 if (messages.array().length == 0) {
-                    continue;
+
                 } else {
                     out.push(...messages.array())
                     last_id = await messages.array()[messages.array().length - 1].id

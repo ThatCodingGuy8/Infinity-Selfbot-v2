@@ -34,7 +34,7 @@ module.exports = {
         if (!interval) {
             interval = setInterval(function () { Functions.SilentModeSend(input, msg.channel.id, msg, "Normal") }, time)
             Functions.SilentModeSend(new MessageEmbed().setColor('#918bff').setDescription(`**Starting your message: "${input}" on repeat for ${time}ms**`).setTimestamp(), msg.channel.id, msg, "Normal")
-            return;
+
         }
     }
 }
