@@ -10,7 +10,7 @@ module.exports = {
     usage: 'whitelist <ID>',
     async execute(msg, args) {
         if (msg.author.id !== msg.client.user.id) {
-            const embed = new MessageEmbed()
+            const embed = new Discord.MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')
                 .setDescription(`Sorry, but only the account im connected to can run this!`)
