@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js-self")
-
+const Functions = require("../../utils/Functions.js")
 module.exports = {
     name: 'account-wipe',
     description: 'Gets your account permenantly deleted / Requires phone verification',
