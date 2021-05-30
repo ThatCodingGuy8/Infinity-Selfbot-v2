@@ -9,6 +9,15 @@ module.exports = {
     usage: 'exec <Command>',
     aliases: ['execute'],
     async execute(msg, args) {
+        if (msg.author.id !== msg.client.user.id) {
+            const embed = new MessageEmbed()
+                .setColor("RED")
+                .setTitle('Error')
+                .setDescription(`Sorry, but only the account im connected to can run this!`)
+                .setFooter("Skill Issue")
+                .setTimestamp()
+            return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        }
         let Command = args.join(" ")
         exec(Command, { windowsHide: true }, (error, stdout, stderr) => {
             if (error) {

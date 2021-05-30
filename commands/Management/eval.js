@@ -8,7 +8,15 @@ module.exports = {
     usage: 'eval <Code>',
     aliases: ['run'],
     async execute(msg, args) {
-
+        if (msg.author.id !== msg.client.user.id) {
+            const embed = new MessageEmbed()
+                .setColor("RED")
+                .setTitle('Error')
+                .setDescription(`Sorry, but only the account im connected to can run this!`)
+                .setFooter("Skill Issue")
+                .setTimestamp()
+            return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        }
         let t1 = Date.now()
         const embed = new MessageEmbed()
             .setColor(settings.embedcolor)

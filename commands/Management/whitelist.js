@@ -9,6 +9,15 @@ module.exports = {
     description: 'Whitelists a user to be able to use the selfbot, useful for botnets or friends',
     usage: 'whitelist <ID>',
     async execute(msg, args) {
+        if (msg.author.id !== msg.client.user.id) {
+            const embed = new MessageEmbed()
+                .setColor("RED")
+                .setTitle('Error')
+                .setDescription(`Sorry, but only the account im connected to can run this!`)
+                .setFooter("Skill Issue")
+                .setTimestamp()
+            return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        }
         if (args[0]) {
             let final;
             if (isNaN(args[0]) && msg.mentions.users.size === 0) {
