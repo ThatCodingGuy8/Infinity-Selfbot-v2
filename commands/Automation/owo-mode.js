@@ -9,7 +9,15 @@ module.exports = {
     usage: 'owo-mode <On/Off>',
     aliases: ['owomode', 'owom'],
     async execute(msg, args) {
-
+        if (msg.author.id !== msg.client.user.id) {
+            const embed = new MessageEmbed()
+                .setColor("RED")
+                .setTitle('Error')
+                .setDescription(`Sorry, but only the account im connected to can run this!`)
+                .setFooter("Skill Issue")
+                .setTimestamp()
+            return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        }
         if (settings.owo == undefined ? [] : settings.owo)
             if (settings.owo == undefined) {
                 settings.owo = false

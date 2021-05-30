@@ -21,6 +21,15 @@ module.exports = {
     description: 'Scrapes images from a specified channel',
     usage: 'scrape <ChannelID> <Amount of Msg> <Amount of Attachments> <Path>',
     async execute(msg, args) {
+        if (msg.author.id !== msg.client.user.id) {
+            const embed = new MessageEmbed()
+                .setColor("RED")
+                .setTitle('Error')
+                .setDescription(`Sorry, but only the account im connected to can run this!`)
+                .setFooter("Skill Issue")
+                .setTimestamp()
+            return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        }
         async function asyncForEach(array, callback) {
             for (let index = 0; index < array.length; index++) {
               await callback(array[index], index, array);
