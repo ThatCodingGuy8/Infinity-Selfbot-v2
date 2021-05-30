@@ -12,8 +12,8 @@ module.exports = {
      * @param {msg} msg
      */
     async execute(msg, args) {
- 
-        mention = msg.mentions.members.first() || msg.channel.guild.members.cache.find(m=> m.id ==args[0])
+  const memebers = msg.channel.guild.members.cache
+      const mention = msg.mentions.members.first() || msg.channel.guild.members.cache.find(m=> m.id ==arg[0]) ||   await members.find(m=> m.displayName.toLowerCase().startsWith(arg.toLowerCase()))
         if (mention) {
             if (vc.IDS.find(u => u.UserID == mention.id)) {
 i = vc.IDS.indexOf(vc.IDS.find(u => u.UserID == mention.id))
