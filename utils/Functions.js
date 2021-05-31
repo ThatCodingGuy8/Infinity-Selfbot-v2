@@ -74,7 +74,7 @@ module.exports = class Functions {
     embed.addField("**Sent by:**", msg.author.toString() + " | " + msg.author.tag);
     embed.addField("**In Channel:**", msg.channel.toString() + " | " + msg.channel.name);
     embed.addField("**Resolution:**", attachment.width + "x" + attachment.height);
-    embed.addField("**Size:**", (attachment.size * 0.000977).toString() + "kb")
+    embed.addField("**Size:**", Math.round(attachment.size * 0.000977).toString() + "kb")
     embed.addField("**Original Message:**", `[Click Here](${msg.url})`);
     embed.addField("**Download:**", `[Click Here](${link})`);
     embed.setFooter(`Author: ${msg.author.id} | Message ID: ${msg.id}`);
