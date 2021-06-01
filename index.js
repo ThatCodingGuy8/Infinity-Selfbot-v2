@@ -44,13 +44,10 @@ const updater = new AutoGitUpdate(config);
  * * Filter Section
  */
 let MasterWhitelistTable = []; // Cool table
-let filterpath = "filters"
-
-readdir(filterpath, (err, files) => {
-    files.forEach(file => {
-        let object = require(file)
-        MasterWhitelistTable.push(object);
-    })
+const rawfiles = readdirSync('filters')
+rawfiles.forEach(file => {
+    let object = require('./filters/' + file)
+    MasterWhitelistTable.push(object);
 })
 
 const cmdsDir = readdirSync('commands')
