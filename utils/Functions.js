@@ -71,7 +71,7 @@ module.exports = class Functions {
     let amount;
     let kb = Math.round(attachment.size * 0.000977)
     if (kb >= 1024)  {
-      amount = Math.round(kb * 0.0009765625).toString() + "mb"
+      amount = (kb * 0.0009765625).toFixed(3).toString() + "mb"
     } else {
       amount = kb + "kb"
     }
