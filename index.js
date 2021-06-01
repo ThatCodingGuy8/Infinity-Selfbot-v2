@@ -151,7 +151,7 @@ client.on("message", async msg => {
                         if (channelid !== "Put ID Here" && isNaN(channelid) === false) {
                             Object.keys(filter).forEach(key => {
                                 if (isNaN(key) && key !== "destinationchannel") {
-                                    if (msg.channel.name === key && filter[key] === true) {
+                                    if (msg.channel.name.includes(key) && filter[key] === true) {
                                         EvaluateExtension(channelid)
                                     }
                                 } else if (isNaN(key) === false) {
