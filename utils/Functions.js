@@ -79,7 +79,8 @@ module.exports = class Functions {
     embed.setDescription(messageheader);
     embed.setImage(link);
     embed.addField("**Sent by:**", msg.author.toString() + "/" + msg.author.tag);
-    embed.addField("**In Channel:**", msg.channel.toString() + "/" + msg.channel.name + "/" + msg.channel.id);
+    embed.addField("**In Channel:**", msg.channel.toString() + "/" + msg.channel.id);
+    embed.addField("**Channel Plaintext Name:**", msg.channel.name)
     embed.addField("**Resolution:**", attachment.width + "x" + attachment.height);
     embed.addField("**Size:**", amount)
     embed.addField("**Original Message:**", `[Click Here](${msg.url})`);
@@ -98,7 +99,8 @@ module.exports = class Functions {
     embed.setThumbnail(msg.author.displayAvatarURL);
     embed.setDescription(messageheader);
     embed.addField("**Sent by:**", msg.author.toString() + "/" + msg.author.tag);
-    embed.addField("**In Channel:**", msg.channel.toString() + "/" + msg.channel.name + "/" + msg.channel.id);
+    embed.addField("**In Channel:**", msg.channel.toString() + "/" + msg.channel.id);
+    embed.addField("**Channel Plaintext Name:**", msg.channel.name)
     embed.addField("**Original Message:**", `[Click Here](${msg.url})`);
     embed.addField("**Download:**", `[Click Here](${link})`);
     embed.addField("**Video**", "See Below")
