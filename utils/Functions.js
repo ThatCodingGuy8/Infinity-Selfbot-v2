@@ -66,15 +66,22 @@ module.exports = class Functions {
     let embed = new Discord.MessageEmbed()
     embed.setColor("BLUE");
     embed.setTitle(
-      `Image Recieved | ${msg.guild.name || msg.channel.name}`
+      `Image Received | ${msg.guild.name || msg.channel.name}`
     );
+    let amount;
+    let kb = Math.round(attachment.size * 0.000977)
+    if (kb >= 1024)  {
+      amount = Math.round(kb * 0.0009765625).toString() + "mb"
+    } else {
+      amount = kb + "kb"
+    }
     embed.setThumbnail(msg.author.displayAvatarURL());
     embed.setDescription(messageheader);
     embed.setImage(link);
     embed.addField("**Sent by:**", msg.author.toString() + "/" + msg.author.tag);
-    embed.addField("**In Channel:**", msg.channel.toString() + "/" + msg.channel.name);
+    embed.addField("**In Channel:**", msg.channel.toString() + "/" + msg.channel.name + "/" + msg.channel.id);
     embed.addField("**Resolution:**", attachment.width + "x" + attachment.height);
-    embed.addField("**Size:**", Math.round(attachment.size * 0.000977).toString() + "kb")
+    embed.addField("**Size:**", amount)
     embed.addField("**Original Message:**", `[Click Here](${msg.url})`);
     embed.addField("**Download:**", `[Click Here](${link})`);
     embed.setFooter(`Author: ${msg.author.id} | Message ID: ${msg.id}`);
@@ -86,14 +93,14 @@ module.exports = class Functions {
     let embed = new Discord.MessageEmbed();
     embed.setColor("BLUE");
     embed.setTitle(
-      `Video Recieved | ${msg.guild.name || msg.channel.name}`
+      `Video Received | ${msg.guild.name || msg.channel.name}`
     );
     embed.setThumbnail(msg.author.displayAvatarURL);
     embed.setDescription(messageheader);
-    embed.addField("**Sent by:**", msg.author);
+    embed.addField("**Sent by:**", msg.author.toString() + "/" + msg.author.tag);
+    embed.addField("**In Channel:**", msg.channel.toString() + "/" + msg.channel.name + "/" + msg.channel.id);
     embed.addField("**Original Message:**", `[Click Here](${msg.url})`);
     embed.addField("**Download:**", `[Click Here](${link})`);
-    embed.addField("**In Channel:**", msg.channel.toString());
     embed.addField("**Video**", "See Below")
     embed.setFooter(`Author: ${msg.author.id} | Message ID: ${msg.id}`);
     embed.setTimestamp();
