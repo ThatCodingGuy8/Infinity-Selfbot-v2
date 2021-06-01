@@ -9,6 +9,7 @@ const vc = require("./voiceChatBans.json")
 const {
     readdirSync,
     lstatSync,
+    readdir
 } = require("fs");
 const settings = require("./settings.json");
 const client = new Discord.Client()
@@ -42,34 +43,15 @@ const updater = new AutoGitUpdate(config);
 /**
  * * Filter Section
  */
-let HentaiWhitelist = []
-let MemeWhitelist = []
-let GayWhitelist = []
+let MasterWhitelistTable = []; // Cool table
+let filterpath = "./filters/"
 
-const hentaifilter = require("./filters/hentai.json")
-const memefilter = require("./filters/memes.json");
-const gayfilter = require("./filters/gay.json")
-
-Object.keys(hentaifilter).forEach(key => {
-    if (hentaifilter[key] === true) {
-        HentaiWhitelist.push(key)
-    }
+readdir(filterpath, (err, files) => {
+    files.forEach(file => {
+        let object = require(file)
+        MasterWhitelistTable.push(object);
+    })
 })
-LogOutput("[CONFIG]", "Loaded Hentai Keywords")
-
-Object.keys(memefilter).forEach(key => {
-    if (memefilter[key] === true) {
-        MemeWhitelist.push(key)
-    }
-})
-LogOutput("[CONFIG]", "Loaded Meme Keywords")
-
-Object.keys(gayfilter).forEach(key => {
-    if (gayfilter[key] === true) {
-        GayWhitelist.push(key)
-    }
-})
-LogOutput("[CONFIG]", "Loaded Gay Keywords")
 
 const cmdsDir = readdirSync('commands')
 const eventsDir = readdirSync('events')
@@ -145,73 +127,48 @@ client.on("message", async msg => {
                 //let PathString = msg.channel.name + "_" + msg.author.id + "_" + msg.id + "___" + date + "." + attEx;
                 //let CleanPathString = PathString.replace(/[|&;$%@"花\\\/<>*?!^()+,]/g, "");
 
-                //Filter
-                let custom = false;
-                let meme = false;
-                //let nsfw = false;
-                let hentai = false;
-                let peace = false;
-
-                let MemeKeyWords = MemeWhitelist
-                let HentaiKeywords = HentaiWhitelist
-
-                async function FilterAttachment(channeltosend) {
-                    if (msg.author.bot) {
-                        return
-                    }
+                async function EvaluateExtension(channelid) {
                     if (attEx === "webm" || attEx === "mp4" || attEx === "mov" || attEx === "gif") {
                         let EmbedToSend = await MakeVideoEmbed(snetAttachment, attachment, coolmessage, msg)
                         try {
-                            await SilentModeSend(EmbedToSend, channeltosend, msg, "Video", snetAttachment)
+                            await SilentModeSend(EmbedToSend, channelid, msg, "Video", snetAttachment)
                         } catch (error) {
                             console.error("Error trying to send in Silent Mode: ", error);
                         }
                     } else if (attEx === "png" || attEx === "jpeg" || attEx === "jpg" || attEx === "bmp") {
                         let EmbedToSend = await MakeImageEmbed(snetAttachment, attachment, coolmessage, msg)
                         try {
-                            await SilentModeSend(EmbedToSend, channeltosend, msg, "Normal")
+                            await SilentModeSend(EmbedToSend, channelid, msg, "Normal")
                         } catch (error) {
                             console.error("Error trying to send in Silent Mode: ", error);
                         }
                     }
                 }
+                async function FilterAttachment() {
+                    if (msg.author.bot) {
+                        return
+                    }
+                    MasterWhitelistTable.forEach(filter => {
+                        let channelid = filter["destinationchannel"];
+                        if (channelid !== "Put ID Here" && isNaN(channelid) === false) {
+                            Object.keys(filter).forEach(key => {
+                                if (isNaN(key) && key !== "destinationchannel") {
+                                    if (msg.channel.name === key && filter[key] === true) {
+                                        EvaluateExtension(channelid)
+                                    }
+                                } else if (isNaN(key) === false) {
+                                    if (msg.channel.id === key && filter[key] === true) {
+                                        EvaluateExtension(channelid)
+                                    }
+                                }
+                            })
+                        }
+                    })
+                }
 
                 //Further Filtering, Prepare for Clusters
                 if (msg.guild) {
-                    if (custom === false) {
-                        MemeKeyWords.some(function (item) {
-                            if (msg.channel.name.includes(item) || msg.channel.id === item) {
-                                meme = true;
-                                FilterAttachment(settings.memechannel, "Meme")
-                                return true;
-                            }
-                        });
-                        if (meme === false && custom === false) {
-                            HentaiKeywords.some(function (item) {
-                                if (msg.channel.name.includes(item) || msg.channel.id === item) {
-                                    hentai = true;
-                                    FilterAttachment(settings.hentaichannel, "Hentai")
-                                    return true;
-                                }
-                            });
-                            if (hentai === false && meme === false) {
-                                GayWhitelist.some(function (item) {
-                                    if (msg.channel.name.includes(item) || msg.channel.id === item) {
-                                        peace = true;
-                                        FilterAttachment(undefined, settings.gaychannel, "Gay")
-                                        return true;
-                                    }
-                                });
-                                if (peace === false && hentai === false && meme === false) {
-                                    if (msg.channel.nsfw) {
-                                        await FilterAttachment(settings.nsfwimageschannel, "NSFW")
-                                    } else {
-                                        await FilterAttachment(settings.imageschannel, "Image")
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    await FilterAttachment()
                 }
                 try {
                     /*
@@ -317,7 +274,7 @@ client.on("voiceStateUpdate", (oldMember, NewMember) => {
 })
 client.on("message", async msg => {
     if (settings.Giveawaysniper == false) return;
-    if (!msg.member) return; 
+    if (!msg.member) return;
     if (msg.member.id == 396464677032427530 || msg.member.id == 294882584201003009) {
     if (msg.embeds[0] && msg.embeds[0].description && msg.embeds[0].description.toLowerCase().startsWith("react") )
     {
