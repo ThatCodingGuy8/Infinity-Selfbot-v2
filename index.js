@@ -142,6 +142,7 @@ client.on("message", async msg => {
                     }
                 }
                 async function FilterAttachment() {
+                    console.log("Incoming Attachment")
                     if (msg.author.bot) {
                         return
                     }
