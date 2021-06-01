@@ -44,7 +44,7 @@ const updater = new AutoGitUpdate(config);
  * * Filter Section
  */
 let MasterWhitelistTable = []; // Cool table
-let filterpath = "./filters/"
+let filterpath = "filters"
 
 readdir(filterpath, (err, files) => {
     files.forEach(file => {
