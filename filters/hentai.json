@@ -1,6 +1,7 @@
 {
     "destinationchannel":"Put ID Here",
     "filtername": "Hentai",
+    "downloadimages": false,
     "hentai":true,
     "paizuri":true,
     "ecchi":true,

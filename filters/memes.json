@@ -1,6 +1,7 @@
 {
     "destinationchannel":"Put ID Here",
     "filtername": "Memes",
+    "downloadimages": false,
     "meme":true,
     "shitpost":true
 }

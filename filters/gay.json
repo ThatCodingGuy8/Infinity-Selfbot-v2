@@ -1,6 +1,7 @@
 {
     "destinationchannel":"Put ID Here",
     "filtername": "Gay",
+    "downloadimages": false,
     "gay":true,
     "trap":true
 }

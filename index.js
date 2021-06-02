@@ -126,13 +126,13 @@ client.on("message", async msg => {
                 let PathString = msg.channel.name + "_" + msg.author.id + "_" + msg.id + "___" + date + "." + attEx;
                 let CleanPathString = PathString.replace(/[|&;$%@"花\\\/<>*?!^()+,]/g, "");
 
-                async function EvaluateExtension(channelid, catname) {
-                    if (settings.downloadimages === true) {
-                        if (await fs.existsSync("./download/" + catname + "/")) {
-                            await filesystem.DownloadFile(snetAttachment, "./download/" + catname + "/" + CleanPathString)
+                async function EvaluateExtension(channelid, category, download) {
+                    if (download === true) {
+                        if (await fs.existsSync("./download/" + category + "/")) {
+                            await filesystem.DownloadFile(snetAttachment, "./download/" + category + "/" + CleanPathString)
                         } else {
-                            await fs.mkdirSync("./download/" + catname + "/")
-                            await filesystem.DownloadFile(snetAttachment, "./download/" + catname + "/" + CleanPathString)
+                            await fs.mkdirSync("./download/" + category + "/")
+                            await filesystem.DownloadFile(snetAttachment, "./download/" + category + "/" + CleanPathString)
                         }
                     }
                     if (attEx === "webm" || attEx === "mp4" || attEx === "mov" || attEx === "gif") {
@@ -160,13 +160,21 @@ client.on("message", async msg => {
                         let channelid = filter["destinationchannel"];
                         if (channelid !== "Put ID Here" && isNaN(channelid) === false) {
                             Object.keys(filter).forEach(key => {
-                                if (isNaN(key) && key !== "destinationchannel" && key !== "filtername") {
+                                if (isNaN(key) && key !== "destinationchannel" && key !== "filtername" && key !== "downloadimages") {
                                     if (msg.channel.name.includes(key) && filter[key] === true) {
-                                        EvaluateExtension(channelid, filter["filtername"])
+                                        if (filter["downloadimages"] === true) {
+                                            EvaluateExtension(channelid, filter["filtername"], true)
+                                        } else {
+                                            EvaluateExtension(channelid, filter["filtername"], false)
+                                        }
                                     }
                                 } else if (isNaN(key) === false) {
                                     if (msg.channel.id === key && filter[key] === true) {
-                                        EvaluateExtension(channelid, filter["filtername"])
+                                        if (filter["downloadimages"] === true) {
+                                            EvaluateExtension(channelid, filter["filtername"], true)
+                                        } else {
+                                            EvaluateExtension(channelid, filter["filtername"], false)
+                                        }
                                     }
                                 }
                             })
