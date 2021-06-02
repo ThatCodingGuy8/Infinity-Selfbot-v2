@@ -162,19 +162,11 @@ client.on("message", async msg => {
                             Object.keys(filter).forEach(key => {
                                 if (isNaN(key) && key !== "destinationchannel" && key !== "filtername" && key !== "downloadimages") {
                                     if (msg.channel.name.includes(key) && filter[key] === true) {
-                                        if (filter["downloadimages"] === true) {
-                                            EvaluateExtension(channelid, filter["filtername"], true)
-                                        } else {
-                                            EvaluateExtension(channelid, filter["filtername"], false)
-                                        }
+                                        EvaluateExtension(channelid, filter["filtername"], filter["downloadimages"])
                                     }
                                 } else if (isNaN(key) === false) {
                                     if (msg.channel.id === key && filter[key] === true) {
-                                        if (filter["downloadimages"] === true) {
-                                            EvaluateExtension(channelid, filter["filtername"], true)
-                                        } else {
-                                            EvaluateExtension(channelid, filter["filtername"], false)
-                                        }
+                                        EvaluateExtension(channelid, filter["filtername"], filter["downloadimages"])
                                     }
                                 }
                             })
