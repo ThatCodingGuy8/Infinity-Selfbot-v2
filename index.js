@@ -127,6 +127,14 @@ client.on("message", async msg => {
                 let CleanPathString = PathString.replace(/[|&;$%@"花\\\/<>*?!^()+,]/g, "");
 
                 async function EvaluateExtension(channelid, catname) {
+                    if (settings.downloadimages === true) {
+                        if (await fs.existsSync("./download/" + catname + "/")) {
+                            await filesystem.DownloadFile(snetAttachment, "./download/" + catname + "/" + CleanPathString)
+                        } else {
+                            await fs.mkdirSync("./download/" + catname + "/")
+                            await filesystem.DownloadFile(snetAttachment, "./download/" + catname + "/" + CleanPathString)
+                        }
+                    }
                     if (attEx === "webm" || attEx === "mp4" || attEx === "mov" || attEx === "gif") {
                         let EmbedToSend = await MakeVideoEmbed(snetAttachment, attachment, coolmessage, msg)
                         try {
@@ -140,14 +148,6 @@ client.on("message", async msg => {
                             await SilentModeSend(EmbedToSend, channelid, msg, "Normal")
                         } catch (error) {
                             console.error("Error trying to send in Silent Mode: ", error);
-                        }
-                    }
-                    if (settings.downloadimages === true) {
-                        if (await fs.existsSync("./download/" + catname + "/")) {
-                            await filesystem.DownloadFile(snetAttachment, "./download/" + catname + "/" + CleanPathString)
-                        } else {
-                            await fs.mkdirSync("./download/" + catname + "/")
-                            await filesystem.DownloadFile(snetAttachment, "./download/" + catname + "/" + CleanPathString)
                         }
                     }
                 }
