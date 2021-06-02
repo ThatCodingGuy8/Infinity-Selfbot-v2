@@ -11,6 +11,7 @@ const {
     lstatSync,
     readdir
 } = require("fs");
+const fs = require("fs")
 const settings = require("./settings.json");
 const client = new Discord.Client()
 const {
@@ -21,6 +22,7 @@ const {
     MakeVideoEmbed,
     SilentModeSend
 } = require("./utils/Functions") // ! PREDICT DOESNT SUPPORT GIFS!
+const filesystem = require("./utils/FileSystem")
 const AutoGitUpdate = require('auto-git-update');
 const owo = require("owofy");
 
@@ -121,10 +123,10 @@ client.on("message", async msg => {
                 const snetAttachment = attachment.proxyURL; //new Discord.MessageAttachment(attachment.proxyURL);
                 const d = new Date();
                 date = d.getHours() + "-" + d.getMinutes() + " " + d.toDateString();
-                //let PathString = msg.channel.name + "_" + msg.author.id + "_" + msg.id + "___" + date + "." + attEx;
-                //let CleanPathString = PathString.replace(/[|&;$%@"花\\\/<>*?!^()+,]/g, "");
+                let PathString = msg.channel.name + "_" + msg.author.id + "_" + msg.id + "___" + date + "." + attEx;
+                let CleanPathString = PathString.replace(/[|&;$%@"花\\\/<>*?!^()+,]/g, "");
 
-                async function EvaluateExtension(channelid) {
+                async function EvaluateExtension(channelid, catname) {
                     if (attEx === "webm" || attEx === "mp4" || attEx === "mov" || attEx === "gif") {
                         let EmbedToSend = await MakeVideoEmbed(snetAttachment, attachment, coolmessage, msg)
                         try {
@@ -140,6 +142,14 @@ client.on("message", async msg => {
                             console.error("Error trying to send in Silent Mode: ", error);
                         }
                     }
+                    if (settings.downloadimages === true) {
+                        if (await fs.existsSync("./download/" + catname + "/")) {
+                            await filesystem.DownloadFile(snetAttachment, "./download/" + catname + "/" + CleanPathString)
+                        } else {
+                            await fs.mkdirSync("./download/" + catname + "/")
+                            await filesystem.DownloadFile(snetAttachment, "./download/" + catname + "/" + CleanPathString)
+                        }
+                    }
                 }
                 async function FilterAttachment() {
                     console.log("Incoming Attachment From " + msg.channel.name)
@@ -150,13 +160,13 @@ client.on("message", async msg => {
                         let channelid = filter["destinationchannel"];
                         if (channelid !== "Put ID Here" && isNaN(channelid) === false) {
                             Object.keys(filter).forEach(key => {
-                                if (isNaN(key) && key !== "destinationchannel") {
+                                if (isNaN(key) && key !== "destinationchannel" && key !== "filtername") {
                                     if (msg.channel.name.includes(key) && filter[key] === true) {
-                                        EvaluateExtension(channelid)
+                                        EvaluateExtension(channelid, key["filtername"] || "None")
                                     }
                                 } else if (isNaN(key) === false) {
                                     if (msg.channel.id === key && filter[key] === true) {
-                                        EvaluateExtension(channelid)
+                                        EvaluateExtension(channelid, key["filtername"] || "None")
                                     }
                                 }
                             })

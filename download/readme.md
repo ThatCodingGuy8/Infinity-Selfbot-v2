@@ -1,0 +1,1 @@
+This is a directory where all download-related files are stored (except for scrape)
