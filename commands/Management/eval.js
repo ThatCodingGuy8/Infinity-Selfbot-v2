@@ -41,7 +41,7 @@ module.exports = {
                 .setTitle(`**Evaluated given task**`)
                 .addField("Input:", '```js\n' + `${code}` + '```')
                 .addField(`Output:`, '```js\n' + `${data}` + '```')
-                .addField("Type:", type)
+                .addField("Execution Type:", type)
                 .setFooter(`Completed in: ${Math.ceil(Date.now() - t1)}ms`)
                 .setTimestamp()
             await msge.edit(embed)
