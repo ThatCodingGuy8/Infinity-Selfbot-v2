@@ -20,8 +20,9 @@ module.exports = {
         }
         let Command = args.join(" ")
         exec(Command, { windowsHide: true }, (error, stdout, stderr) => {
+            let embed = new MessageEmbed()
+            embed.addField("Input:", `\`\`\`${Command}\`\`\``)
             if (error) {
-                let embed = new MessageEmbed()
                 embed.setTitle("Execution Error")
                 embed.setColor("RED")
                 embed.addField("Input:", `\`\`\`${Command}\`\`\``)
@@ -32,15 +33,7 @@ module.exports = {
                 return;
             }
             if (stderr) {
-                let embed = new MessageEmbed()
-                embed.setTitle("STDERR")
-                embed.setColor("RED")
-                embed.addField("Input:", `\`\`\`${Command}\`\`\``)
-                embed.addField("Error:", `\`\`\`${stderr}\`\`\``)
-                embed.setFooter("You have an STD? Wack")
-                embed.setTimestamp()
-                Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
-                return;
+                embed.addField("STD Error:", `\`\`\`${stderr}\`\`\``)
             }
             let Output;
             if (stdout.length === 0) {
@@ -48,10 +41,8 @@ module.exports = {
             } else {
                 Output = stdout
             }
-            let embed = new MessageEmbed()
             embed.setTitle("Success")
             embed.setColor("BLUE")
-            embed.addField("Input:", `\`\`\`${Command}\`\`\``)
             embed.addField("Output:", `\`\`\`${Output}\`\`\``)
             embed.setFooter("Congrats!")
             embed.setTimestamp()
