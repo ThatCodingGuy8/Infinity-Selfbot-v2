@@ -37,8 +37,9 @@ module.exports = {
                 type = "Sync"
             }
             const embed = new MessageEmbed()
-                .setColor('GREEN')
+                .setColor('BLUE')
                 .setTitle(`**Evaluated given task**`)
+                .addField("Input:", '```js\n' + `${code}` + '```')
                 .addField(`Output:`, '```js\n' + `${data}` + '```')
                 .addField("Type:", type)
                 .setFooter(`Completed in: ${Math.ceil(Date.now() - t1)}ms`)
