@@ -21,14 +21,26 @@ module.exports = {
         const embed = new MessageEmbed()
             .setColor(settings.embedcolor)
             .setTitle('Evaluating...')
-            .setDescription(`**This could take a second...**`)
+            .setDescription(`**Please wait...**`)
+            .setFooter("Its happening!")
+            .setTimestamp()
         const msge = await msg.channel.send(embed);
         try {
-            const data = eval(args.join(' ').replace(/```/g, ''));
+            const code = args.join(' ').replace(/```/g, '')
+            let data = "";
+            let type = "";
+            if (code.includes("await")) {
+                data = eval(`async function DoThings() { ${code} } DoThings()`)
+                type = "Async"
+            } else {
+                data = eval(code)
+                type = "Sync"
+            }
             const embed = new MessageEmbed()
                 .setColor('GREEN')
                 .setTitle(`**Evaluated given task**`)
                 .addField(`Output:`, '```js\n' + `${data}` + '```')
+                .addField("Type:", type)
                 .setFooter(`Completed in: ${Math.ceil(Date.now() - t1)}ms`)
                 .setTimestamp()
             await msge.edit(embed)
