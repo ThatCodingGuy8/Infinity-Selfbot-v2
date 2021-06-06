@@ -25,7 +25,6 @@ module.exports = {
             if (error) {
                 embed.setTitle("Execution Error")
                 embed.setColor("RED")
-                embed.addField("Input:", `\`\`\`${Command}\`\`\``)
                 embed.addField("Error:", `\`\`\`${error.message}\`\`\``)
                 embed.setFooter("Lol ur bad")
                 embed.setTimestamp()
