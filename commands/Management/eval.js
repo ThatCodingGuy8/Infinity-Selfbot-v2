@@ -30,10 +30,10 @@ module.exports = {
             let data = "";
             let type = "";
             if (code.includes("await")) {
-                data = eval(`async function DoThings() { ${code} } DoThings()`)
+                data = await new Promise((resolve, rej) => resolve(eval(`async function DoThings() { ${code} } DoThings()`)));
                 type = "Async"
             } else {
-                data = eval(code)
+                data = await new Promise((resolve, rej) => resolve(eval(code)));
                 type = "Sync"
             }
             const embed = new MessageEmbed()
