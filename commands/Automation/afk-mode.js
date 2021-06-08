@@ -9,7 +9,7 @@ module.exports = {
     usage: 'afk-mode <Text/Off>',
     aliases: ['afkmode', 'afk'],
     async execute(msg, args) {
-        if (Functions.IsAllowed(msg.author.id) === true) {
+        if (Functions.IsAllowed(msg.author.id) === false) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')

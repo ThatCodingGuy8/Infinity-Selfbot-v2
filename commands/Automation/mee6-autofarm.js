@@ -11,7 +11,7 @@ module.exports = {
     usage: 'autofarm-mee6',
     aliases: ['afmee6', 'afm6'],
     async execute(msg, args) {
-        if (Functions.IsAllowed(msg.author.id) === true) {
+        if (Functions.IsAllowed(msg.author.id) === false) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')

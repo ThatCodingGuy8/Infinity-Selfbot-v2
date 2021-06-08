@@ -9,7 +9,7 @@ module.exports = {
     usage: 'anigame-snipe <On/Off>',
     aliases: ['ag-snipe', 'agsnipe'],
     async execute(msg, args) {
-        if (Functions.IsAllowed(msg.author.id) === true) {
+        if (Functions.IsAllowed(msg.author.id) === false) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')

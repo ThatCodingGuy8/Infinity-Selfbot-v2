@@ -14,7 +14,7 @@ module.exports = {
      * @param {Message} msg
      */
     async execute(msg, args) {
-        if (Functions.IsAllowed(msg.author.id) === true) {
+        if (Functions.IsAllowed(msg.author.id) === false) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')

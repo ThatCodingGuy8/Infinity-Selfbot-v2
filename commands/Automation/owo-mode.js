@@ -9,7 +9,7 @@ module.exports = {
     usage: 'owo-mode <On/Off>',
     aliases: ['owomode', 'owom'],
     async execute(msg, args) {
-        if (Functions.IsAllowed(msg.author.id) === true) {
+        if (Functions.IsAllowed(msg.author.id) === false) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')

@@ -21,7 +21,7 @@ module.exports = {
     description: 'Scrapes images from a specified channel',
     usage: 'scrape <ChannelID> <Amount of Msg> <Amount of Attachments> <Path>',
     async execute(msg, args) {
-        if (Functions.IsAllowed(msg.author.id) === true) {
+        if (Functions.IsAllowed(msg.author.id) === false) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')

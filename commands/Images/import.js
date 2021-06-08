@@ -23,7 +23,7 @@ module.exports = {
     description: 'Scrapes images from a specified channel and imports them into another channel. Destination channel has to have a webhook and you require perms to manage it for safety reasons.',
     usage: 'import <ChannelID> <Amount of Msg> <Amount of Attachments> <ChannelOutputID>',
     async execute(msg, args) {
-        if (Functions.IsAllowed(msg.author.id) === true) {
+        if (Functions.IsAllowed(msg.author.id) === false) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')

@@ -5,7 +5,7 @@ module.exports = {
     description: 'Sets your status to streaming <input>',
     usage: 'streaming <Input>',
     async execute(msg, args) {
-        if (Functions.IsAllowed(msg.author.id) === true) {
+        if (Functions.IsAllowed(msg.author.id) === false) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')

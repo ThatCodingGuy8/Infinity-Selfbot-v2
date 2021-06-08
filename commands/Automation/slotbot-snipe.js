@@ -9,7 +9,7 @@ module.exports = {
     usage: 'slotbot-snipe <On/Off>',
     aliases: ['sb-snipe', 'sbsnipe'],
     async execute(msg, args) {
-        if (Functions.IsAllowed(msg.author.id) === true) {
+        if (Functions.IsAllowed(msg.author.id) === false) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')
