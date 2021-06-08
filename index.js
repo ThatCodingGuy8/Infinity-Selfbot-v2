@@ -9,7 +9,6 @@ const vc = require("./voiceChatBans.json")
 const {
     readdirSync,
     lstatSync,
-    readdir
 } = require("fs");
 const fs = require("fs")
 const settings = require("./settings.json");
@@ -129,20 +128,36 @@ client.on("message", async msg => {
                 async function EvaluateExtension(channelid, category, download) {
                     if (download === true) {
                         if (await fs.existsSync("./download/" + category + "/")) {
-                            await filesystem.DownloadFile(snetAttachment, "./download/" + category + "/" + CleanPathString)
+                            if (await fs.existsSync("./download/" + category + "/Images") === false) {
+                                await fs.mkdirSync("./download/" + category + "/Images")
+                            }
+                            if (await fs.existsSync("./download/" + category + "/Videos") === false) {
+                                await fs.mkdirSync("./download/" + category + "/Videos")
+                            }
+                            if (attEx === "webm" || attEx === "mp4" || attEx === "mov" || attEx === "gif") {
+                                await filesystem.DownloadFile(snetAttachment, "./download/" + category + "/Videos/" + CleanPathString)
+                            } else if (attEx === "png" || attEx === "jpeg" || attEx === "jpg" || attEx === "bmp") {
+                                await filesystem.DownloadFile(snetAttachment, "./download/" + category + "/Images/" + CleanPathString)
+                            }
                         } else {
                             await fs.mkdirSync("./download/" + category + "/")
-                            await filesystem.DownloadFile(snetAttachment, "./download/" + category + "/" + CleanPathString)
+                            await fs.mkdirSync("./download/" + category + "/Images")
+                            await fs.mkdirSync("./download/" + category + "/Videos")
+                            if (attEx === "webm" || attEx === "mp4" || attEx === "mov" || attEx === "gif") {
+                                await filesystem.DownloadFile(snetAttachment, "./download/" + category + "/Videos/" + CleanPathString)
+                            } else if (attEx === "png" || attEx === "jpeg" || attEx === "jpg" || attEx === "bmp") {
+                                await filesystem.DownloadFile(snetAttachment, "./download/" + category + "/Images/" + CleanPathString)
+                            }
                         }
                     }
-                    if (attEx === "webm" || attEx === "mp4" || attEx === "mov" || attEx === "gif") {
+                    if (attEx === "webm" || attEx === "mp4" || attEx === "mov") {
                         let EmbedToSend = await MakeVideoEmbed(snetAttachment, attachment, coolmessage, msg)
                         try {
                             await SilentModeSend(EmbedToSend, channelid, msg, "Video", snetAttachment)
                         } catch (error) {
                             console.error("Error trying to send in Silent Mode: ", error);
                         }
-                    } else if (attEx === "png" || attEx === "jpeg" || attEx === "jpg" || attEx === "bmp") {
+                    } else if (attEx === "png" || attEx === "jpeg" || attEx === "jpg" || attEx === "bmp" || attEx === "gif") {
                         let EmbedToSend = await MakeImageEmbed(snetAttachment, attachment, coolmessage, msg)
                         try {
                             await SilentModeSend(EmbedToSend, channelid, msg, "Normal")
@@ -151,6 +166,7 @@ client.on("message", async msg => {
                         }
                     }
                 }
+
                 async function FilterAttachment() {
                     console.log("Incoming Attachment From " + msg.channel.name)
                     if (msg.author.bot) {
@@ -284,11 +300,14 @@ client.on("message", async msg => {
     if (settings.Giveawaysniper == false) return;
     if (!msg.member) return;
     if (msg.member.id == 396464677032427530 || msg.member.id == 294882584201003009) {
-    if (msg.embeds[0] && msg.embeds[0].description && msg.embeds[0].description.toLowerCase().startsWith("react") )
-    {
- ; setTimeout(() => {
-    msg.react("🎉")
- }, (settings.GiveawaySniperDelay *1000)); }}})
+        if (msg.embeds[0] && msg.embeds[0].description && msg.embeds[0].description.toLowerCase().startsWith("react")) {
+            setTimeout(() => {
+                msg.react("🎉")
+            }, (settings.GiveawaySniperDelay * 1000));
+        }
+    }
+})
+
 async function Start() {
     await LogOutput("[UPDATER]", "Checking for updates...")
     await updater.autoUpdate();
