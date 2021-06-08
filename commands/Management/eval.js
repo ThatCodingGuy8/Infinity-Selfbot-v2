@@ -40,7 +40,7 @@ module.exports = {
                 .setColor('BLUE')
                 .setTitle(`**Evaluated given task**`)
                 .addField("Input:", '```js\n' + `${code}` + '```')
-                .addField(`Output:`, '```js\n' + `${data}` + '```')
+                .addField(`Output:`, '```js\n' + `${require("util").inspect(data, { depth: 0})}` + '```')
                 .addField("Execution Type:", type)
                 .setFooter(`Completed in: ${Math.ceil(Date.now() - t1)}ms`)
                 .setTimestamp()
