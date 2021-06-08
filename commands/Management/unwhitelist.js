@@ -9,12 +9,12 @@ module.exports = {
     description: 'Unwhitelists a user',
     usage: 'unwhitelist <ID>',
     async execute(msg, args) {
-        if (msg.author.id !== msg.client.user.id) {
+        if (Functions.IsAllowed(msg.author.id) === true) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')
-                .setDescription(`Sorry, but only the account im connected to can run this!`)
-                .setFooter("Skill Issue")
+                .setDescription(`Sorry, but you don't have permission to use this!`)
+                .setFooter("Skill Issue Lol!")
                 .setTimestamp()
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }
@@ -61,7 +61,7 @@ module.exports = {
                 await embed.setTitle("Success")
                 await embed.setColor("BLUE")
                 await embed.setDescription("Successfully unwhitelisted " + user.tag)
-                await embed.setFooter("This means access to all commands!")
+                await embed.setFooter("Access has been removed")
                 await embed.setTimestamp()
                 return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
             }

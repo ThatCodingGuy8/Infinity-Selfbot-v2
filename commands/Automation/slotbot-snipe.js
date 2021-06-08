@@ -9,12 +9,12 @@ module.exports = {
     usage: 'slotbot-snipe <On/Off>',
     aliases: ['sb-snipe', 'sbsnipe'],
     async execute(msg, args) {
-        if (msg.author.id !== msg.client.user.id) {
+        if (Functions.IsAllowed(msg.author.id) === true) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')
-                .setDescription(`Sorry, but only the account im connected to can run this!`)
-                .setFooter("Skill Issue")
+                .setDescription(`Sorry, but you don't have permission to use this!`)
+                .setFooter("Skill Issue Lol!")
                 .setTimestamp()
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }

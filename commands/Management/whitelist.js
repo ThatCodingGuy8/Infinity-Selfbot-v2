@@ -9,12 +9,12 @@ module.exports = {
     description: 'Whitelists a user to be able to use the selfbot, useful for botnets or friends',
     usage: 'whitelist <ID>',
     async execute(msg, args) {
-        if (msg.author.id !== msg.client.user.id) {
-            const embed = new Discord.MessageEmbed()
+        if (Functions.IsAllowed(msg.author.id) === true) {
+            const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')
-                .setDescription(`Sorry, but only the account im connected to can run this!`)
-                .setFooter("Skill Issue")
+                .setDescription(`Sorry, but you don't have permission to use this!`)
+                .setFooter("Skill Issue Lol!")
                 .setTimestamp()
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }
@@ -50,7 +50,7 @@ module.exports = {
             embed.setTitle("Success")
             embed.setColor("BLUE")
             embed.setDescription("Successfully whitelisted " + user.tag + "!")
-            embed.setFooter("Ez gottem")
+            embed.setFooter("This gives access to the bot!")
             embed.setTimestamp()
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         } else {

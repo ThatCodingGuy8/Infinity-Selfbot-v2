@@ -10,6 +10,7 @@ async function SendToWebhook(content, channelid, msg) {
 
   await webhook.send(content);
 }
+const People = require("sudoers.json")
 
 async function SendVideoToWebhook(content, channelid, msg, snetAttachment) {
   let channel = await msg.client.channels.cache.get(channelid)
@@ -55,6 +56,14 @@ module.exports = class Functions {
   }
   static LogOutput(title, text) {
     console.log(title + ": " + text)
+  }
+
+  static IsAllowed(id) {
+    if (People.Sudos.includes(id)) {
+      return false
+    } else {
+      return true
+    }
   }
   static async asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {

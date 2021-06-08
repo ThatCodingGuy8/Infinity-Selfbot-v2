@@ -23,12 +23,12 @@ module.exports = {
     description: 'Scrapes images from a specified channel and imports them into another channel. Destination channel has to have a webhook and you require perms to manage it for safety reasons.',
     usage: 'import <ChannelID> <Amount of Msg> <Amount of Attachments> <ChannelOutputID>',
     async execute(msg, args) {
-        if (msg.author.id !== msg.client.user.id) {
+        if (Functions.IsAllowed(msg.author.id) === true) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')
-                .setDescription(`Sorry, but only the account im connected to can run this!`)
-                .setFooter("Skill Issue")
+                .setDescription(`Sorry, but you don't have permission to use this!`)
+                .setFooter("Skill Issue Lol!")
                 .setTimestamp()
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }

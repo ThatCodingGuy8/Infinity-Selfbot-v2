@@ -9,7 +9,7 @@ module.exports = {
     usage: 'exec <Command>',
     aliases: ['execute'],
     async execute(msg, args) {
-        if (msg.author.id !== msg.client.user.id) {
+        if (Functions.IsAllowed(msg.author.id) === true) {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setTitle('Error')
