@@ -50,15 +50,15 @@ module.exports = class Functions {
 
     static DebugLog(type, message) {
       if (type === "error") {
-        console.log(colors.red(`[ERROR]: ${colors.gray(message)}`))
+        console.log(colors.red(`[ERROR]: ${colors.blue.dim(message)}`))
         return true;
       }
       if (type === "warn") {
-        console.log(colors.yellow(`[WARN]: ${colors.gray(message)}`))
+        console.log(colors.yellow(`[WARN]: ${colors.blue.dim(message)}`))
         return true;
       }
       if (type === "info") {
-        console.log(colors.cyan(`[INFO]: ${colors.gray(message)}`))
+        console.log(colors.cyan(`[INFO]: ${colors.blue.dim(message)}`))
         return true;
       }
     }
