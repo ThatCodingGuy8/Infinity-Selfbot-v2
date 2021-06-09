@@ -256,7 +256,7 @@ client.on("voiceStateUpdate", (oldMember, NewMember) => {
     }
 })
 client.on("message", async msg => {
-    if (settings.Giveawaysniper == false) return;
+    if (settings.Giveawaysniper === false) return;
     if (!msg.member) return;
     if (msg.member.id == 396464677032427530 || msg.member.id == 294882584201003009) {
         if (msg.embeds[0] && msg.embeds[0].description && msg.embeds[0].description.toLowerCase().startsWith("react")) {
@@ -268,9 +268,9 @@ client.on("message", async msg => {
 })
 
 async function Start() {
-    await LogOutput("[UPDATER]", "Checking for updates...")
+    await DebugLog("info", "Checking for updates...")
     await updater.autoUpdate();
-    await LogOutput("[CLIENT]", "Logging in...")
+    await DebugLog("info", "Logging in...")
     await client.login(settings.token)
 }
 
