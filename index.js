@@ -19,7 +19,8 @@ const {
     asyncForEach,
     MakeImageEmbed,
     MakeVideoEmbed,
-    SilentModeSend
+    SilentModeSend,
+    DebugLog
 } = require("./utils/Functions") // ! PREDICT DOESNT SUPPORT GIFS!
 const filesystem = require("./utils/FileSystem")
 const AutoGitUpdate = require('auto-git-update');
@@ -155,20 +156,20 @@ client.on("message", async msg => {
                         try {
                             await SilentModeSend(EmbedToSend, channelid, msg, "Video", snetAttachment)
                         } catch (error) {
-                            console.error("Error trying to send in Silent Mode: ", error);
+                            DebugLog("error", `Silent Mode - ${error}`);
                         }
                     } else if (attEx === "png" || attEx === "jpeg" || attEx === "jpg" || attEx === "bmp" || attEx === "gif") {
                         let EmbedToSend = await MakeImageEmbed(snetAttachment, attachment, coolmessage, msg)
                         try {
                             await SilentModeSend(EmbedToSend, channelid, msg, "Normal")
                         } catch (error) {
-                            console.error("Error trying to send in Silent Mode: ", error);
+                            DebugLog("error", `Silent Mode - ${error}`);
                         }
                     }
                 }
 
                 async function FilterAttachment() {
-                    console.log("Incoming Attachment From " + msg.channel.name)
+                    DebugLog("info", "Incoming Attachment From " + msg.channel.name + " In Guild " + msg.guild.name)
                     if (msg.author.bot) {
                         return
                     }
@@ -194,52 +195,10 @@ client.on("message", async msg => {
                 if (msg.guild) {
                     await FilterAttachment()
                 }
-                try {
-                    /*
-                              Downloading Segment
-
-                              This can cause issues if people post bad things so be cautious
-                              if (msg.author.bot == false) { // Download if not a bot
-                                  if (normal) {
-                                      download(snetAttachment, "D:\\DiscordLogs\\Normal\\" + CleanPathString, () => {
-                                          console.log('✅ Logged Image To Normal Folder!')
-                                      })
-                                  }else if (hentai) {
-                                      if (video) {
-                                          download(snetAttachment, "D:\\DiscordLogs\\AnimeNSFWVideo\\" + CleanPathString, () => {
-                                              console.log('✅ Logged Image To Anime NSFW Video Folder!')
-                                          })
-                                      } else {
-                                          download(snetAttachment, "D:\\DiscordLogs\\AnimeNSFW\\" + CleanPathString, () => {
-                                              console.log('✅ Logged Image To Anime NSFW Folder!')
-                                          })
-                                      }
-                                  }else if (meme) {
-                                      download(snetAttachment, "D:\\DiscordLogs\\Memes\\" + CleanPathString, () => {
-                                          console.log('✅ Logged Image To Memes Folder!')
-                                      })
-                                  }else if (nsfw) {
-                                      if (video) {
-                                          download(snetAttachment, "D:\\DiscordLogs\\NSFWVideo\\" + CleanPathString, () => {
-                                              console.log('✅ Logged Image To NSFW Videos Folder!')
-                                          })
-                                      } else {
-                                          download(snetAttachment, "D:\\DiscordLogs\\NSFW\\" + CleanPathString, () => {
-                                              console.log('✅ Logged Image To NSFW Folder!')
-                                          })
-                                      }
-                                  }
-                              }
-                              video = false;
-                              */
-                } catch (error) {
-                    console.error("Error trying to download: ", error);
-                }
             });
         };
         await ProcessAttachments();
     }
-    // await logchan.send(`In guild \`\`${msg.guild.name}\`\` in channel ${msg.channel.toString()} by user ${msg.author.toString()}:\n` + links)
 })
 client.on("message", async msg => {
     try {
