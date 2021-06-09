@@ -94,7 +94,6 @@ module.exports = class Functions {
     }
 
     static MakeImageEmbed(link, attachment, messageheader, msg) {
-        console.log(colors.green("[+] New Image Logged"))
         let embed = new Discord.MessageEmbed()
         embed.setColor("BLUE");
         embed.setTitle(
@@ -123,7 +122,6 @@ module.exports = class Functions {
     }
 
     static MakeVideoEmbed(link, attachment, messageheader, msg) {
-        console.log(colors.green("[+] New Video Logged"))
         let embed = new Discord.MessageEmbed();
         embed.setColor("BLUE");
         embed.setTitle(
