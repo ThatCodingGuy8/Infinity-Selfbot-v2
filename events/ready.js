@@ -1,4 +1,6 @@
 const figlet = require("figlet");
+const Functions = require("../utils/Functions")
+const colors = require("colors")
 
 module.exports = async (client) => {
 
@@ -8,7 +10,7 @@ module.exports = async (client) => {
         if (err) {
             return;
         }
-        console.log(ascii)
-        await console.log(`${client.user.tag} Logged In, Have fun using Infinity!`)
+        console.log(colors.blue.bold(ascii))
+        await Functions.DebugLog("info", `Client logged into account ${client.user.tag}`)
     })
 }
