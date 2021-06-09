@@ -1,7 +1,7 @@
 /**
  * Infinity Selfbot
  * * Made By: Branden, Weis, Rapid
- * TODO: Image Logging, Dynamic Machine Learning, Silent Mode, Multi-Token Support
+ * TODO: Dynamic Machine Learning, Multi-Token Support
  */
 
 const Discord = require('discord.js-self');
