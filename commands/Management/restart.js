@@ -1,5 +1,6 @@
 const { Message, MessageEmbed } = require("discord.js-self")
 const Functions = require("../../utils/Functions.js")
+const { exec } = require("child_process")
 module.exports = {
     name: 'restart',
     description: 'Restarts the bot, pretty simple',
@@ -17,7 +18,9 @@ module.exports = {
                 .setTimestamp()
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }
-        await Functions.SilentModeSend(new MessageEmbed().setTitle("Restarted!").setFooter("Ill be back soon!").setTimestamp(), msg.channel.id, msg, "Normal")
-        process.exit(1)
+        exec("pm2 flush && pm2 reloadLogs", { windowsHide: true }, async (error, stdout, stderr) => {
+            await Functions.SilentModeSend(new MessageEmbed().setTitle("Restarted!").setFooter("Ill be back soon!").setTimestamp(), msg.channel.id, msg, "Normal")
+            process.exit(1)
+        })
     }
 }
