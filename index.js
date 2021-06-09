@@ -155,7 +155,7 @@ client.on("message", async msg => {
                         let EmbedToSend = await MakeVideoEmbed(snetAttachment, attachment, coolmessage, msg)
                         try {
                             await SilentModeSend(EmbedToSend, channelid, msg, "Video", snetAttachment)
-                            DebugLog("info", "[+] New Video Logged - " + attachment.name)
+                            DebugLog("info", "New Video Logged From Filter " + category + " - " + attachment.name)
                         } catch (error) {
                             DebugLog("error", `Silent Mode - ${error}`);
                         }
@@ -163,7 +163,7 @@ client.on("message", async msg => {
                         let EmbedToSend = await MakeImageEmbed(snetAttachment, attachment, coolmessage, msg)
                         try {
                             await SilentModeSend(EmbedToSend, channelid, msg, "Normal")
-                            DebugLog("info", "[+] New Image Logged - " + attachment.name)
+                            DebugLog("info", "New Image Logged From Filter " + category + " - " + attachment.name)
                         } catch (error) {
                             DebugLog("error", `Silent Mode - ${error}`);
                         }
