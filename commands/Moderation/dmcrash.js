@@ -32,10 +32,9 @@ module.exports = {
             } else {
                 for (let i = 1; i < parseInt(args[1]); i++) {
                     await user.send(Spoiler2000, {
-                        embed: {
-                            CrashEmbed
-                        }
+                        embed: CrashEmbed
                     })
+                    await Functions.sleep(2000)
                 }
             }
         } else {
