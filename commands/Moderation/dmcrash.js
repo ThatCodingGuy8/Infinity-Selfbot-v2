@@ -25,7 +25,7 @@ module.exports = {
             .addField(Spoiler256, Spoiler1001, true)
             .addField(Spoiler256, Spoiler1001, true)
             .addField(Spoiler256, Spoiler651, true);
-        let user = msg.mentions.members.cache.first()
+        let user = msg.mentions.users.first()
         if (user !== undefined) {
             if (isNaN(args[1])) {
                 msg.channel.send(ErrorEmbed)
