@@ -6,10 +6,7 @@ const People = require("../sudoers.json")
 const colors = require("colors")
 
 // Internal Functions
-async function SendToWebhook(content, channelid, msg, options) {
-    let channel = await msg.client.channels.cache.get(channelid)
-    const webhooks = await channel.fetchWebhooks();
-    const webhook = webhooks.first();
+async function SendToWebhook(content, webhook, options) {
     if (options) {
         await webhook.send(content, options);
     } else {
@@ -17,11 +14,7 @@ async function SendToWebhook(content, channelid, msg, options) {
     }
 }
 
-async function SendVideoToWebhook(content, channelid, msg, snetAttachment, options) {
-    let channel = await msg.client.channels.cache.get(channelid)
-    const webhooks = await channel.fetchWebhooks();
-    const webhook = webhooks.first();
-
+async function SendVideoToWebhook(content, webhook, snetAttachment, options) {
     await webhook.send({
         embeds: [
             content
@@ -171,13 +164,13 @@ module.exports = class Functions {
 
                 if (type === "Normal") {
                     if (webhook) {
-                        await SendToWebhook(content, channelid, msg, options)
+                        await SendToWebhook(content, webhook, options)
                     } else {
                         await SendToChannelFromClient(content, channelid, msg, options)
                     }
                 } else if (type === "Video") {
                     if (webhook) {
-                        await SendVideoToWebhook(content, channelid, msg, snetAttachment, options)
+                        await SendVideoToWebhook(content, webhook, snetAttachment, options)
                     } else {
                         await SendVideoToChannelFromClient(content, channelid, msg, snetAttachment, options)
                     }
