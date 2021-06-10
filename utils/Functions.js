@@ -163,7 +163,10 @@ module.exports = class Functions {
                 if (webhooks.size > 0) {
                     webhook = webhooks.first();
                 } else {
-                    webhook = await channel.createWebhook("Masked User", msg.guild.iconURL(), "Yes")
+                    webhook = await channel.createWebhook("Masked User", {
+                        avatar: msg.guild.iconURL(),
+                        reason: "Yes"
+                    })
                 }
 
                 if (type === "Normal") {
