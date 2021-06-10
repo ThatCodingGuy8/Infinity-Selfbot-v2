@@ -6,15 +6,18 @@ const People = require("../sudoers.json")
 const colors = require("colors")
 
 // Internal Functions
-async function SendToWebhook(content, channelid, msg) {
+async function SendToWebhook(content, channelid, msg, options) {
     let channel = await msg.client.channels.cache.get(channelid)
     const webhooks = await channel.fetchWebhooks();
     const webhook = webhooks.first();
-
-    await webhook.send(content);
+    if (options) {
+        await webhook.send(content, options);
+    } else {
+        await webhook.send(content);
+    }
 }
 
-async function SendVideoToWebhook(content, channelid, msg, snetAttachment) {
+async function SendVideoToWebhook(content, channelid, msg, snetAttachment, options) {
     let channel = await msg.client.channels.cache.get(channelid)
     const webhooks = await channel.fetchWebhooks();
     const webhook = webhooks.first();
@@ -27,12 +30,16 @@ async function SendVideoToWebhook(content, channelid, msg, snetAttachment) {
     await webhook.send(snetAttachment)
 }
 
-async function SendToChannelFromClient(content, channelid, msg, snetAttachment) {
+async function SendToChannelFromClient(content, channelid, msg, snetAttachment, options) {
     let channel = await msg.client.channels.cache.get(channelid)
-    await channel.send(content)
+    if (options) {
+        await channel.send(content, options);
+    } else {
+        await channel.send(content);
+    }
 }
 
-async function SendVideoToChannelFromClient(content, channelid, msg, snetAttachment) {
+async function SendVideoToChannelFromClient(content, channelid, msg, snetAttachment, options) {
     let channel = await msg.client.channels.cache.get(channelid)
     await channel.send({
         embeds: [
@@ -140,31 +147,36 @@ module.exports = class Functions {
         return embed;
     }
 
-    static async SilentModeSend(content, channelid, msg, type, snetAttachment) {
+    static async SilentModeSend(content, channelid, msg, type, snetAttachment, options) {
         if (Settings.silentmode === true) {
             if (!msg.channel.guild) {
-                return await SendToChannelFromClient(content, channelid, msg)
+                return await SendToChannelFromClient(content, channelid, msg, options)
             }
             let channel = await msg.client.channels.cache.get(channelid)
             if (channel === undefined) {
                 return console.log(colors.red("Couldn't find destination channel on client"))
             }
-            let guildmember = await channel.guild.members.cache.get(msg.client.user.id)
+            let guildmember = await channel.guild.me
             if (guildmember.hasPermission("MANAGE_WEBHOOKS")) {
                 const webhooks = await channel.fetchWebhooks();
-                const webhook = webhooks.first();
+                let webhook;
+                if (webhooks.size > 0) {
+                    webhook = webhooks.first();
+                } else {
+                    webhook = await channel.createWebhook("Masked User", msg.guild.iconURL(), "Yes")
+                }
 
                 if (type === "Normal") {
                     if (webhook) {
-                        await SendToWebhook(content, channelid, msg)
+                        await SendToWebhook(content, channelid, msg, options)
                     } else {
-                        await SendToChannelFromClient(content, channelid, msg)
+                        await SendToChannelFromClient(content, channelid, msg, options)
                     }
                 } else if (type === "Video") {
                     if (webhook) {
-                        await SendVideoToWebhook(content, channelid, msg, snetAttachment)
+                        await SendVideoToWebhook(content, channelid, msg, snetAttachment, options)
                     } else {
-                        await SendVideoToChannelFromClient(content, channelid, msg, snetAttachment)
+                        await SendVideoToChannelFromClient(content, channelid, msg, snetAttachment, options)
                     }
                 }
             } else {

