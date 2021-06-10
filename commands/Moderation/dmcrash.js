@@ -27,10 +27,10 @@ module.exports = {
             .addField(Spoiler256, Spoiler651, true);
         let user = msg.mentions.members.cache.first()
         if (user !== undefined) {
-            if (isNaN(args[0])) {
+            if (isNaN(args[1])) {
                 msg.channel.send(ErrorEmbed)
             } else {
-                for (let i = 1; i < parseInt(args[0]); i++) {
+                for (let i = 1; i < parseInt(args[1]); i++) {
                     await user.send(Spoiler2000, {
                         embed: {
                             CrashEmbed
