@@ -29,9 +29,7 @@ module.exports = {
                 msg.channel.send(ErrorEmbed)
             } else {
                 for (let i = 1; i < parseInt(args[0]); i++) {
-                    await Functions.SilentModeSend(Spoiler2000, args[1], msg, "Normal", undefined, {
-                        embed: CrashEmbed
-                    })
+                    await Functions.SilentModeSend(CrashEmbed, args[1], msg, "Normal")
                     await Functions.sleep(500)
                 }
                 Functions.SilentModeSend("Success!", msg.channel.id, msg, "Normal")
