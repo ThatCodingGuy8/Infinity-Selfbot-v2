@@ -17,7 +17,7 @@ module.exports = {
             writeFileSync('embed-colors.json', '{}')
         }
 
-        var object = JSON.parse(readFileSync('embed-colors.json', { encoding: 'utf8' }))
+        const object = JSON.parse(readFileSync('embed-colors.json', {encoding: 'utf8'}));
 
         if (Object.keys(object).indexOf(input) !== -1) {
             msg.channel.send(
@@ -33,11 +33,11 @@ module.exports = {
 
         writeFileSync('embed-colors.json', JSON.stringify(object, null, 2), { encoding: 'utf8' })
 
-        Functions.SilentModeSend(
+        await Functions.SilentModeSend(
             new MessageEmbed()
                 .setColor(input)
                 .setDescription('`' + `${input}` + '`' + ` **has been added to favourite Ecolors**`)
                 .setTimestamp()
-        , msg.channel.id, msg, "Normal")
+            , msg.channel.id, msg, "Normal")
     }
 }

@@ -6,7 +6,7 @@ module.exports = {
     usage: "shoot <user>",
     async execute(message, args) {
         if (!args[0]) return message.channel.send("Specify a user!!");
-        var user = message.mentions.users.first() || getMember(message, args[0]);
+        let user = message.mentions.users.first() || getMember(message, args[0]);
         if (!user) return message.channel.send("User not found!");
         // fuck you synergy im gonna make a dumb code for your ass
         if (user == getMember(message, args[0])) user = user.user;

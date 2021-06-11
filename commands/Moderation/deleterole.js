@@ -13,17 +13,17 @@ module.exports = {
         role2 = await msg.mentions.roles.last()
         if(!msg.member.hasPermission("MANAGE_ROLES")) return;
 
-        if (role.id == role2.id) { 
-            Functions.SilentModeSend(new MessageEmbed().setDescription("Please Put 2 Different Roles!"), msg.channel.id, msg, "Normal")
+        if (role.id == role2.id) {
+            await Functions.SilentModeSend(new MessageEmbed().setDescription("Please Put 2 Different Roles!"), msg.channel.id, msg, "Normal")
         } else {
             Members = role.members.filter(m => m.roles.cache.has(role2.id) )
             Members.forEach(m => {
-                m.roles.remove(role2.id) 
+                m.roles.remove(role2.id)
             });
-            if (Members.size<= 0) { 
-                Functions.SilentModeSend(new MessageEmbed().setDescription("It Seems there is no member with that role!"), msg.channel.id, msg, "Normal")
+            if (Members.size<= 0) {
+                await Functions.SilentModeSend(new MessageEmbed().setDescription("It Seems there is no member with that role!"), msg.channel.id, msg, "Normal")
             } else {
-                Functions.SilentModeSend(new MessageEmbed().setDescription(`${role} has been removed from members with   ${role}`), msg.channel.id, msg, "Normal")
+                await Functions.SilentModeSend(new MessageEmbed().setDescription(`${role} has been removed from members with   ${role}`), msg.channel.id, msg, "Normal")
             }
         }
     }

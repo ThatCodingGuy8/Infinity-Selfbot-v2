@@ -15,7 +15,6 @@ const settings = require("./settings.json");
 const client = new Discord.Client()
 const {
     randomTime,
-    LogOutput,
     asyncForEach,
     MakeImageEmbed,
     MakeVideoEmbed,
@@ -219,7 +218,7 @@ client.on("message", async msg => {
         if (!settings.afk === false) {
             if (msg.channel.type === "dm") {
                 if (msg.author.id !== client.user.id) {
-                    msg.channel.send(settings.afk)
+                    await msg.channel.send(settings.afk)
                 }
             }
         }

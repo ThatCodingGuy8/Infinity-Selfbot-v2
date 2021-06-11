@@ -18,6 +18,6 @@ module.exports = {
             .setColor(randomhex)
             .setDescription(`**Random Hex Code: **` + '`' + `${randomhex}` + '`')
             .setFooter(`Embed color = Random Hex Code color`)
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

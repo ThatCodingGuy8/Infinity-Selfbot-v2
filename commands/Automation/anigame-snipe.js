@@ -24,7 +24,7 @@ module.exports = {
             }
 
         if (!args[0]) {
-            Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**Incorrect usage of command**`).setTimestamp(), msg.channel.id, msg, "Normal")
+            await Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**Incorrect usage of command**`).setTimestamp(), msg.channel.id, msg, "Normal")
         }
 
         if (args[0]) {
@@ -35,7 +35,7 @@ module.exports = {
                     .setDescription(`**Anigame Snipe: Disabled**`)
                     .setTimestamp()
 
-                Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+                await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
             }
 
             if (args[0].toUpperCase() == 'ON') {
@@ -45,7 +45,7 @@ module.exports = {
                     .setDescription(`**Anigame Snipe: Enabled**`)
                     .setTimestamp()
 
-                Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+                await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
             }
 
             writeFileSync("settings.json", JSON.stringify(settings, null, 1))

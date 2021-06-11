@@ -17,6 +17,6 @@ module.exports = {
             .setDescription(`**${Quote.getRandomQuote()}**`)
             .setFooter(`You can do this!`)
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

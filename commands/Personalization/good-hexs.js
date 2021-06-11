@@ -23,6 +23,6 @@ module.exports = {
             .addField(`#631c63`, `[A Dark Purple](https://www.colorhexa.com/631c63)`, true)
             .setFooter(`Hope it was useful!`)
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

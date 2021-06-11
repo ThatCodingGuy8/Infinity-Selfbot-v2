@@ -7,9 +7,9 @@ const { Message } = require('discord.js-self');
 module.exports.getMemberMention = async (msg, args) => {
     if (msg.mentions.members.first()) return msg.mentions.members.first()
 
-    var x = args[0]
+    const x = args[0];
     if (x !== undefined) {
-        var y = x.toLowerCase()
+        const y = x.toLowerCase();
         if (args.length > 0) {
             return (await msg.guild.members.fetch()).filter(user => user.id === args[0]).first() || (await msg.guild.members.fetch()).filter(member => member.user.username.toLowerCase().startsWith(y)).first() || (await msg.guild.members.fetch()).filter(member => member.displayName.toLowerCase().startsWith(y)).first()
 
@@ -46,9 +46,9 @@ module.exports.getBannedMention = async (msg, args) => {
 module.exports.getRoleMention = async (msg, args) => {
     if (msg.mentions.roles.first()) return msg.mentions.roles.first()
 
-    var x = args[0]
+    const x = args[0];
     if (x !== undefined) {
-        var y = x.toLowerCase()
+        const y = x.toLowerCase();
         if (args.length > 0) {
             return (await msg.guild.roles.cache.find(r => r.name.toLowerCase().startsWith(y)) || msg.guild.roles.cache.get(args[0]) || msg.guild.roles.cache.find(r => r.name === args.join(" ")) || msg.mentions.roles.first()
             )

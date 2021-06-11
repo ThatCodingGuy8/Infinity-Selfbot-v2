@@ -20,7 +20,7 @@ module.exports = {
             .setFooter("D-Don't look at me, baka...")
             .setTimestamp()
 
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }

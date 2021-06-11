@@ -11,15 +11,15 @@ module.exports = {
         let input = args.join(" ")
 
         if (!input) {
-            Functions.SilentModeSend(
+            await Functions.SilentModeSend(
                 new MessageEmbed()
                     .setDescription('**You must input a color to test**')
                     .setColor('RED')
                     .setTimestamp()
-            , msg.channel.id, msg, "Normal")
+                , msg.channel.id, msg, "Normal")
             return;
         }
 
-        Functions.SilentModeSend(new MessageEmbed().setColor(input).setDescription(`**This is an example for how the color** ` + '`' + `${input}` + '`' + ` **would look like**`).setTimestamp(), msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(new MessageEmbed().setColor(input).setDescription(`**This is an example for how the color** ` + '`' + `${input}` + '`' + ` **would look like**`).setTimestamp(), msg.channel.id, msg, "Normal")
     }
 }

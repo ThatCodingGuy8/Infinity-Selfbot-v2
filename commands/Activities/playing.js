@@ -26,7 +26,7 @@ module.exports = {
             return;
         }
 
-        msg.client.user.setActivity(`${input}`, { type: 'PLAYING' })
+        await msg.client.user.setActivity(`${input}`, {type: 'PLAYING'})
 
         msg.channel.send(new MessageEmbed().setColor(`#918bff`).setDescription(`**Successfully set activity to** ` + '`' + `Playing ${input}` + '`').setTimestamp())
     }

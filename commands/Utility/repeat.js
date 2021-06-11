@@ -26,7 +26,7 @@ module.exports = {
         if (args[0].toUpperCase() == 'OFF') {
             clearInterval(interval)
             interval = undefined;
-            Functions.SilentModeSend(new MessageEmbed().setColor('#918bff').setDescription(`**Stopped the message repeating**`).setTimestamp(), msg.channel.id, msg, "Normal")
+            await Functions.SilentModeSend(new MessageEmbed().setColor('#918bff').setDescription(`**Stopped the message repeating**`).setTimestamp(), msg.channel.id, msg, "Normal")
             figlet("Ignore Error", async (err, ascii) => { console.log(ascii) })
             stop();
         }
@@ -35,13 +35,13 @@ module.exports = {
 
         if (!time) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide an interval to repeat at**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
-        let input = args.shift() && args.join(" ")
+        let input = await args.shift() && args.join(" ")
 
         if (!input) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide something to repeat**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         if (!interval) {
             interval = setInterval(function () { Functions.SilentModeSend(input, msg.channel.id, msg, "Normal") }, time)
-            Functions.SilentModeSend(new MessageEmbed().setColor('#918bff').setDescription(`**Starting your message: "${input}" on repeat for ${time}ms**`).setTimestamp(), msg.channel.id, msg, "Normal")
+            await Functions.SilentModeSend(new MessageEmbed().setColor('#918bff').setDescription(`**Starting your message: "${input}" on repeat for ${time}ms**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         }
     }

@@ -22,7 +22,7 @@ module.exports = {
             .setColor(ans)
             .setDescription(`** This is what your favourite Hex Code ** ` + '`' + `${ans}` + '`' + ` ** would look like **`)
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }

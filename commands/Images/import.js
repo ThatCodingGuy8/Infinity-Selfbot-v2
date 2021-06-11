@@ -104,7 +104,7 @@ module.exports = {
                                         let aver;
                                         let EmbedToSend = await MakeImageEmbed(snetAttachment, attachment, "Imported", msg)
                                         await Functions.SilentModeSend(EmbedToSend, args[3], msg, "Normal")
-                                        await imagecount++
+                                        imagecount++
                                     }
                                 }
                             } catch (err) {

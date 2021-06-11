@@ -41,6 +41,6 @@ module.exports = {
             .setDescription(`**${member}'s Penis size is: ${random}**`)
             .setFooter(`You should start an OnlyFans`)
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

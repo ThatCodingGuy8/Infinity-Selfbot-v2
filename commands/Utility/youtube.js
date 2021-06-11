@@ -18,7 +18,7 @@ module.exports = {
         if (!input) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**You must provide something to search**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
         await usetube.searchVideo(input).then(async data => {
-            Functions.SilentModeSend(`https://www.youtube.com/watch?v=${data.videos[0].id}`, msg.channel.id, msg, "Normal")
+            await Functions.SilentModeSend(`https://www.youtube.com/watch?v=${data.videos[0].id}`, msg.channel.id, msg, "Normal")
         })
 
     }

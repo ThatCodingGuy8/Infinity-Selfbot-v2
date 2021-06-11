@@ -28,10 +28,10 @@ module.exports = {
 i = vc.IDS.indexOf(vc.IDS.find(u => u.UserID == mention.id))
 
 vc.IDS.splice(i,1)
-                Functions.SilentModeSend(new MessageEmbed().setDescription(`${mention} has been  Unbanned`), msg.channel.id, msg, "Normal")
+                await Functions.SilentModeSend(new MessageEmbed().setDescription(`${mention} has been  Unbanned`), msg.channel.id, msg, "Normal")
             }
             else {
-                Functions.SilentModeSend(new MessageEmbed().setDescription(`${mention} is not Banned from Voice-Chats!`), msg.channel.id, msg, "Normal")
+                await Functions.SilentModeSend(new MessageEmbed().setDescription(`${mention} is not Banned from Voice-Chats!`), msg.channel.id, msg, "Normal")
             }
         }
 

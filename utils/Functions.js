@@ -80,11 +80,7 @@ module.exports = class Functions {
     }
 
     static IsAllowed(id) {
-        if (People.Sudos.includes(id)) {
-            return true
-        } else {
-            return false
-        }
+        return !!People.Sudos.includes(id);
     }
 
     static async asyncForEach(array, callback) {

@@ -18,15 +18,15 @@ module.exports = {
 
                 var response = response.data;
                 if (!response.data.children.length) return Functions.SilentModeSend("Subreddit has no posts!", msg.channel.id, msg, "Normal");
-                var index = response.data.children[Math.floor(Math.random() * (response.data.children.length - 1) + random(0, 1))].data
-                if (index.over_18 && !msg.channel.nsfw) return Functions.SilentModeSend("Results are Over 18! make sure to search NSFW subreddits on NSFW channels!", msg.channel.id, msg, "Normal")
+            const index = response.data.children[Math.floor(Math.random() * (response.data.children.length - 1) + random(0, 1))].data;
+            if (index.over_18 && !msg.channel.nsfw) return Functions.SilentModeSend("Results are Over 18! make sure to search NSFW subreddits on NSFW channels!", msg.channel.id, msg, "Normal")
 
-                var title = index.title
-                var link = 'https://reddit.com' + index.permalink
-                var text = index.selftext
-                var subRedditName = index.subreddit_name_prefixed
+            const title = index.title;
+            const link = 'https://reddit.com' + index.permalink;
+            var text = index.selftext
+            const subRedditName = index.subreddit_name_prefixed;
 
-                if (index.post_hint !== 'image') {
+            if (index.post_hint !== 'image') {
                     var text = index.selftext
                     const textembed = new Discord.MessageEmbed()
                         .setTitle("A random post from " + subRedditName)
@@ -38,8 +38,8 @@ module.exports = {
                     return Functions.SilentModeSend(textembed, msg.channel.id, msg, "Normal");
                 }
 
-                var image = index.preview.images[0].source.url.replace('&amp;', '&')
-                const imageembed = new Discord.MessageEmbed()
+            const image = index.preview.images[0].source.url.replace('&amp;', '&');
+            const imageembed = new Discord.MessageEmbed()
                     .setTitle("A random post from " + subRedditName)
                     .setImage(image)
                     .setColor("RANDOM")

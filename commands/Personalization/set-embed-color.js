@@ -25,7 +25,7 @@ module.exports = {
             .setDescription(`**Changed embed color to: ${input}**`)
             .setTimestamp()
 
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }

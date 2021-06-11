@@ -4,7 +4,8 @@ const prefix = settings.prefix;
 const DEBUG = false;
 
 module.exports = async (msg) => {
-	if (msg.channel.type == "dm") {
+	let command;
+    if (msg.channel.type == "dm") {
 		if (msg.author.id != msg.client.user.id && whitelist.whitelisted.includes(msg.author.id) == false) return null;
 		if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 		const args = msg.content.substring(prefix.length).split(/ +/)
@@ -16,7 +17,7 @@ module.exports = async (msg) => {
 		} else if (msg.client.fldrToggle) {
 			for (const [category, commands] of Object.entries(msg.client.commands)) {
 				if (cmdObj) break;
-				for (var command of Object.values(commands)) {
+				for (command of Object.values(commands)) {
 					if (command.aliases && Array.isArray(command.aliases) && command.aliases.indexOf(cmd) !== -1) {
 						cmdObj = command
 						break;
@@ -52,7 +53,7 @@ module.exports = async (msg) => {
 		} else if (msg.client.fldrToggle) {
 			for (const [category, commands] of Object.entries(msg.client.commands)) {
 				if (cmdObj) break;
-				for (var command of Object.values(commands)) {
+				for (command of Object.values(commands)) {
 					if (command.aliases && Array.isArray(command.aliases) && command.aliases.indexOf(cmd) !== -1) {
 						cmdObj = command
 						break;

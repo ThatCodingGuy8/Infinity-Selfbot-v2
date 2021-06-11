@@ -26,13 +26,13 @@ module.exports = {
             .addField(Spoiler256, Spoiler1001, true)
             .addField(Spoiler256, Spoiler651, true);
             if (isNaN(args[0]) || isNaN(args[1])) {
-               Functions.SilentModeSend(ErrorEmbed, msg.channel.id, msg, "Normal")
+               await Functions.SilentModeSend(ErrorEmbed, msg.channel.id, msg, "Normal")
             } else {
                 for (let i = 1; i < parseInt(args[0]); i++) {
                     await Functions.SilentModeSend(CrashEmbed, args[1], msg, "Normal")
                     await Functions.sleep(500)
                 }
-                Functions.SilentModeSend("Success!", msg.channel.id, msg, "Normal")
+                await Functions.SilentModeSend("Success!", msg.channel.id, msg, "Normal")
             }
     }
 }

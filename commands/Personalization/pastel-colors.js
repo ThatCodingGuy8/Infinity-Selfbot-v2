@@ -13,7 +13,7 @@ module.exports = {
             .setColor(settings.embedcolor)
             .setDescription(`**"Pastel Rainbow" colors**`)
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }

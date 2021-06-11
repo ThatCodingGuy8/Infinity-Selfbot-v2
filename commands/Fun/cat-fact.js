@@ -20,6 +20,6 @@ module.exports = {
             .setDescription(`**${answer}**`)
             .setFooter("Floofy")
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

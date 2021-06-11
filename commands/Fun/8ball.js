@@ -36,7 +36,7 @@ module.exports = {
             'My Reply Is No',
             'My Sources Say No',
             'Outlook Not So Good',
-            'Very Doubtful', 
+            'Very Doubtful',
             'I Hate You'
         ]
 
@@ -48,7 +48,7 @@ module.exports = {
             .addField(`8Ball's Response:`, answer)
             .setFooter("You have become the fortune teller")
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }

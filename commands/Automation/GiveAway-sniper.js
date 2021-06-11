@@ -25,13 +25,13 @@ module.exports = {
         if (args[0].toUpperCase() == 'ON'){
 
                 settings.Giveawaysniper = true
-                Functions.SilentModeSend(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**Giveaway sniper has been turned on**`).setTimestamp(), msg.channel.id, msg, "Normal")
+                await Functions.SilentModeSend(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**Giveaway sniper has been turned on**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
             }
 
         else if (args[0].toUpperCase() == 'OFF') {
             settings.Giveawaysniper = false
-            Functions.SilentModeSend(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**Giveaway-Sniper turned off**`).setTimestamp(), msg.channel.id, msg, "Normal")
+            await Functions.SilentModeSend(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**Giveaway-Sniper turned off**`).setTimestamp(), msg.channel.id, msg, "Normal")
         }
         writeFileSync("settings.json", JSON.stringify(settings, null, 1))  }
 }

@@ -16,6 +16,6 @@ module.exports = {
             .setDescription(`**Randomly Chose Member: ${member}**`)
             .setFooter("Why did you use this?")
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

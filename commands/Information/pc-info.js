@@ -15,15 +15,15 @@ module.exports = {
 
         gpuInfo().then(function (data) {
 
-            var LoadingBarManager = require("./../../utils/loadingBar")
+            const LoadingBarManager = require("./../../utils/loadingBar");
 
-            var LoadingBar = new LoadingBarManager({
+            const LoadingBar = new LoadingBarManager({
                 full_char: "█",
                 empty_char: "░",
                 left_corner: "",
                 right_corner: "",
                 steps: 10
-            })
+            });
 
             let t1 = Date.now()
 

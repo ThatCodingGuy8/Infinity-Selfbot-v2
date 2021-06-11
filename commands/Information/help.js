@@ -28,12 +28,12 @@ module.exports = {
 				embed.addField('Description', msg.client.commands[key][args[0]].description)
 				embed.addField('Usage', `${prefix}${msg.client.commands[key][args[0]].usage}`)
 				embed.addField('Command Aliases', alias)
-				Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+				await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 				return;
 			}
 			embed.addField(key, Object.keys(msg.client.commands[key]).join(', '))
 		}
 
-		Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+		await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 	}
 }

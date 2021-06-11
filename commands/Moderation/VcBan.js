@@ -25,12 +25,12 @@ module.exports = {
         if (mention) {
             if (vc.IDS.find(u => u.UserID == mention.id) && (vc.IDS.find(u => u.UserID == mention.id).UserID && vc.IDS.find(g => g.guild == msg.channel.guild.id) && vc.IDS.find(g => g.guild == msg.channel.guild.id).guild)) {
 
-                Functions.SilentModeSend(new MessageEmbed().setDescription(`${mention} is already Banned From entering voice chat in this server`), msg.channel.id, msg, "Normal")
+                await Functions.SilentModeSend(new MessageEmbed().setDescription(`${mention} is already Banned From entering voice chat in this server`), msg.channel.id, msg, "Normal")
             }
             else {
                 object = { guild: msg.guild.id, UserID: mention.id }
                 vc.IDS.push(object)
-                Functions.SilentModeSend(new MessageEmbed().setDescription(`${mention} Has been banned From entering voice chat in this server`), msg.channel.id, msg, "Normal")
+                await Functions.SilentModeSend(new MessageEmbed().setDescription(`${mention} Has been banned From entering voice chat in this server`), msg.channel.id, msg, "Normal")
             }
         }
 

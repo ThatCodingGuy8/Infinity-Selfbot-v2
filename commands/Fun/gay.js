@@ -24,7 +24,7 @@ module.exports = {
             .setDescription(`**${member} is ${gay(0, 100)}% gay**`)
             .setFooter("Kinda gay ngl")
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }

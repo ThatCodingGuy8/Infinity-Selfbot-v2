@@ -17,6 +17,6 @@ module.exports = {
             .setImage(`${image.url}`)
             .setFooter(`These images are totally random`)
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

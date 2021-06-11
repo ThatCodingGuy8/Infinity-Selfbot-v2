@@ -12,7 +12,7 @@ module.exports = {
      */
     async execute(msg, args) {
 
-        var { body } = await superagent.get(`https://nekos.life/api/v2/img/meow`)
+        let {body} = await superagent.get(`https://nekos.life/api/v2/img/meow`);
 
         let embed = new MessageEmbed()
             .setColor(settings.embedcolor)
@@ -20,6 +20,6 @@ module.exports = {
             .setImage(body.url)
             .setFooter("Cats are adorable")
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

@@ -20,7 +20,7 @@ module.exports = {
             .setTitle(`**Favourite Embed color List**`)
             .setDescription('`' + `${ans}` + '`')
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
 
     }
 }

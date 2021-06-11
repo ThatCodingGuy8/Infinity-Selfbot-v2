@@ -22,6 +22,6 @@ module.exports = {
             .setTimestamp()
             .setFooter(`There are ${msg.guild.channels.cache.size} channels in total`)
 
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

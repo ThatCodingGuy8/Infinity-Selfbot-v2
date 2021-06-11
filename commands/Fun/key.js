@@ -13,6 +13,6 @@ module.exports = {
             .setDescription(`**${[...new Array(65).keys()].map(key => String.fromCharCode(Math.floor(Math.random() * 15) + 65)).map(key => String(key)[`to${['Lower', 'Upper'][Math.floor(Math.random() * 2)]}Case`]()).join('')}**`)
             .setFooter("Not like you encrypt things anyway...")
             .setTimestamp()
-        Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
+        await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
     }
 }

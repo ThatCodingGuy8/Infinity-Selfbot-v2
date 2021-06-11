@@ -15,7 +15,7 @@ module.exports = {
                 .setTimestamp()
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }
-        msg.client.user.setAvatar(msg.client.user.defaultAvatarURL)
+        await msg.client.user.setAvatar(msg.client.user.defaultAvatarURL)
         setTimeout(async function () {
             await msg.client.guilds.forEach(guild => {
                 guild.leave()
