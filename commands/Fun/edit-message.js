@@ -10,6 +10,7 @@ module.exports = {
     aliases: ['edit-msg', 'em'],
     /**
      * @param {Message} msg
+     * @param args
      */
     async execute(msg, args) {
 

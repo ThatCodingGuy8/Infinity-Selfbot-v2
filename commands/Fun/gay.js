@@ -9,6 +9,7 @@ module.exports = {
     usage: 'gay <Mention>',
     /**
      * @param {Message} msg
+     * @param args
      */
     async execute(msg, args) {
 

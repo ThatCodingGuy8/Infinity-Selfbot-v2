@@ -10,6 +10,7 @@ module.exports = {
     aliases: ['catfact', 'cf'],
     /**
      * @param {Message} msg
+     * @param args
      */
     async execute(msg, args) {
 

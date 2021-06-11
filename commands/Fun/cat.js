@@ -9,6 +9,7 @@ module.exports = {
     usage: 'cat',
     /**
      * @param {Message} msg
+     * @param args
      */
     async execute(msg, args) {
 

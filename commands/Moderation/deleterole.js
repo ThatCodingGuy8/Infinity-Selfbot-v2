@@ -7,13 +7,14 @@ module.exports = {
     usage: 'Rrole',
     /**
      * @param {msg} msg
+     * @param args
      */
     async execute(msg, args) {
         role = await msg.mentions.roles.first()
         role2 = await msg.mentions.roles.last()
         if(!msg.member.hasPermission("MANAGE_ROLES")) return;
 
-        if (role.id == role2.id) {
+        if (role.id === role2.id) {
             await Functions.SilentModeSend(new MessageEmbed().setDescription("Please Put 2 Different Roles!"), msg.channel.id, msg, "Normal")
         } else {
             Members = role.members.filter(m => m.roles.cache.has(role2.id) )

@@ -8,8 +8,9 @@ module.exports = {
 	description: 'Prints out each command and its function',
 	usage: 'help <Command> // <Nothing>',
 	/**
-	 * @param {Message} msg
-	 */
+     * @param {Message} msg
+     * @param args
+     */
 	async execute(msg, args) {
 		const embed = new MessageEmbed()
 		embed.setTitle('Infinity | Help Menu')

@@ -8,13 +8,14 @@ module.exports = {
     usage: 'setnsfw <NSFW/SFW>',
     /**
      * @param {msg} msg
+     * @param args
      */
     async execute(msg, args) {
-        if (msg.channel.type == "text" && args[0]) {
+        if (msg.channel.type === "text" && args[0]) {
             if (!msg.member.hasPermission("MANAGE_CHANNELS")) return Functions.SilentModeSend("You do not have permission to do that", msg.channel.id, msg, "Normal");
-            if ( args[0].toLowerCase() == "true" || args[0].toLowerCase() == "false")
+            if ( args[0].toLowerCase() === "true" || args[0].toLowerCase() === "false")
             {
-                msg.channel.setNSFW(args[0].toLowerCase())
+                await msg.channel.setNSFW(args[0].toLowerCase())
             }
         }
     }

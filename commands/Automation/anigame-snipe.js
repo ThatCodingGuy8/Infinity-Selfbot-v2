@@ -18,8 +18,8 @@ module.exports = {
                 .setTimestamp()
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }
-        if (settings.anigame == undefined ? [] : settings.anigame)
-            if (settings.anigame == undefined) {
+        if (settings.anigame === undefined ? [] : settings.anigame)
+            if (settings.anigame === undefined) {
                 settings.anigame = false
             }
 
@@ -28,7 +28,7 @@ module.exports = {
         }
 
         if (args[0]) {
-            if (args[0].toUpperCase() == 'OFF') {
+            if (args[0].toUpperCase() === 'OFF') {
                 settings.anigame = false
                 let embed = new MessageEmbed()
                     .setColor(settings.embedcolor)
@@ -38,7 +38,7 @@ module.exports = {
                 await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
             }
 
-            if (args[0].toUpperCase() == 'ON') {
+            if (args[0].toUpperCase() === 'ON') {
                 settings.anigame = true
                 let embed = new MessageEmbed()
                     .setColor(settings.embedcolor)

@@ -22,14 +22,14 @@ module.exports = {
         }
         if (!args[0]) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**Incorrect usage of command**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
-        if (args[0].toUpperCase() == 'ON'){
+        if (args[0].toUpperCase() === 'ON'){
 
                 settings.Giveawaysniper = true
                 await Functions.SilentModeSend(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**Giveaway sniper has been turned on**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
             }
 
-        else if (args[0].toUpperCase() == 'OFF') {
+        else if (args[0].toUpperCase() === 'OFF') {
             settings.Giveawaysniper = false
             await Functions.SilentModeSend(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**Giveaway-Sniper turned off**`).setTimestamp(), msg.channel.id, msg, "Normal")
         }

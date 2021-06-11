@@ -18,8 +18,8 @@ module.exports = {
                 .setTimestamp()
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }
-        if (settings.afk == undefined ? [] : settings.afk)
-            if (settings.afk == undefined) {
+        if (settings.afk === undefined ? [] : settings.afk)
+            if (settings.afk === undefined) {
                 settings.afk = false
             }
 
@@ -50,7 +50,7 @@ module.exports = {
 
             writeFileSync("settings.json", JSON.stringify(settings, null, 1))
 
-            if (input.toUpperCase() == 'OFF') {
+            if (input.toUpperCase() === 'OFF') {
 
                 settings.afk = false
 

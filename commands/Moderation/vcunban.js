@@ -10,6 +10,7 @@ module.exports = {
     usage: ['Unvcban', "unvb"],
     /**
      * @param {msg} msg
+     * @param args
      */
     async execute(msg, args) {
         if (Functions.IsAllowed(msg.author.id) === false) {
@@ -22,10 +23,10 @@ module.exports = {
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }
   const memebers = msg.channel.guild.members.cache
-      const mention = msg.mentions.members.first() || msg.channel.guild.members.cache.find(m=> m.id ==arg[0]) ||   await members.find(m=> m.displayName.toLowerCase().startsWith(arg.toLowerCase()))
+      const mention = msg.mentions.members.first() || msg.channel.guild.members.cache.find(m=> m.id ===arg[0]) ||   await members.find(m=> m.displayName.toLowerCase().startsWith(arg.toLowerCase()))
         if (mention) {
-            if (vc.IDS.find(u => u.UserID == mention.id)) {
-i = vc.IDS.indexOf(vc.IDS.find(u => u.UserID == mention.id))
+            if (vc.IDS.find(u => u.UserID === mention.id)) {
+i = vc.IDS.indexOf(vc.IDS.find(u => u.UserID === mention.id))
 
 vc.IDS.splice(i,1)
                 await Functions.SilentModeSend(new MessageEmbed().setDescription(`${mention} has been  Unbanned`), msg.channel.id, msg, "Normal")

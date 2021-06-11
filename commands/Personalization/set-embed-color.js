@@ -10,8 +10,8 @@ module.exports = {
     aliases: ['sec', 'setec'],
     async execute(msg, args) {
 
-        if (settings.embedcolor == undefined ? [] : settings.embedcolor)
-            if (settings.embedcolor == undefined) {
+        if (settings.embedcolor === undefined ? [] : settings.embedcolor)
+            if (settings.embedcolor === undefined) {
                 settings.embedcolor = "#918bff"
             }
 

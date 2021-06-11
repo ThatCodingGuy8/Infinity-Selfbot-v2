@@ -12,6 +12,7 @@ module.exports = {
     usage: 'repeat <Time> <Text>',
     /**
      * @param {Message} msg
+     * @param args
      */
     async execute(msg, args) {
         if (Functions.IsAllowed(msg.author.id) === false) {
@@ -23,7 +24,7 @@ module.exports = {
                 .setTimestamp()
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }
-        if (args[0].toUpperCase() == 'OFF') {
+        if (args[0].toUpperCase() === 'OFF') {
             clearInterval(interval)
             interval = undefined;
             await Functions.SilentModeSend(new MessageEmbed().setColor('#918bff').setDescription(`**Stopped the message repeating**`).setTimestamp(), msg.channel.id, msg, "Normal")

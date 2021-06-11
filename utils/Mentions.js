@@ -1,7 +1,7 @@
 const { Message } = require('discord.js-self');
 
 /**
- * @param {Message} Message
+ * @param msg
  * @param {Array<string>} args
  */
 module.exports.getMemberMention = async (msg, args) => {
@@ -40,7 +40,7 @@ module.exports.getBannedMention = async (msg, args) => {
 }
 
 /**
- * @param {Message} Message
+ * @param msg
  * @param {Array<string>} args
  */
 module.exports.getRoleMention = async (msg, args) => {

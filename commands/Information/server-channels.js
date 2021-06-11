@@ -9,6 +9,7 @@ module.exports = {
     aliases: ['schannels', 'serverchannels', 'serverch'],
     /**
      * @param {Message} msg
+     * @param args
      */
     async execute(msg, args) {
 

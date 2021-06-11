@@ -13,8 +13,8 @@ module.exports = {
         if (!args) return Functions.SilentModeSend("Give me the subreddit name!", msg.channel.id, msg, "Normal");
         const url = `https://www.reddit.com/r/${args.join("")}/hot/.json?limit=100`;
         axios.get(url).then(function(response) {
-                if (response.status == 403) return Functions.SilentModeSend("Subreddit is private!", msg.channel.id, msg, "Normal");
-                if (response.status == 404) return Functions.SilentModeSend("Subreddit not found!", msg.channel.id, msg, "Normal");
+                if (response.status === 403) return Functions.SilentModeSend("Subreddit is private!", msg.channel.id, msg, "Normal");
+                if (response.status === 404) return Functions.SilentModeSend("Subreddit not found!", msg.channel.id, msg, "Normal");
 
                 var response = response.data;
                 if (!response.data.children.length) return Functions.SilentModeSend("Subreddit has no posts!", msg.channel.id, msg, "Normal");

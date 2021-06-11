@@ -259,7 +259,7 @@ client.on("voiceStateUpdate", (oldMember, NewMember) => {
 client.on("message", async msg => {
     if (settings.Giveawaysniper === false) return;
     if (!msg.member) return;
-    if (msg.member.id == 396464677032427530 || msg.member.id == 294882584201003009) {
+    if (msg.member.id === 396464677032427530 || msg.member.id === 294882584201003009) {
         if (msg.embeds[0] && msg.embeds[0].description && msg.embeds[0].description.toLowerCase().startsWith("react")) {
             setTimeout(() => {
                 msg.react("🎉")

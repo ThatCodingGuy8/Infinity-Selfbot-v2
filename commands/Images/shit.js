@@ -9,7 +9,7 @@ module.exports = {
         let user = message.mentions.users.first() || getMember(message, args[0]);
         if (!user) return message.channel.send("User not found!");
         // fuck you synergy im gonna make a dumb code for your ass
-        if (user == getMember(message, args[0])) user = user.user;
+        if (user === getMember(message, args[0])) user = user.user;
 
         const embed = new Discord.MessageEmbed()
             .setTitle(`${message.author.username} has stepped on ${user.username}`)

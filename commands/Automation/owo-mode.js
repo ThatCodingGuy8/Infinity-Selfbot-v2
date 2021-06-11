@@ -18,8 +18,8 @@ module.exports = {
                 .setTimestamp()
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }
-        if (settings.owo == undefined ? [] : settings.owo)
-            if (settings.owo == undefined) {
+        if (settings.owo === undefined ? [] : settings.owo)
+            if (settings.owo === undefined) {
                 settings.owo = false
             }
 
@@ -28,7 +28,7 @@ module.exports = {
         }
 
         if (args[0]) {
-            if (args[0].toUpperCase() == 'OFF') {
+            if (args[0].toUpperCase() === 'OFF') {
                 settings.owo = false
                 let embed = new MessageEmbed()
                     .setColor(settings.embedcolor)
@@ -38,7 +38,7 @@ module.exports = {
                 await Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
             }
 
-            if (args[0].toUpperCase() == 'ON') {
+            if (args[0].toUpperCase() === 'ON') {
                 settings.owo = true
                 let embed = new MessageEmbed()
                     .setColor(settings.embedcolor)

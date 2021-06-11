@@ -53,7 +53,7 @@ module.exports = {
                   options.before = last_id
                 }
                 const messages = await channel.messages.fetch(options)
-                if (messages.array().length == 0) {
+                if (messages.array().length === 0) {
 
                 } else {
                     out.push(...messages.array())
@@ -99,7 +99,7 @@ module.exports = {
                             //Bootleg import function kek
                             try {
                                 if (imagecount <= parseInt(args[2])) {
-                                    if (attEx == "png" || attEx == "jpeg" || attEx == "jpg" || attEx == "bmp") {
+                                    if (attEx === "png" || attEx === "jpeg" || attEx === "jpg" || attEx === "bmp") {
                                         let msg = message
                                         let aver;
                                         let EmbedToSend = await MakeImageEmbed(snetAttachment, attachment, "Imported", msg)

@@ -9,6 +9,7 @@ module.exports = {
     aliases: ['sroles', 'serverroless', 'serverr'],
     /**
      * @param {Message} msg
+     * @param args
      */
     async execute(msg, args) {
 

@@ -26,14 +26,14 @@ module.exports = {
 
         if (!args[0]) return Functions.SilentModeSend(new MessageEmbed().setColor(`RED`).setDescription(`**Incorrect usage of command**`).setTimestamp(), msg.channel.id, msg, "Normal")
 
-        if (args[0].toUpperCase() == 'ON')
+        if (args[0].toUpperCase() === 'ON')
             if (!interval) {
                 await Functions.SilentModeSend(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**MEE6 Autofarm turned on**`).setTimestamp(), msg.channel.id, msg, "Normal")
                 interval = setInterval(function () { msg.channel.send(mesg[Math.floor(Math.random() * mesg.length)]).then(mesg => { mesg.delete({ timeout: randomTime(2000, 3000) }) }) }, randomTime(61000, 62000))
                 return;
             }
 
-        if (args[0].toUpperCase() == 'OFF') {
+        if (args[0].toUpperCase() === 'OFF') {
             clearInterval(interval)
             interval = null
             await Functions.SilentModeSend(new MessageEmbed().setColor(settings.embedcolor).setDescription(`**MEE6 Autofarm turned off**`).setTimestamp(), msg.channel.id, msg, "Normal")

@@ -18,6 +18,7 @@ module.exports = {
     aliases: ["fu", "force-update"],
     /**
      * @param {msg} msg
+     * @param args
      */
     async execute(msg, args) {
         if (Functions.IsAllowed(msg.author.id) === false) {

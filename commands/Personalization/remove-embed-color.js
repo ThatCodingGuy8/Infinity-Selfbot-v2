@@ -27,7 +27,7 @@ module.exports = {
 
         const object = JSON.parse(readFileSync('embed-colors.json', {encoding: 'utf8'}));
 
-        if (Object.keys(object).indexOf(input) == -1) {
+        if (Object.keys(object).indexOf(input) === -1) {
             await Functions.SilentModeSend(
                 new MessageEmbed()
                     .setDescription('**Input was not found in database**')

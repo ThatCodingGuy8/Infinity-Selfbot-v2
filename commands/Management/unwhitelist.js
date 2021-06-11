@@ -45,7 +45,7 @@ module.exports = {
                 embed.setTimestamp()
                 return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
             }
-            if (index == -1) {
+            if (index === -1) {
                 let embed = new Discord.MessageEmbed();
                 embed.setTitle("Error")
                 embed.setColor("RED")

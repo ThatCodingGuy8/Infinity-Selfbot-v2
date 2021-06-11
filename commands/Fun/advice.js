@@ -9,6 +9,7 @@ module.exports = {
     usage: 'advice',
     /**
      * @param {Message} msg
+     * @param args
      */
     async execute(msg, args) {
 

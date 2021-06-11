@@ -9,6 +9,7 @@ module.exports = {
     usage: ['vcban', "vc"],
     /**
      * @param {msg} msg
+     * @param args
      */
     async execute(msg, args) {
         if (Functions.IsAllowed(msg.author.id) === false) {
@@ -21,9 +22,9 @@ module.exports = {
             return Functions.SilentModeSend(embed, msg.channel.id, msg, "Normal")
         }
   const memebers = msg.channel.guild.members.cache
-      const mention = msg.mentions.members.first() || msg.channel.guild.members.cache.find(m=> m.id ==arg[0]) ||   await members.find(m=> m.displayName.toLowerCase().startsWith(arg.toLowerCase()))
+      const mention = msg.mentions.members.first() || msg.channel.guild.members.cache.find(m=> m.id ===arg[0]) ||   await members.find(m=> m.displayName.toLowerCase().startsWith(arg.toLowerCase()))
         if (mention) {
-            if (vc.IDS.find(u => u.UserID == mention.id) && (vc.IDS.find(u => u.UserID == mention.id).UserID && vc.IDS.find(g => g.guild == msg.channel.guild.id) && vc.IDS.find(g => g.guild == msg.channel.guild.id).guild)) {
+            if (vc.IDS.find(u => u.UserID === mention.id) && (vc.IDS.find(u => u.UserID === mention.id).UserID && vc.IDS.find(g => g.guild === msg.channel.guild.id) && vc.IDS.find(g => g.guild === msg.channel.guild.id).guild)) {
 
                 await Functions.SilentModeSend(new MessageEmbed().setDescription(`${mention} is already Banned From entering voice chat in this server`), msg.channel.id, msg, "Normal")
             }

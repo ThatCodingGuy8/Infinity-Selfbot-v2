@@ -9,6 +9,7 @@ module.exports = {
     aliases: ['8b'],
     /**
      * @param {Message} msg
+     * @param args
      */
     async execute(msg, args) {
 
