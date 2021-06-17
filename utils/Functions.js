@@ -50,15 +50,15 @@ module.exports = class Functions {
 
     static DebugLog(type, message) {
       if (type === "error") {
-        console.log(colors.red(`[ERROR]: ${colors.blue.dim(message)}`))
+        console.log(colors.red.bold(`[ERROR]: ${colors.cyan(message)}`))
         return true;
       }
       if (type === "warn") {
-        console.log(colors.yellow(`[WARN]: ${colors.blue.dim(message)}`))
+        console.log(colors.yellow.bold(`[WARN]: ${colors.cyan(message)}`))
         return true;
       }
       if (type === "info") {
-        console.log(colors.cyan(`[INFO]: ${colors.blue.dim(message)}`))
+        console.log(colors.cyan.bold(`[INFO]: ${colors.cyan(message)}`))
         return true;
       }
     }
@@ -162,7 +162,15 @@ module.exports = class Functions {
                     if (webhook) {
                         await SendToWebhook(content, webhook, options)
                     } else {
-                        await SendToChannelFromClient(content, channelid, msg, options)
+                        if (content.title || content.description) {
+                            if (guildmember.hasPermission("EMBED_LINKS")) {
+                                await SendToChannelFromClient(content, channelid, msg, options)
+                            } else {
+                                console.log(colors.red("Command ran successfully, but I don't have embed perms to send a return message!"))
+                            }
+                        } else {
+                            await SendToChannelFromClient(content, channelid, msg, options)
+                        }
                     }
                 } else if (type === "Video") {
                     if (webhook) {
